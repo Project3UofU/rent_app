@@ -13,4 +13,9 @@ router
   .put(landlordController.update)
   .delete(landlordController.remove);
 
+// /landlord/addProperty
+router
+  .route("/addProperty")
+  .post(landlordController.addProperty);
+
 module.exports = router;
