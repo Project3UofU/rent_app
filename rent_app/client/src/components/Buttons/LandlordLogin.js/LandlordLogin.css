@@ -1,0 +1,9 @@
+.ll-btn {
+    background-color: #565689;
+    color: white;
+}
+
+.ll-btn:hover {
+    background-color: #343467;
+    border: white 2px solid;
+}
