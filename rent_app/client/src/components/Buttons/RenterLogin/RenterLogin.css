@@ -1,0 +1,9 @@
+.renter-btn {
+    background-color: #c6e032;
+    color: white;
+}
+
+.renter-btn:hover {
+    background-color: #779119;
+    border: white 2px solid;
+}
