@@ -6,6 +6,7 @@ const landlordSchema = new Schema({
   created: { type: Date, default: Date.now, select: false },
   username: { type: String, required: true },
   password: { type: String, required: true, select: false },
+  token: { type: String, select: false },
 }, {
     toObject: {
       virtuals: true
