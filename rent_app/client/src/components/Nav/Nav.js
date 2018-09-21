@@ -5,6 +5,9 @@ const Nav = () => (
     <a className="navbar-brand" href="/">
       Rent-App
     </a>
+    <a className="navbar-brand" href="/Landlord">
+      Landlord
+    </a>
   </nav>
 );
 
