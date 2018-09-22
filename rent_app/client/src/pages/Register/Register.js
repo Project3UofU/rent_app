@@ -21,31 +21,31 @@ class Register extends Component {
         });
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        if (this.state.username && this.state.password) {
-            // what is the API for this?
-            API.createUser({
-                username: this.state.username,
-                password: this.state.password
-                // We will want additional demographic info
-                // firstName, lastName, phoneNumber[business, home, cell], email, preferedContact
-                // address[business, home, mailing]
-                // others?
-            })
-            // TODO: POST to API, load Landlord page after pulling API info
-                // .then(res => )
-                .catch(err => console.log(err));
-        }
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     if (this.state.username && this.state.password) {
+    //         // what is the API for this?
+    //         API.createUser({
+    //             username: this.state.username,
+    //             password: this.state.password
+    //             // We will want additional demographic info
+    //             // firstName, lastName, phoneNumber[business, home, cell], email, preferedContact
+    //             // address[business, home, mailing], fax, taxID
+    //             // others?
+    //         })
+    //         // TODO: POST to API, load Landlord page after pulling API info
+    //             // .then(res => )
+    //             .catch(err => console.log(err));
+    //     }
 
-    }
+    // }
 
     render() {
         return (
         <Container fluid>
             <Row>
                 <Col size="md-8">
-                    <h1>Register as a landlord on reantanator 2000!</h1>
+                    <h1>Register as a landlord on rentKeeper</h1>
                     <form>
                         {/* TODO: additional demo in form */}
                         <Input 
