@@ -4,7 +4,7 @@ import RenterLogin from "../../components/Buttons/RenterLogin";
 import Register from "../../components/Buttons/Register";
 import { Link } from "react-router-dom";
 // issue with merge???
-import { Column, Container } from "../../components/Grid";
+import { Col, Container } from "../../components/Grid";
 
 class Landing extends Component {
     componentDidMount() {
@@ -16,7 +16,7 @@ class Landing extends Component {
         // need to 
         return (
             <Container fluid>
-                <Column size="md-12">
+                <Col size="md-12">
                     <h1 className="logo">apprentice</h1>
                     <Link to={"/landlord_home"}>
                         <LandlordLogin></LandlordLogin>
@@ -27,7 +27,7 @@ class Landing extends Component {
                     <Link to={"/register"}>
                     <Register></Register>
                     </Link>
-                </Column>
+                </Col>
             </Container>
             // maybe a small landing footer?
         )
