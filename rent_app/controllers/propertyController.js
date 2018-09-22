@@ -1,13 +1,13 @@
 const db = require("../models");
-let mongoose = require('mongoose');
-require('../utils');
+const mongoose = require('mongoose');
+const utils = require('../utils');
 
 module.exports = {
 
     addUnit: function (req, res) {
         const { rent, securityDeposit, name, propertyID } = req.body;
-        if (error(rent, "Missing rent") || error(securityDeposit, "Missing securityDeposit") || error(propertyID, "Missing propertyID")
-            || error(name, "Missing name")) {
+        if (utils.error(rent, "Missing rent") || utils.error(securityDeposit, "Missing securityDeposit") || utils.error(propertyID, "Missing propertyID")
+            || utils.error(name, "Missing name")) {
             return;
         }
 

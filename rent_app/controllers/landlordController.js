@@ -1,6 +1,6 @@
 const db = require("../models");
 let mongoose = require('mongoose');
-require('../utils');
+let utils = require('../utils');
 
 module.exports = {
     findAll: function (req, res) {
@@ -28,7 +28,7 @@ module.exports = {
 
         let returnedLandlord = Object.assign({}, newLandlord);
         newLandlord.password = password; // TODO: Encrypt the password
-        
+
         db.Landlord
             .create(newLandlord)
             .then(landlord => res.json(returnedLandlord)) // TODO: Send back the returned landlord object with their token?
@@ -54,7 +54,7 @@ module.exports = {
 
     addProperty: function (req, res) {
         const { address, name, landlordID } = req.body;
-        if (error(res, address, "Missing address") || error(res, name, "Missing name") || error(res, landlordID, "Missing landlordID")) {
+        if (utils.error(res, address, "Missing address") || utils.error(res, name, "Missing name") || utils.error(res, landlordID, "Missing landlordID")) {
             return;
         }
 
@@ -65,21 +65,26 @@ module.exports = {
         }
 
         db.Property.collection
-            .insertOne(propertySeed(newProperty))
+            .insertOne(newProperty)
             .then(property => res.json(property))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.status(422).json({ "error": error.Message }));
     },
 
-    info: function (id) {
-        return db.Landlord.findOne({ _id: id }).populate({
-            path: 'properties',
-            populate: {
-                path: 'units',
+    info: function (req, res) {
+        db.Landlord
+            .find({})
+            .populate({
+                path: 'properties',
                 populate: {
-                    path: 'tenants',
-                    // select: 'created -_id' // Example of how to show `created` and hide `_id`
+                    path: 'units',
+                    populate: {
+                        path: 'tenants',
+                        // select: 'created -_id' // Example of how to show `created` and hide `_id`
+                    }
                 }
-            }
-        })
+            })
+            // .sort({ username: -1 }) // TODO: Update the sort order to name when it the landlord's name is in the model
+            .then(data => res.json({"landlords":data}))
+            .catch(err => res.status(422).json(err));
     },
 };

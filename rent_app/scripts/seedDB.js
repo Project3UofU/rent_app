@@ -143,24 +143,25 @@ db.Property.deleteMany({})
     // }
 
     console.log("Completed seeding data!");
+    process.exit(0);
 
     console.log("Fetching Landlord info:");
-    return db.Landlord.find({}).then(data => {
-      // Find all landlords
-      // console.log(JSON.stringify(data, 0, 2));
-      var promises = [];
-      for (let landlord of data) {
-        let promise = landlordController.info(landlord._id) // Promise to get all the landlord data
-        promises.push(promise);
-      }
-      return Promise.all(promises) // Execute promises getting all landlord data
-    })
+    // return db.Landlord.find({}).then(data => {
+    //   // Find all landlords
+    //   // console.log(JSON.stringify(data, 0, 2));
+    //   var promises = [];
+    //   for (let landlord of data) {
+    //     let promise = landlordController.info(landlord._id) // Promise to get all the landlord data
+    //     promises.push(promise);
+    //   }
+    //   return Promise.all(promises) // Execute promises getting all landlord data
+    // })
   })
-  .then(data => {
-    console.log("*****Landlord data (landlord/properties/units/tenants)*****");
-    console.log(JSON.stringify(data, 0, 2));
-    process.exit(0);
-  })
+  // .then(data => {
+  //   console.log("*****Landlord data (landlord/properties/units/tenants)*****");
+  //   console.log(JSON.stringify(data, 0, 2));
+  //   process.exit(0);
+  // })
   .catch(err => {
     console.error(err);
     process.exit(1);
