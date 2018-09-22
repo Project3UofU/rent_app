@@ -6,6 +6,11 @@ router.route("/")
   .get(landlordController.findAll)
   .post(landlordController.create);
 
+// /landlord/test
+router
+  .route("/test")
+  .get(landlordController.info);
+
 // Matches with "/api/landlord/:id"
 router
   .route("/:id")

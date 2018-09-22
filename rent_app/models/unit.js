@@ -27,6 +27,13 @@ unitSchema.virtual('tenants', {
     justOne: false
 });
 
+unitSchema.virtual('workOrders', {
+    ref: 'WorkOrder',
+    localField: '_id',
+    foreignField: 'unit',
+    justOne: false
+});
+
 const Unit = mongoose.model("Unit", unitSchema);
 
 module.exports = Unit;

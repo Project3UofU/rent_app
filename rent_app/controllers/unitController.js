@@ -1,14 +1,14 @@
 const db = require("../models");
-let mongoose = require('mongoose');
-require('../utils');
+const mongoose = require('mongoose');
+const utils = require('../utils');
 
 module.exports = {
 
     addTenant: function (req, res) {
         const { name, phone, email, preferredMethodOfContact, password, unitID } = req.body;
-        if (error(name, "Missing name") || error(phone, "Missing phone") || error(email, "Missing email")
-            || error(password, "Missing password") || error(preferredMethodOfContact, "Missing preferredMethodOfContact")
-            || error(unitID, "Missing unitID")) {
+        if (utils.error(name, "Missing name") || utils.error(phone, "Missing phone") || utils.error(email, "Missing email")
+            || utils.error(password, "Missing password") || utils.error(preferredMethodOfContact, "Missing preferredMethodOfContact")
+            || utils.error(unitID, "Missing unitID")) {
             return;
         }
 
@@ -26,7 +26,7 @@ module.exports = {
         
         db.Tenant.collection
             .insertOne(newTenant)
-            .then(tenant => res.json(returnedTenant))
+            .then(tenant => res.json(returnedTenant)) // TODO: Send back the returned tenant object with their token?
             .catch(err => res.status(422).json(err));
     },
 
