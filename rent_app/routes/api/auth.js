@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../db/models/user')
-const passport = require('../passport')
+const User = require('../../models/user')
+const passport = require('../../passport')
 
 // router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 // router.get(
@@ -23,8 +23,7 @@ router.get('/user', (req, res, next) => {
 	}
 })
 
-router.post(
-	'/login',
+router.post('/login',
 	function(req, res, next) {
 		console.log(req.body)
 		console.log('================')

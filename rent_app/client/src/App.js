@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios'
 
 
@@ -20,149 +20,171 @@ import Home from './components/Home';
 
 // Global CSS (unedited form Create-React-App command!)
 import './App.css';
+
+class App extends Component {
   
-  const App = () => (
+ state = {
+   loggedIn: false,
+   user: null
+ }
+
+ componentDidMount() {
+   axios.get('/api/auth/user').then(response => {
+     console.log(response.data)
+     if (!!response.data.user) {
+       console.log('THERE IS A USER')
+       this.setState({
+         loggedIn: true,
+         user: response.data.user
+       })
+     } else {
+       this.setState({
+         loggedIn: false,
+         user: null
+       })
+     }
+   })
+ }
+ 
+  _logout = (event) => {
+   event.preventDefault()
+   console.log('logging out')
+   axios.post('/api/auth/logout').then(response => {
+     console.log(response.data)
+     if (response.status === 200) {
+       this.setState({
+         loggedIn: false,
+         user: null
+       })
+     }
+   })
+ }
+
+ _login = (username, password) => {
+   axios
+     .post('/api/auth/login', {
+       username,
+       password
+     })
+     .then(response => {
+       console.log(response)
+       if (response.status === 200) {
+         // update the state
+         this.setState({
+           loggedIn: true,
+           user: response.data.user
+         })
+       }
+     })
+ }
+ render() {
+   return( 
     <Router>
       <div>
-        <Nav />
+        <Nav _logout={this._logout} loggedIn={this.state.loggedIn}/>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={() =>       <Home user={this.state.user} />
+          }/>
           <Route exact path="/Landlord" component={Landlord} />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/login" render={() => <LoginForm
+                _login={this._login}
+                _googleSignin={this._googleSignin}
+              />
+          }
+          />
+          <Route exact path="/signup" component={SignupForm} /> 
           <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
-  );
+  ); 
+ }
+}
 
-  const DisplayLinks = props => {
-    if (props.loggedIn) {
-      return (
-        <nav className="navbar">
-          <ul className="nav">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="#" className="nav-link" onClick={props._logout}>
-                Logout
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      )
-    } else {
-      return (
-        <nav className="navbar">
-          <ul className="nav">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/signup" className="nav-link">
-                sign up
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      )
-    }
-  }
+// export default App;
+
   
-  class App extends Component {
-    constructor() {
-      super()
-      this.state = {
-        loggedIn: false,
-        user: null
-      }
-      this._logout = this._logout.bind(this)
-      this._login = this._login.bind(this)
-    }
-    componentDidMount() {
-      axios.get('/auth/user').then(response => {
-        console.log(response.data)
-        if (!!response.data.user) {
-          console.log('THERE IS A USER')
-          this.setState({
-            loggedIn: true,
-            user: response.data.user
-          })
-        } else {
-          this.setState({
-            loggedIn: false,
-            user: null
-          })
-        }
-      })
-    }
+//   const App = () => {
+//   }
   
-    _logout(event) {
-      event.preventDefault()
-      console.log('logging out')
-      axios.post('/auth/logout').then(response => {
-        console.log(response.data)
-        if (response.status === 200) {
-          this.setState({
-            loggedIn: false,
-            user: null
-          })
-        }
-      })
-    }
+//   class App extends Component {
+
+//     componentDidMount() {
+//       axios.get('/auth/user').then(response => {
+//         console.log(response.data)
+//         if (!!response.data.user) {
+//           console.log('THERE IS A USER')
+//           this.setState({
+//             loggedIn: true,
+//             user: response.data.user
+//           })
+//         } else {
+//           this.setState({
+//             loggedIn: false,
+//             user: null
+//           })
+//         }
+//       })
+//     }
   
-    _login(username, password) {
-      axios
-        .post('/auth/login', {
-          username,
-          password
-        })
-        .then(response => {
-          console.log(response)
-          if (response.status === 200) {
-            // update the state
-            this.setState({
-              loggedIn: true,
-              user: response.data.user
-            })
-          }
-        })
-    }
+//     _logout(event) {
+//       event.preventDefault()
+//       console.log('logging out')
+//       axios.post('/auth/logout').then(response => {
+//         console.log(response.data)
+//         if (response.status === 200) {
+//           this.setState({
+//             loggedIn: false,
+//             user: null
+//           })
+//         }
+//       })
+//     }
   
-    render() {
-      return (
-        <div className="App">
-          <h1>This is the main App component</h1>
-          <Header user={this.state.user} />
-          {/* LINKS to our different 'pages' */}
-          <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
-          {/*  ROUTES */}
-          {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/" render={() => <Home user={this.state.user} />} />
-          <Route
-            exact
-            path="/login"
-            render={() =>
-              <LoginForm
-                _login={this._login}
-                _googleSignin={this._googleSignin}
-              />}
-          />
-          <Route exact path="/signup" component={SignupForm} />
-          {/* <LoginForm _login={this._login} /> */}
-        </div>
-      )
-    }
-  }
+//     _login(username, password) {
+//       axios
+//         .post('/auth/login', {
+//           username,
+//           password
+//         })
+//         .then(response => {
+//           console.log(response)
+//           if (response.status === 200) {
+//             // update the state
+//             this.setState({
+//               loggedIn: true,
+//               user: response.data.user
+//             })
+//           }
+//         })
+//     }
+  
+//     render() {
+//       return (
+//         <div className="App">
+//           <h1>This is the main App component</h1>
+//           <Header user={this.state.user} />
+//           {/* LINKS to our different 'pages' */}
+//           <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+//           {/*  ROUTES */}
+//           {/* <Route exact path="/" component={Home} /> */}
+//           <Route exact path="/" render={() => <Home user={this.state.user} />} />
+//           <Route
+//             exact
+//             path="/login"
+//             render={() =>
+//               <LoginForm
+//                 _login={this._login}
+//                 _googleSignin={this._googleSignin}
+//               />}
+//           />
+//           <Route exact path="/signup" component={SignupForm} />
+//           {/* <LoginForm _login={this._login} /> */}
+//         </div>
+//       )
+//     }
+//   }
   
 export default App;
