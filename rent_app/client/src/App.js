@@ -7,6 +7,7 @@ import Landlord from "./pages/Landlord";
 import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
+import UnitPage from "./pages/Test";
 
 // Import Components
 import Nav from "./components/Nav";
@@ -23,6 +24,7 @@ import './App.css';
           <Route exact path="/Landlord" component={Landlord} />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/test" component={UnitPage} />
           <Route component={NoMatch} />
         </Switch>
       </div>

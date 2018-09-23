@@ -60,12 +60,11 @@ class Register extends Component {
 
     render() {
         return (
-        <Container fluid>
+        <Container className="fluid">
             <Row>
                 <Col size="md-8">
                     <h1>Register as a landlord on rentKeeper</h1>
                     <form>
-                        {/* TODO: additional demo in form */}
                         <Input 
                             value={this.state.username}
                             onChange={this.handleInputChange}
@@ -150,7 +149,7 @@ class Register extends Component {
                                 this.state.homePhone) &&
                                 (this.state.businessAddress ||
                                 this.state.homeAddress) &&
-                                this.state.mailingAddres }
+                                this.state.mailingAddress }
                             onClick={this.handleFormSubmit}
                         >
                         Submit

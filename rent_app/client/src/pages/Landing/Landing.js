@@ -5,7 +5,7 @@ import Register from "../../components/Buttons/Register";
 import { Link } from "react-router-dom";
 // issue with merge???
 import { Col, Container } from "../../components/Grid";
-
+import Unit from "../../components/Unit";
 class Landing extends Component {
     componentDidMount() {
         // not sure here
@@ -29,8 +29,12 @@ class Landing extends Component {
                     </Link>
                 </Col>
             </Container>
+            // <div>
+            //     <Unit></Unit>
+            // </div>
             // maybe a small landing footer?
         )
+        
     }
 }
 
