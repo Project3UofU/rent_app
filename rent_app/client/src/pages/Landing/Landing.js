@@ -15,9 +15,9 @@ class Landing extends Component {
         // still need a background image and proper formatting
         // need to 
         return (
-            <Container fluid>
+            <Container className="fluid">
                 <Col size="md-12">
-                    <h1 className="logo">apprentice</h1>
+                    <h1 className="logo">Rent Keeper</h1>
                     <Link to={"/landlord_home"}>
                         <LandlordLogin></LandlordLogin>
                     </Link>
