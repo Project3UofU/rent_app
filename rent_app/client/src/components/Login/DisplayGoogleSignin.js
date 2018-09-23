@@ -1,7 +1,7 @@
 // import React, { Component } from 'react'
 // import gBtn_normal from './google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png'
 // import gBtn_focus from './google_signin_buttons/web/1x/btn_google_signin_dark_focus_web.png'
-//
+
 // class DisplayGoogleSignin extends Component {
 //   constructor(){
 //     super()
@@ -15,5 +15,5 @@
 //     }
 //   }
 // }
-//
+
 // export default DisplayGoogleSignin
