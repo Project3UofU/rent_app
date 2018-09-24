@@ -9,6 +9,7 @@ import Landlord from "./pages/Landlord";
 import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
+import UnitPage from "./pages/Test";
 
 
 // Import Components
@@ -89,14 +90,14 @@ class App extends Component {
           <Route exact path="/Landlord" component={Landlord} />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/test" component={UnitPage} />
           <Route exact path="/login" render={() => <LoginForm
                 _login={this._login}
                 _googleSignin={this._googleSignin}
               />
           }
           />
-          <Route exact path="/signup" component={SignupForm} /> 
-          <Route component={NoMatch} />
+          <Route exact path="/signup" component={SignupForm} />           <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
