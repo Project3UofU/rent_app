@@ -7,7 +7,17 @@ class Register extends Component {
     state = {
         // TODO: additional demo info here
         username: "",
-        password: ""
+        password: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        businessPhone: "",
+        cellPhone: "",
+        homePhone: "",
+        fax: "",
+        businessAddress: "",
+        mailingAddress: "",
+        homeAddress: ""
     };
 
     // compnonentDidMount() {
@@ -28,10 +38,18 @@ class Register extends Component {
     //         API.createUser({
     //             username: this.state.username,
     //             password: this.state.password
-    //             // We will want additional demographic info
-    //             // firstName, lastName, phoneNumber[business, home, cell], email, preferedContact
-    //             // address[business, home, mailing], fax, taxID
-    //             // others?
+//                 firstName: this.state.firstName,
+//                 lastName: this.state.lastName,
+//                 email: this.state.email,
+//                 businessPhone: this.state.businessPhone
+//                 cellPhone: this.state.cellPhone
+    //             homePhone: this.state.homePhone,
+//                 fax: this.state.fax
+//                 businessAddress: this.state.businessAddress,
+//                 mailingAddress: this.state.mailingAddress,
+//                 homeAddress: this.state.homeAddress
+// 
+//     
     //         })
     //         // TODO: POST to API, load Landlord page after pulling API info
     //             // .then(res => )
@@ -42,12 +60,11 @@ class Register extends Component {
 
     render() {
         return (
-        <Container fluid>
+        <Container className="fluid">
             <Row>
                 <Col size="md-8">
                     <h1>Register as a landlord on rentKeeper</h1>
                     <form>
-                        {/* TODO: additional demo in form */}
                         <Input 
                             value={this.state.username}
                             onChange={this.handleInputChange}
@@ -60,8 +77,79 @@ class Register extends Component {
                             name="password"
                             placeholder="Create a password"
                         />
+                        <Input
+                            value={this.state.firstName}
+                            onChange={this.handleInputChange}
+                            name="firstName"
+                            placeholder="First Name"
+                        />
+                        <Input
+                            value={this.state.lastName}
+                            onChange={this.handleInputChange}
+                            name="lastName"
+                            placeholder="Last Name"
+                        />
+                        <Input
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                            name="email"
+                            placeholder="email"
+                        />
+                        <Input
+                            value={this.state.businessPhone}
+                            onChange={this.handleInputChange}
+                            name="businessPhone"
+                            placeholder="Business Phone"
+                        />
+                        <Input
+                            value={this.state.cellPhone}
+                            onChange={this.handleInputChange}
+                            name="cellPhone"
+                            placeholder="Cell Phone"
+                        />
+                        <Input
+                            value={this.state.homePhone}
+                            onChange={this.handleInputChange}
+                            name="homePhone"
+                            placeholder="Home Phone"
+                        />
+                        <Input
+                            value={this.state.fax}
+                            onChange={this.handleInputChange}
+                            name="fax"
+                            placeholder="Fax Number"
+                        />
+                        <Input
+                            value={this.state.businessAddress}
+                            onChange={this.handleInputChange}
+                            name="businessAddress"
+                            placeholder="Business Address"
+                        />
+                        <Input
+                            value={this.state.mailingAddress}
+                            onChange={this.handleInputChange}
+                            name="mailingAddress"
+                            placeholder="Mailing Address"
+                        />
+                        <Input
+                            value={this.state.homeAddress}
+                            onChange={this.handleInputChange}
+                            name="homeAddress"
+                            placeholder="homeAddress"
+                        />
                         <FormBtn
-                            disabled={!this.state.username && this.state.password}
+                            disabled={
+                                !this.state.username && 
+                                this.state.password &&
+                                this.state.firstName &&
+                                this.state.lastName &&
+                                this.state.email &&
+                                (this.state.businessPhone ||    
+                                this.state.cellPhone || 
+                                this.state.homePhone) &&
+                                (this.state.businessAddress ||
+                                this.state.homeAddress) &&
+                                this.state.mailingAddress }
                             onClick={this.handleFormSubmit}
                         >
                         Submit
