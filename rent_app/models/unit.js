@@ -12,12 +12,7 @@ const unitSchema = new Schema({
         ref: "Property"
     }
 }, {
-        toObject: {
-            virtuals: true
-        },
-        toJSON: {
-            virtuals: true
-        }
+        toJSON: { virtuals: true },
     });
 
 unitSchema.virtual('tenants', {

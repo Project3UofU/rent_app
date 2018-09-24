@@ -18,6 +18,8 @@ const workOrderSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Landlord"
     }
+}, {
+    toJSON: { virtuals: true },
 });
 
 workOrderSchema.virtual('comments', {

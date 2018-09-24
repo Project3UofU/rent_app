@@ -2,8 +2,6 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const landlordController = require("../controllers/landlordController");
 
-// This file empties the Books collection and inserts the books below
-
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/rent_app",
   { useNewUrlParser: true }

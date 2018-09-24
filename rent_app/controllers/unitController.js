@@ -6,11 +6,6 @@ module.exports = {
 
     addTenant: function (req, res) {
         const { name, phone, email, preferredMethodOfContact, password, unitID } = req.body;
-        if (utils.error(name, "Missing name") || utils.error(phone, "Missing phone") || utils.error(email, "Missing email")
-            || utils.error(password, "Missing password") || utils.error(preferredMethodOfContact, "Missing preferredMethodOfContact")
-            || utils.error(unitID, "Missing unitID")) {
-            return;
-        }
 
         var newTenant = {
             name: name,
@@ -26,8 +21,28 @@ module.exports = {
         
         db.Tenant.collection
             .insertOne(newTenant)
-            .then(tenant => res.json(returnedTenant)) // TODO: Send back the returned tenant object with their token?
-            .catch(err => res.status(422).json(err));
+            .then(data => res.json({ tenant: data.ops[0] || null }))
+            .catch(err => {
+                utils.error(res, 422, err.message)
+            });
     },
+
+    // May not need this function but it'll be good to keep for reference
+    // Getting a landord via a unitID
+    landlord: function (req, res) {
+        const { id } = req.params;
+        db.Unit
+            .findById(id)
+            .select('property')
+            .populate({
+                path: 'property',
+                select: 'landlord',
+                populate: {
+                    path: 'landlord'
+                }
+            })
+            .then(data => res.json({ landlord: data.property.landlord }))
+            .catch(err => utils.error(res, 422, err.message));
+    }
 
 };
