@@ -11,12 +11,7 @@ const propertySchema = new Schema({
         ref: "Landlord"
     }
 }, {
-        toObject: {
-            virtuals: true
-        },
-        toJSON: {
-            virtuals: true
-        }
+        toJSON: { virtuals: true },
     });
 
 propertySchema.virtual('units', {
