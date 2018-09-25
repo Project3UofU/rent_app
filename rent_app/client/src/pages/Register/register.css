@@ -1,5 +1,5 @@
 .fluid {
-    background-color: blue;
-    /* background-image: url("/images/chris-castro-521-unsplash.jpg"); */
+    background-color: blue .8;
     background-size: cover;
+    
 }

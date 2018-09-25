@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 // Components for ViewPorts
 import Unit from "../../components/Unit"
 import ViewProperties from "../../components/ViewProperties"
+import LandlordControlPanel from "../../components/LandlordControlPanel"
 
 import "./Landlord.css";
 
@@ -39,20 +40,15 @@ class Landlord extends Component {
           <Row>
             <Col size="md-8">
               <Container>
-                < this.state.WorkStation />
+                < this.state.WorkStation
+                
+                />
               </Container>
             </Col>
             <Col size="md-4">
-              <Container>
-                <Row>
-                  <Col size= "md-12">
-                    <h1>Different Container.. Test</h1>
-                    <h2>Place Newsfeed and form here</h2>
-                    <button type="button" onClick = {() => this.changeView("Unit")} className="btn btn-primary">New Unit</button>
-                    <button type="button" onClick = {() => this.changeView("ViewProperties")} className="btn btn-primary">View Properties</button>
-                  </Col>
-                </Row>
-              </Container>
+              <LandlordControlPanel 
+                changeView = {this.changeView}
+              />
             </Col>
           </Row>
         </div>
