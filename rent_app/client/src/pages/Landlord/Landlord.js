@@ -1,65 +1,60 @@
 import React, { Component } from "react";
+// layouts:
 import { Col, Row, Container } from "../../components/Grid";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+// Components for ViewPorts
+import Unit from "../../components/Unit"
+import ViewProperties from "../../components/ViewProperties"
+
+import "./Landlord.css";
 
 // import API from "../../utils/API";
 
 // page build
 class Landlord extends Component {
     state= {
-        user_auth: false,
-        show_pet_form: false,
+       WorkStation : ViewProperties,
     };
-
-    // functions
-    handleFormSubmit = event => {
-        event.preventDefault();
-        // API to Save Data
+    // Landlord Navigation Functions
+    changeView = newView => {
+      let currentView = this.state.WorkStation;
+      switch (newView) {
+        case "ViewProperties":
+          currentView = ViewProperties;
+          break;
+        case "Unit":
+          currentView = Unit;
+          break;
+ 
+        default:
+          break;
+      }
+       this.setState({
+         WorkStation : currentView,
+       })
     }
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-          [name]: value
-        });
-    };
-
+    
     render() {
       return(
         <div>
-          <Container>
-            <Row>
-              <Col size= "md-12">
-                <h1>Different Container.. Test</h1>
-              </Col>
-            </Row>
-          </Container>
-          <Container>
-            <Row>
-              <Col size="md-12">
-                <form>
-                  <Input
-                    value={this.state.first_name}
-                    onChange={this.handleInputChange}
-                    name="First Name"
-                    placeholder="First Name (required)"
-                   />  
-                   <Input
-                    value={this.state.last_name}
-                    onChange={this.handleInputChange}
-                    name="Last Name"
-                    placeholder="Last Name (required)"
-                   /> 
-                   <Input
-                    value={this.state.email}
-                    onChange={this.handleInputChange}
-                    name="Email"
-                    placeholder="email@yourewebsite.com (required)"
-                   />     
-                   <FormBtn>Submit</FormBtn>            
-                </form>
-              </Col>
-            </Row>
-          </Container>
+          <Row>
+            <Col size="md-8">
+              <Container>
+                < this.state.WorkStation />
+              </Container>
+            </Col>
+            <Col size="md-4">
+              <Container>
+                <Row>
+                  <Col size= "md-12">
+                    <h1>Different Container.. Test</h1>
+                    <h2>Place Newsfeed and form here</h2>
+                    <button type="button" onClick = {() => this.changeView("Unit")} className="btn btn-primary">New Unit</button>
+                    <button type="button" onClick = {() => this.changeView("ViewProperties")} className="btn btn-primary">View Properties</button>
+                  </Col>
+                </Row>
+              </Container>
+            </Col>
+          </Row>
         </div>
       )
     }
