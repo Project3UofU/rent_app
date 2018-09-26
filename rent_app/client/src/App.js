@@ -5,7 +5,7 @@ import axios from 'axios'
 
 // Import Pages
 // import Home from "./pages/Home";
-import Landlord from "./pages/Landlord";
+// import Landlord from "./pages/Landlord";
 import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
