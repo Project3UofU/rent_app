@@ -4,7 +4,12 @@ import { Input, TextArea, FormBtn } from "../Form";
 
 class CreateTenant extends Component {
     state = {
-
+        username: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: ""
     };
 
     handleInputChange = event => {
@@ -16,8 +21,12 @@ class CreateTenant extends Component {
 
     // handleFormSubmit = event => {
     //     event.preventDefault();
+            
     //    
     // }
+
+
+
     render() {
         return (
             <Container className="fluid">
