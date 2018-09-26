@@ -1,3 +1,6 @@
+.container{
+  text-align: center;
+}
 body {
   background-image: url("/images/chris-castro-521-unsplash.jpg");
   background-position-y: 80%;
