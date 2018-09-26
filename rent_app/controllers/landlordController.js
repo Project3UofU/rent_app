@@ -3,61 +3,51 @@ let mongoose = require('mongoose');
 let utils = require('../utils');
 
 module.exports = {
-    findAll: function (req, res) {
-        db.Landlord
-            .find(req.query)
-            .sort({ date: -1 })
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
 
     findById: function (req, res) {
         const { id } = req.params;
         db.Landlord
             .findById(id)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .select("+token") // Send back the token
+            .then(data => res.json({ landlord: data }))
+            .catch(err => utils.error(res, 422, err.message));
     },
 
     create: function (req, res) {
-        const { name, password } = req.body;
+        const { name, password, username } = req.body;
         var newLandlord = {
             name: name,
-            token: "" // TODO: Generate token for the landlord so it can be send back down to the client
+            password: password, // TODO: Encrypt the password
+            token: ``, // TODO: Generate token for the landlord so it can be send back down to the client
+            username: username
         }
-
-        let returnedLandlord = Object.assign({}, newLandlord);
-        newLandlord.password = password; // TODO: Encrypt the password
 
         db.Landlord
             .create(newLandlord)
-            .then(landlord => res.json(returnedLandlord)) // TODO: Send back the returned landlord object with their token?
-            .catch(err => res.status(422).json(err));
+            .then(data => res.json({ landlord: data }))
+            .catch(err => utils.error(res, 422, err.message));
     },
 
     update: function (req, res) {
         // TODO: Worry about this later if needed
+        const { id } = req.params;
         db.Landlord
-            .findOneAndUpdate({ _id: req.params.id }, req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .findOneAndUpdate({ _id: id }, req.body)
+            .then(data => res.json({ property: data || null }))
+            .catch(err => utils.error(res, 422, err.message));
     },
 
     remove: function (req, res) {
         // TODO: Worry about this later if needed
         const { id } = req.params;
         db.Landlord
-            .deleteOne({ _id: req.params.id })
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .deleteOne({ _id: id })
+            .then(data => res.json({ property: data.ops[0] || [] }))
+            .catch(err => utils.error(res, 422, err.message));
     },
 
     addProperty: function (req, res) {
         const { address, name, landlordID } = req.body;
-        if (utils.error(res, address, "Missing address") || utils.error(res, name, "Missing name") || utils.error(res, landlordID, "Missing landlordID")) {
-            return;
-        }
-
         var newProperty = {
             address: address,
             name: name,
@@ -66,8 +56,8 @@ module.exports = {
 
         db.Property.collection
             .insertOne(newProperty)
-            .then(property => res.json(property))
-            .catch(err => res.status(422).json({ "error": error.Message }));
+            .then(data => res.json({ property: data.ops[0] || null }))
+            .catch(err => utils.error(res, 422, err.message));
     },
 
     info: function (req, res) {
@@ -84,7 +74,7 @@ module.exports = {
                 }
             })
             // .sort({ username: -1 }) // TODO: Update the sort order to name when it the landlord's name is in the model
-            .then(data => res.json({"landlords":data}))
-            .catch(err => res.status(422).json(err));
+            .then(data => res.json({ "landlords": data }))
+            .catch(err => utils.error(res, 422, err.message));
     },
 };
