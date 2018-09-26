@@ -15,7 +15,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "Michael Daniels, Mark Pollichette, Will Swensen, Shawn Mangum",
+  "author": "Michael Daniels, Mark Polichette, Will Swensen, Shawn Mangum",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
