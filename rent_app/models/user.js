@@ -3,28 +3,34 @@ const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs')
 mongoose.promise = Promise
 
-// Define userSchema
 const userSchema = new Schema({
-	firstName: { type: String, unique: false },
-	lastName: { type: String, unique: false },
+	firstName: { type: String, unique: true },
+	lastName: { type: String, unique: true },
+    email: { type: String, required: false },
+    businessPhone: { type: String, required: false },
+    cellPhone: { type: String, required: false },
+    homePhone: { type: String, required: false },
+    fax: { type: String, required: false },
+    businessAddress: { type: String, required: false },
+    mailingAddress: { type: String, required: false },
+    homeAddress: { type: String, required: false },
+    tenant: {
+        type: Schema.Types.ObjectId,
+		ref: "Tenant",
+		required: false
+    },
+    landlord: {
+        type: Schema.Types.ObjectId,
+        ref: "Landlord",
+		required: false
+    },
 	local: {
 		username: { type: String, unique: false, required: false },
-		password: { type: String, unique: false, required: false }
+		password: { type: String, unique: false, required: false, default: "password" }
 	},
 	google: {
 		googleId: { type: String, required: false }
-	},
-	photos: []
-	// local: {
-	// 	email: { type: String, unique: true },
-	// 	password: { type: String }
-	// },
-	// google: {
-	// 	id: { type: String },
-	// 	photos: []
-	// },
-	// firstName: { type: String },
-	// lastName: { type: String }
+	}
 })
 
 // Define schema methods
@@ -46,8 +52,6 @@ userSchema.pre('save', function(next) {
 		this.local.password = this.hashPassword(this.local.password)
 		next()
 	}
-	// this.password = this.hashPassword(this.password)
-	// next()
 })
 
 // Create reference to User & export
