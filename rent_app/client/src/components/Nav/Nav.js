@@ -1,10 +1,11 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import "./Nav.css"
 
 const Nav = (props) => {
     if (props.loggedIn) {
       return (
-        <nav className="navbar">
+        <nav className="navbar navbar-invert">
           <ul className="nav">
             <li className="nav-item">
               <Link to="/" className="nav-link">

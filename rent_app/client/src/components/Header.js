@@ -4,7 +4,7 @@ import React from 'react'
 const Header = props => {
 	let Greeting
 	if (props.user === null) {
-		Greeting = <p>Hello guest</p>
+		Greeting = <p>Welcome guest</p>
 	} else if (props.user.firstName) {
 		Greeting = (
 			<p>

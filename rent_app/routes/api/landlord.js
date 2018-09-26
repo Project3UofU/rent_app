@@ -11,6 +11,7 @@ let middleware = require("../../middleware");
 // router.use("*", tokenAuthentication); // Any route added after this will use the `tokenAuthentication` middleware
 
 // /api/landlord
+// TODO: This route may not be needed
 router.route("/")
   .post(middleware.paramsCheck(["name", "password", "username"]))
   .post(landlordController.create);

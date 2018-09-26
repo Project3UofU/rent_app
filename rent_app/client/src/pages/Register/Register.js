@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FormBtn, Input } from "../../components/Form";
 import { Row, Container, Col } from "../../components/Grid";
 import { Link } from "react-router-dom";
+import "./register.css";
 
 class Register extends Component {
     state = {
@@ -63,7 +64,7 @@ class Register extends Component {
         <Container className="fluid">
             <Row>
                 <Col size="md-8">
-                    <h1>Register as a landlord on rentKeeper</h1>
+                    <h1>Register as a landlord on Rent Keeper</h1>
                     <form>
                         <Input 
                             value={this.state.username}
