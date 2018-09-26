@@ -24,6 +24,13 @@ class LandlordControlPanel extends Component {
             >
               View Properties
             </button>
+            <button
+              type="button"
+              onClick={() => this.props.changeView("CreateTenant")}
+              className="btn btn-primary"
+            >
+              Add a new Tenant
+            </button>
           </Col>
         </Row>
       </Container>
