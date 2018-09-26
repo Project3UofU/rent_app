@@ -1,5 +1,6 @@
 body {
   background-image: url("/images/chris-castro-521-unsplash.jpg");
-  background-position-y: -200px;
+  background-position-y: 80%;
+  background-attachment: fixed;
   background-size: cover;
 }

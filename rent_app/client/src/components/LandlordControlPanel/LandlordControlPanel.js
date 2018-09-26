@@ -9,7 +9,7 @@ class LandlordControlPanel extends Component {
       <Container>
         <Row>
           <Col size="md-12">
-            <h1>Different Container.. Test</h1>
+            <h1>Control Panel</h1>
             <h2>Place Newsfeed and form here</h2>
             <button
               type="button"
