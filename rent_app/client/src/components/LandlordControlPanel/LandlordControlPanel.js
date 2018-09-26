@@ -4,7 +4,6 @@ import { Col, Row, Container } from "../Grid";
 class LandlordControlPanel extends Component {
   state = {};
   render() {
-    const props = this.props;
     return (
       <Container>
         <Row>
@@ -13,14 +12,14 @@ class LandlordControlPanel extends Component {
             <h2>Place Newsfeed and form here</h2>
             <button
               type="button"
-              onClick={() => props.changeView("Unit")}
+              onClick={() => this.props.changeView("Unit")}
               className="btn btn-primary"
             >
               New Unit
             </button>
             <button
               type="button"
-              onClick={() => props.changeView("ViewProperties")}
+              onClick={() => this.props.changeView("ViewProperties")}
               className="btn btn-primary"
             >
               View Properties
