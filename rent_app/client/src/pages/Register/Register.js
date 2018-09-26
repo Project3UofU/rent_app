@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom"; 
 import { FormBtn, Input } from "../../components/Form";
 import { Row, Container, Col } from "../../components/Grid";
 import { Link } from "react-router-dom";
 import "./register.css";
+const axios = require("axios");
 
 class Register extends Component {
     state = {
@@ -18,48 +20,72 @@ class Register extends Component {
         fax: "",
         businessAddress: "",
         mailingAddress: "",
-        homeAddress: ""
+        homeAddress: "",
+        redirect: false,
+        redirectTo: null
     };
 
-    // compnonentDidMount() {
-        
-    // }
 
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
             [name]: value
         });
-    };
+    }
 
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-    //     if (this.state.username && this.state.password) {
-    //         // what is the API for this?
-    //         API.createUser({
-    //             username: this.state.username,
-    //             password: this.state.password
-//                 firstName: this.state.firstName,
-//                 lastName: this.state.lastName,
-//                 email: this.state.email,
-//                 businessPhone: this.state.businessPhone
-//                 cellPhone: this.state.cellPhone
-    //             homePhone: this.state.homePhone,
-//                 fax: this.state.fax
-//                 businessAddress: this.state.businessAddress,
-//                 mailingAddress: this.state.mailingAddress,
-//                 homeAddress: this.state.homeAddress
-// 
-//     
-    //         })
-    //         // TODO: POST to API, load Landlord page after pulling API info
-    //             // .then(res => )
-    //             .catch(err => console.log(err));
-    //     }
-
-    // }
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.username  === "" || 
+            this.state.password === "" ||
+            this.state.firstName === "" ||
+            this.state.lastName === ""
+            ) {
+                alert("Please provide all required information");
+                return;
+            } else if (
+                this.state.businessPhone === "" &&
+                this.state.cellPhone === "" && 
+                this.state.homePhone === ""
+            ) { 
+                alert("Please provide a phone number");
+                return;
+            } else if (
+                this.state.password !== this.state.confirmPassword
+            ) {
+                alert("Your passwords must match");
+            }
+            else {
+                axios.post('./api/auth/signup', {
+                    username: this.state.username,
+                    password: this.state.password,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    email: this.state.email,
+                    businessPhone: this.state.businessPhone,
+                    cellPhone: this.state.cellPhone,
+                    homePhone: this.state.homePhone,
+                    fax: this.state.fax,
+                    businessAddress: this.state.businessAddress,
+                    mailingAddress: this.state.mailingAddress,
+                    homeAddress: this.state.homeAddress
+                }).then(res => {
+                    console.log(res);
+                    if(res.data.err) {
+                        alert(res.data.err);
+                        return;
+                    } 
+                    this.setState({
+                        redirect: true,
+                        redirectTo: "./login"
+                    });
+                });
+            }
+        }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={{ pathname: this.state.redirectTo}} />
+        }
         return (
         <Container className="fluid">
             <Row>
@@ -77,6 +103,12 @@ class Register extends Component {
                             onChange={this.handleInputChange}
                             name="password"
                             placeholder="Create a password"
+                        />
+                        <Input
+                            value={this.state.confirmPassword}
+                            onChange={this.handleInputChange}
+                            name="confirmPassword"
+                            placeholder="Reenter your password"
                         />
                         <Input
                             value={this.state.firstName}
@@ -140,17 +172,15 @@ class Register extends Component {
                         />
                         <FormBtn
                             disabled={
-                                !this.state.username && 
+                                !(this.state.username && 
                                 this.state.password &&
                                 this.state.firstName &&
                                 this.state.lastName &&
-                                this.state.email &&
-                                (this.state.businessPhone ||    
+                                (this.state.email ||
+                                this.state.businessPhone ||    
                                 this.state.cellPhone || 
-                                this.state.homePhone) &&
-                                (this.state.businessAddress ||
-                                this.state.homeAddress) &&
-                                this.state.mailingAddress }
+                                this.state.homePhone))
+                                }
                             onClick={this.handleFormSubmit}
                         >
                         Submit
