@@ -1,7 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../../models/user')
+const Landlord = require('../../models/landlord')
 const passport = require('../../passport')
+const middleware = require("../../middleware");
+let utils = require('../../utils');
 
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 router.get(
@@ -24,11 +27,6 @@ router.get('/user', (req, res, next) => {
 })
 
 router.post('/login',
-	function(req, res, next) {
-		console.log(req.body)
-		console.log('================')
-		next()
-	},
 	passport.authenticate('local'),
 	(req, res) => {
 		console.log('POST to /login')
@@ -52,24 +50,47 @@ router.post('/logout', (req, res) => {
 	}
 })
 
-router.post('/signup', (req, res) => {
-	const { username, password } = req.body
-	// ADD VALIDATION
-	User.findOne({ 'local.username': username }, (err, userMatch) => {
-		if (userMatch) {
-			return res.json({
-				error: `Sorry, already a user with the username: ${username}`
+router
+	.route('/signup')
+	.post(middleware.paramsCheck(["username", "password", "firstName", "lastName", ["businessPhone", "cellPhone", "homePhone", "email"]]))
+	.post((req, res) => {
+		const { username, firstName, lastName, password, email, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, homeAddress } = req.body
+		User.findOne({ 'local.username': username }, (err, userMatch) => {
+			
+			if (userMatch) {
+				// Found existing user
+				return res.json({
+					error: `Sorry, already a user with the username: ${username}`
+				})
+			}
+			
+			// Create new user
+			const newUser = new User({
+				'local.username': username,
+				'local.password': password,
+				firstName: firstName,
+				lastName: lastName,
+				email: email,
+				businessPhone: businessPhone,
+				cellPhone: cellPhone,
+				homePhone: homePhone,
+				fax: fax,
+				businessAddress: businessAddress,
+				mailingAddress: mailingAddress,
+				homeAddress: homeAddress
 			})
-		}
-		const newUser = new User({
-			'local.username': username,
-			'local.password': password
-		})
-		newUser.save((err, savedUser) => {
-			if (err) return res.json(err)
-			return res.json(savedUser)
+
+			let landlord = new Landlord({})
+			landlord.save((err, savedLandlord) => {
+				if (err) return utils.error(res, 422, err.message)
+				newUser.landlord = savedLandlord._id
+				newUser.save((err, savedUser) => {
+					if (err) return utils.error(res, 422, err.message)
+					return res.json(savedUser)
+				})
+			})
+			
 		})
 	})
-})
 
 module.exports = router
