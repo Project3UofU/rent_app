@@ -82,8 +82,9 @@ class App extends Component {
    return( 
     <Router>
       <div className="App">
-        <Header user={this.state.user} />
+       
         <Nav _logout={this._logout} loggedIn={this.state.loggedIn}/>
+        <Header user={this.state.user} />
         <Switch>
           <Route exact path="/" render={() =>       <Home user={this.state.user} />
           }/>

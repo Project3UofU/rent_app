@@ -1,68 +1,64 @@
 import React, { Component } from "react";
+// layouts:
 import { Col, Row, Container } from "../../components/Grid";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+// Components for ViewPorts
+import Unit from "../../components/Unit"
+import ViewProperties from "../../components/ViewProperties"
+import LandlordControlPanel from "../../components/LandlordControlPanel"
+import CreateTenant from "../../components/CreateTenant"
+
+import "./Landlord.css";
 
 // import API from "../../utils/API";
 
 // page build
 class Landlord extends Component {
-    state= {
-        user_auth: false,
-        show_pet_form: false,
-    };
+  state = {
+    WorkStation: ViewProperties,
+  };
+  // Landlord Navigation Functions
+  changeView = newView => {
+    let currentView = this.state.WorkStation;
+    switch (newView) {
+      case "ViewProperties":
+        currentView = ViewProperties;
+        break;
+      case "Unit":
+        currentView = Unit;
+        break;
+      case "CreateTenant":
+        currentView = CreateTenant;
+        break;
 
-    // functions
-    handleFormSubmit = event => {
-        event.preventDefault();
-        // API to Save Data
+      default:
+        currentView = ViewProperties;
+        break;
     }
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-          [name]: value
-        });
-    };
+    this.setState({
+      WorkStation: currentView,
+    })
+  }
 
-    render() {
-      return(
-        <div>
-          <Container>
-            <Row>
-              <Col size= "md-12">
-                <h1>Different Container.. Test</h1>
-              </Col>
-            </Row>
-          </Container>
-          <Container>
-            <Row>
-              <Col size="md-12">
-                <form>
-                  <Input
-                    value={this.state.first_name}
-                    onChange={this.handleInputChange}
-                    name="First Name"
-                    placeholder="First Name (required)"
-                   />  
-                   <Input
-                    value={this.state.last_name}
-                    onChange={this.handleInputChange}
-                    name="Last Name"
-                    placeholder="Last Name (required)"
-                   /> 
-                   <Input
-                    value={this.state.email}
-                    onChange={this.handleInputChange}
-                    name="Email"
-                    placeholder="email@yourewebsite.com (required)"
-                   />     
-                   <FormBtn>Submit</FormBtn>            
-                </form>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      )
-    }
+  render() {
+    return (
+      <div>
+        <Row>
+          <Col size="md-8">
+            <Container>
+              < this.state.WorkStation
+
+              />
+            </Container>
+          </Col>
+          <Col size="md-4">
+            <LandlordControlPanel
+              changeView={this.changeView}
+            />
+          </Col>
+        </Row>
+      </div>
+    )
+  }
 
 
 }
