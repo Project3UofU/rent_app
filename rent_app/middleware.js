@@ -1,3 +1,5 @@
+const utils = require('./utils');
+
 module.exports = {
 
     // Look to see if the request has valid parameters for the given call
@@ -27,6 +29,29 @@ module.exports = {
             }
             next()
         }
+    },
+
+    isAuthenticated: function (req, res, next) {
+        if (req.isAuthenticated()) {
+            console.log("Authenticated!")
+            return next();
+        }
+
+        console.log("Not Authenticated :(")
+        utils.error(res, 422, "Not Authenticated")
+        // TODO: Figure out the best way to handle redirects, may need to tell the client to do it.
+        // res.redirect('/'); // Doesn't work with posts
+    },
+
+
+    isLandlord: function (req, res, next) {
+        const { landlord } = req.user;
+        if (landlord) {
+            // User is a landlord
+            return next();
+        }
+
+        utils.error(res, 422, "Access denied!")
     }
 
 }

@@ -4,5 +4,6 @@ module.exports = {
   Tenant: require("./tenant"),
   Unit: require("./unit"),
   WorkOrder: require("./workorder"),
-  WorkOrderComment: require("./workordercomment")
+  WorkOrderComment: require("./workordercomment"),
+  User: require("./user")
 };
