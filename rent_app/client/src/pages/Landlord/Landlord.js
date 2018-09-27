@@ -9,14 +9,17 @@ import CreateTenant from "../../components/CreateTenant"
 
 import "./Landlord.css";
 
-// import API from "../../utils/API";
-
 // page build
 class Landlord extends Component {
   state = {
     WorkStation: ViewProperties,
+
   };
+  componentdidmount = props => {
+
+  }
   // Landlord Navigation Functions
+
   changeView = newView => {
     let currentView = this.state.WorkStation;
     switch (newView) {
@@ -59,8 +62,6 @@ class Landlord extends Component {
       </div>
     )
   }
-
-
 }
 
 export default Landlord;
