@@ -1,7 +1,7 @@
 module.exports = {
 
     error: function (res, status, message) {
-        res.status(status).json({ "error": message });
+        return res.status(status).json({ "error": message });
     },
 
     printError(error, key = "error") {

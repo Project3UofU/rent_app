@@ -5,7 +5,9 @@ const Schema = mongoose.Schema;
 const workOrderSchema = new Schema({
     created: { type: Date, default: Date.now },
     service: { type: String, required: true },
+    urgent: { type: Boolean, default: false },
     read: { type: Boolean, default: false },
+    completed: { type: Boolean, default: false },
     unit: {
         type: Schema.Types.ObjectId,
         ref: "Unit"
