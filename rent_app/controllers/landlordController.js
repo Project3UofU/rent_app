@@ -4,30 +4,26 @@ let utils = require('../utils');
 
 module.exports = {
 
+    // Not currently needed
     findById: function (req, res) {
         const { id } = req.params;
         db.Landlord
             .findById(id)
-            .select("+token") // Send back the token
             .then(data => res.json({ landlord: data }))
             .catch(err => utils.error(res, 422, err.message));
     },
 
+    // Not currently needed
     create: function (req, res) {
-        const { name, password, username } = req.body;
-        var newLandlord = {
-            name: name,
-            password: password, // TODO: Encrypt the password
-            token: ``, // TODO: Generate token for the landlord so it can be send back down to the client
-            username: username
-        }
-
+        const {} = req.body;
+        var newLandlord = {}
         db.Landlord
             .create(newLandlord)
             .then(data => res.json({ landlord: data }))
             .catch(err => utils.error(res, 422, err.message));
     },
 
+    // Not currently needed
     update: function (req, res) {
         // TODO: Worry about this later if needed
         const { id } = req.params;
@@ -37,6 +33,7 @@ module.exports = {
             .catch(err => utils.error(res, 422, err.message));
     },
 
+    // Not currently needed
     remove: function (req, res) {
         // TODO: Worry about this later if needed
         const { id } = req.params;
@@ -58,23 +55,6 @@ module.exports = {
             .insertOne(newProperty)
             .then(data => res.json({ property: data.ops[0] || null }))
             .catch(err => utils.error(res, 422, err.message));
-    },
+    }
 
-    info: function (req, res) {
-        db.Landlord
-            .find({})
-            .populate({
-                path: 'properties',
-                populate: {
-                    path: 'units',
-                    populate: {
-                        path: 'tenants',
-                        // select: 'created -_id' // Example of how to show `created` and hide `_id`
-                    }
-                }
-            })
-            // .sort({ username: -1 }) // TODO: Update the sort order to name when it the landlord's name is in the model
-            .then(data => res.json({ "landlords": data }))
-            .catch(err => utils.error(res, 422, err.message));
-    },
 };

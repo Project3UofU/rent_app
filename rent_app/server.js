@@ -12,21 +12,12 @@ const PORT = process.env.PORT || 3001;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// ===== Passport ====
-app.use(passport.initialize())
-app.use(passport.session()) // will call the deserializeUser
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Add routes, both API and view
-app.use(routes);
-
-// TODO: Create a config file to hide our database URI and update it when the app name is solidified
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rent_app", { useNewUrlParser: true });
-
+// ===== Passport ====
 app.use(
   session({
     secret: process.env.APP_SECRET || 'this is the default passphrase',
@@ -38,7 +29,18 @@ app.use(
   })
 )
 
+app.use(passport.initialize())
+app.use(passport.session()) // will call the deserializeUser
+
+// Add routes, both API and view
+app.use(routes);
+
+// TODO: Create a config file to hide our database URI and update it when the app name is solidified
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rent_app", { useNewUrlParser: true });
+
+
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
