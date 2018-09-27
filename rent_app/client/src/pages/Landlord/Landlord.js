@@ -6,20 +6,37 @@ import Unit from "../../components/Unit"
 import ViewProperties from "../../components/ViewProperties"
 import LandlordControlPanel from "../../components/LandlordControlPanel"
 import CreateTenant from "../../components/CreateTenant"
-
 import "./Landlord.css";
+// API
+const axios = require("axios");
+
 
 // page build
 class Landlord extends Component {
   state = {
     WorkStation: ViewProperties,
+    //Landlord's info:
+    username: "",
+    properties: [],
 
+    workOrders: [],
   };
-  componentdidmount = props => {
-
+  componentDidMount() {
+    this.loadLandLord();
   }
-  // Landlord Navigation Functions
+  loadLandLord = () => {
+    axios.get("/:id")
+      .then(res =>
+        this.setState({
+          username: res.username,
+          properties: res.properties,
+          units: res.units,
+          workorders: res.workorders,
+          tenants: res.tenants
+        }))
+  }
 
+  // Landlord Navigation Functions
   changeView = newView => {
     let currentView = this.state.WorkStation;
     switch (newView) {
