@@ -1,1 +1,1 @@
-export { default } from "./CreateTenant"
+export { default } from "./CreateTenant";
