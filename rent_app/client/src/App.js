@@ -26,7 +26,7 @@ class App extends Component {
 
   state = {
     loggedIn: false,
-    user: {local:{username:""}}
+    user: { local: { username: "" } }
   }
 
   componentDidMount() {
@@ -41,7 +41,7 @@ class App extends Component {
       } else {
         this.setState({
           loggedIn: false,
-          user: {local:{username:"mikeytdan2"}}
+          user: { local: { username: "mikeytdan2" } }
         })
       }
     })
@@ -91,18 +91,20 @@ class App extends Component {
             <Route exact path="/landing" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/test" component={UnitPage} />
-            <Route exact path="/login" render={() => <LoginForm
-              _login={this._login}
-              _googleSignin={this._googleSignin}
-            />
+            <Route exact path="/login" render={() =>
+              <LoginForm
+                _login={this._login}
+                _googleSignin={this._googleSignin}
+              />
             }
             />
-            <Route exact path="/signup" component={SignupForm} />           <Route component={NoMatch} />
+            <Route component={NoMatch} />
           </Switch>
         </div>
       </Router>
     );
   }
+
 }
 
 // export default App;

@@ -52,7 +52,7 @@ class Landlord extends Component {
             <Container>
               <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
               {/* Check if the user exists before trying to display their username */}
-              <h4><font color="green">Name: {this.props.user.local.username}</font></h4>
+              {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
               < this.state.WorkStation
                 user={this.props.user}
               />

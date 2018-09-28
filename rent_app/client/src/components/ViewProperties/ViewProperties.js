@@ -15,7 +15,7 @@ class ViewProperties extends Component {
             <Container className="fluid">
                 <h1 className="display-1">This is ViewProperties Component</h1>
 
-                <h4><font color="red">Name: {this.props.user.local.username}</font></h4>
+                {/* <h4><font color="red">Name: {this.props.user.local.username}</font></h4> */}
             </Container>
         )
     }
