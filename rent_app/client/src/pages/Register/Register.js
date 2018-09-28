@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { FormBtn, Input } from "../../components/Form";
 import { Row, Container, Col } from "../../components/Grid";
 import { Link } from "react-router-dom";
-import "./register.css";
+// import "./register.css";
 const axios = require("axios");
 
 class Register extends Component {
@@ -53,8 +53,8 @@ class Register extends Component {
                 this.state.password !== this.state.confirmPassword
             ) {
                 alert("Your passwords must match");
-            }
-            else {
+                return;
+            } else {
                 axios.post('./api/auth/signup', {
                     username: this.state.username,
                     password: this.state.password,
