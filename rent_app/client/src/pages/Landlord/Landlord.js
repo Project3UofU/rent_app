@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 // layouts:
 import { Col, Row, Container } from "../../components/Grid";
+
 // Components for ViewPorts
 import Unit from "../../components/Unit"
 import ViewProperties from "../../components/ViewProperties"
 import LandlordControlPanel from "../../components/LandlordControlPanel"
 import CreateTenant from "../../components/CreateTenant"
+// CSS
 import "./Landlord.css";
 // API
+// import API from "../../../../routes/index"
 const axios = require("axios");
 
 
@@ -25,6 +28,7 @@ class Landlord extends Component {
     this.loadLandLord();
   }
   loadLandLord = () => {
+    // TODO:  Need tofind right API...
     axios.get("/:id")
       .then(res =>
         this.setState({
@@ -66,7 +70,8 @@ class Landlord extends Component {
           <Col size="md-8">
             <Container>
               < this.state.WorkStation
-
+                properties={this.properties}
+                tenants={this.tenants}
               />
             </Container>
           </Col>
