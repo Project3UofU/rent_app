@@ -29,7 +29,7 @@ class Landlord extends Component {
   }
   loadLandLord = () => {
     // TODO:  Need tofind right API...
-    axios.get("/:id")
+    axios.get("")
       .then(res =>
         this.setState({
           username: res.username,
