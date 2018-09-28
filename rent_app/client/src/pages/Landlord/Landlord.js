@@ -10,34 +10,18 @@ import CreateTenant from "../../components/CreateTenant"
 // CSS
 import "./Landlord.css";
 // API
-// import API from "../../../../routes/index"
+
 const axios = require("axios");
 
 
 // page build
 class Landlord extends Component {
-  state = {
-    WorkStation: ViewProperties,
-    //Landlord's info:
-    username: "",
-    properties: [],
 
-    workOrders: [],
-  };
-  componentDidMount() {
-    this.loadLandLord();
-  }
-  loadLandLord = () => {
-    // TODO:  Need tofind right API...
-    axios.get("")
-      .then(res =>
-        this.setState({
-          username: res.username,
-          properties: res.properties,
-          units: res.units,
-          workorders: res.workorders,
-          tenants: res.tenants
-        }))
+  constructor(props) {
+    super(props);
+    this.state = {
+      WorkStation: ViewProperties,
+    }
   }
 
   // Landlord Navigation Functions
@@ -69,9 +53,11 @@ class Landlord extends Component {
         <Row>
           <Col size="md-8">
             <Container>
+              <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
+              {/* Check if the user exists before trying to display their username */}
+              {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
               < this.state.WorkStation
-                properties={this.properties}
-                tenants={this.tenants}
+                user={this.props.user}
               />
             </Container>
           </Col>
