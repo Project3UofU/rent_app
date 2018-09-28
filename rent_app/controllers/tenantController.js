@@ -4,6 +4,7 @@ const utils = require('../utils');
 
 module.exports = {
 
+    // Not currently needed
     findById: function (req, res) {
         const { id } = req.params;
         db.Tenant

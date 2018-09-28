@@ -4,12 +4,12 @@ const propertyRoutes = require("./property");
 const unitRoutes = require("./unit");
 const workOrderRoutes = require("./workorder");
 const authRoutes = require("./auth");
+const middleware = require("../../middleware");
 
-// Book routes
-router.use("/landlord", landlordRoutes);
-router.use("/property", propertyRoutes);
-router.use("/unit", unitRoutes);
-router.use("/work_order", workOrderRoutes);
+router.use("/landlord", middleware.isAuthenticated, landlordRoutes);
+router.use("/property", middleware.isAuthenticated, propertyRoutes);
+router.use("/unit", middleware.isAuthenticated, unitRoutes);
+router.use("/work_order", middleware.isAuthenticated, workOrderRoutes);
 router.use("/auth", authRoutes);
 
 module.exports = router;
