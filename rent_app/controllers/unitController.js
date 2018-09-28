@@ -4,8 +4,38 @@ const utils = require('../utils');
 
 module.exports = {
 
+    // TODO: Create a user for the tenant
     addTenant: function (req, res) {
         const { name, phone, email, preferredMethodOfContact, password, unitID } = req.body;
+
+            // TODO: Update - Will the Tenant's user have all the same fields?
+            // const { username, firstName, lastName, password, email, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, homeAddress } = req.body
+            // Create new user
+            // const newUser = new User({
+            //     'local.username': utils.uuid(), // Generate a UUID for the tenant's username
+            //     'local.password': "password", // Default password till the tenant updates it
+            //     firstName: firstName,
+            //     lastName: lastName,
+            //     email: email,
+            //     businessPhone: businessPhone,
+            //     cellPhone: cellPhone,
+            //     homePhone: homePhone,
+            //     fax: fax,
+            //     businessAddress: businessAddress,
+            //     mailingAddress: mailingAddress,
+            //     homeAddress: homeAddress
+            // })
+
+            // let tenant = new Tenant({})
+            // tenant.save((err, savedTenant) => {
+            //     if (err) return utils.error(res, 422, err.message)
+            //     newUser.tenant = savedTenant._id
+            //     newUser.save((err, savedUser) => {
+            //         if (err) return utils.error(res, 422, err.message)
+            //         return res.json({ user: savedUser })
+            //     })
+            // })
+
 
         var newTenant = {
             name: name,
@@ -27,8 +57,7 @@ module.exports = {
             });
     },
 
-    // May not need this function but it'll be good to keep for reference
-    // Getting a landord via a unitID
+    // Not currently needed
     landlord: function (req, res) {
         const { id } = req.params;
         db.Unit
