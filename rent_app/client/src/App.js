@@ -86,19 +86,20 @@ class App extends Component {
         <Nav _logout={this._logout} loggedIn={this.state.loggedIn}/>
         <Header user={this.state.user} />
         <Switch>
-          <Route exact path="/" render={() =>       <Home user={this.state.user} />
+          <Route exact path="/" render={() => <Home user={this.state.user} />
           }/>
           <Route exact path="/Landlord" component={Landlord} />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/test" component={UnitPage} />
-          <Route exact path="/login" render={() => <LoginForm
+          <Route exact path="/login" render={() => 
+          <LoginForm
                 _login={this._login}
                 _googleSignin={this._googleSignin}
               />
           }
-          />
-          <Route exact path="/signup" component={SignupForm} />           <Route component={NoMatch} />
+          />         
+          <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>

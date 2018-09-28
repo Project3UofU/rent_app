@@ -35,8 +35,8 @@ const Nav = (props) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/signup" className="nav-link">
-                sign up
+              <Link to="/register" className="nav-link">
+                Register
               </Link>
             </li>
           </ul>
