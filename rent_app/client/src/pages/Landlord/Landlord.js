@@ -13,9 +13,14 @@ import "./Landlord.css";
 
 // page build
 class Landlord extends Component {
-  state = {
-    WorkStation: ViewProperties,
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      WorkStation: ViewProperties,
+    }
+  }
+
   // Landlord Navigation Functions
   changeView = newView => {
     let currentView = this.state.WorkStation;
@@ -45,8 +50,11 @@ class Landlord extends Component {
         <Row>
           <Col size="md-8">
             <Container>
+              <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
+              {/* Check if the user exists before trying to display their username */}
+              <h4><font color="green">Name: {this.props.user.local.username}</font></h4>
               < this.state.WorkStation
-
+                user={this.props.user}
               />
             </Container>
           </Col>
