@@ -12,7 +12,7 @@ module.exports = {
         // Create new user
         const newUser = new User({
             'local.email': "Not Set",
-            'local.password': "password", // Default password till the tenant updates it
+            'local.password': "", // Default password till the tenant updates it
         })
 
         let newTenant = new Tenant({

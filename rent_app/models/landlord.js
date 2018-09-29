@@ -24,7 +24,6 @@ landlordSchema.virtual('properties', {
   justOne: false
 });
 
-
 const Landlord = mongoose.model("Landlord", landlordSchema);
 
 module.exports = Landlord;
