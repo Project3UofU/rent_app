@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
+import Property from "../Property"
 
 class ViewProperties extends Component {
 
     constructor(props) {
         super(props);
         console.log("PROPS: " + props.user);
+        console.log("View Properties!")
     }
     state = {
 
     }
+
     render() {
         return (
             <Container className="fluid">

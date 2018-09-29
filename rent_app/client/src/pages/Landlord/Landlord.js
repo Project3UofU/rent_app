@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // layouts:
 import { Col, Row, Container } from "../../components/Grid";
+
 // Components for ViewPorts
 import Unit from "../../components/Unit"
 import ViewProperties from "../../components/ViewProperties"
@@ -8,8 +9,10 @@ import LandlordControlPanel from "../../components/LandlordControlPanel"
 import CreateTenant from "../../components/TenantDemo"
 
 import "./Landlord.css";
+// API
 
-// import API from "../../utils/API";
+const axios = require("axios");
+
 
 // page build
 class Landlord extends Component {
@@ -67,8 +70,6 @@ class Landlord extends Component {
       </div>
     )
   }
-
-
 }
 
 export default Landlord;
