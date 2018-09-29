@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
 import { Input, TextArea, FormBtn } from "../Form";
+const axios = require("axios");
 
-class Unit extends Component {
+class UnitForm extends Component {
   state = {
     streetAddress: "",
     city: "",
-    estado: "",
+    state: "",
     zip: "",
-    number: "",
+    numberOfRooms: "",
     rooms: "",
-    furnished: false,
+    furnished: "",
     additional: ""
   };
 
@@ -21,24 +22,40 @@ class Unit extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //     event.preventDefault();
-  //     if (this.state.streetAddress &&
-  //         this.state.city &&
-  //         this.state.estado &&
-  //         this.state.zip)
-  //         API.createUnit({
-  //             streetAddress: this.state.streetAddress,
-  //             city: this.state.city,
-  //             estado: this.state.estado,
-  //             zip: this.state.zip,
-  //             number: this.state.number,
-  //             rooms: this.state.rooms,
-  //             furnished: this.state.furnished,
-  //             additional: this.state.additional
-  //         });
-  // }
-  render() {
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.streetAddress === "" ||
+        this.state.city === "" ||
+        this.state.state === "" ||
+        this.state.zip === "" 
+        ) {
+            alert("Please provide all the required information");
+            return;
+        } else {
+            axios.post('./api/landlord/property', {
+                streetAddress: this.state.streetAddress,
+                city: this.state.city,
+                state: this.state.state,
+                zip: this.state.zip,
+                nickname: this.state.nickname,
+                comments: this.state.additional
+                // landlordID: this.state.landlordID?
+            }).then(res => {
+                console.log(res);
+                if (res.data.err) {
+                    alert(res.data.err);
+                    return;
+                }
+                this.setState({
+                    redirect: true,
+                    redirectTo: "./unitform"
+                });
+            });
+        }
+    }
+
+
+    render() {
     return (
       <Container className="fluid">
         <Col size="md-8">
@@ -51,9 +68,9 @@ class Unit extends Component {
               placeholder="Enter the city"
             />
             <Input
-              value={this.state.estado}
+              value={this.state.state}
               onChange={this.handleInputChange}
-              name="estado"
+              name="state"
               placeholder="Enter the state"
             />
             <Input
@@ -63,17 +80,12 @@ class Unit extends Component {
               placeholder="Enter the zip"
             />
             <Input
-              value={this.state.number}
+              value={this.state.numberOfUnits}
               onChange={this.handleInputChange}
-              name="number"
-              placeholder="Enter the unit number (if applicable)"
+              name="numberOfUnits"
+              placeholder="Enter the number of units"
             />
-            <Input
-              value={this.state.rooms}
-              onChange={this.handleInputChange}
-              name="rooms"
-              placeholder="Enter the number of rooms"
-            />
+            
             {/* TODO: this needs to be a boolean with an additional form for any furnishings */}
             <Input
               value={this.state.furnished}
@@ -91,7 +103,7 @@ class Unit extends Component {
               disabled={
                 !this.state.streetAddress &&
                 this.state.city &&
-                this.state.estado &&
+                this.state.state &&
                 this.state.zip
               }
               onClick={this.handleFormSubmit}
@@ -105,4 +117,4 @@ class Unit extends Component {
   }
 }
 
-export default Unit;
+export default UnitForm;

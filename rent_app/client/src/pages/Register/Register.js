@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom"; 
-import { FormBtn, Input } from "../../components/Form";
+import { FormBtn, Input, Address } from "../../components/Form";
 import { Row, Container, Col } from "../../components/Grid";
 import { Link } from "react-router-dom";
+
 // import "./register.css";
 const axios = require("axios");
 
@@ -18,7 +19,7 @@ class Register extends Component {
         homePhone: "",
         fax: "",
         businessAddress: "",
-        mailingAddress: "",      
+        mailingAddress: "", 
         redirect: false,
         redirectTo: null
     };

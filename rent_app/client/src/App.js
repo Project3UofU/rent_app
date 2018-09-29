@@ -9,7 +9,8 @@ import Landlord from "./pages/Landlord";
 import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
-import UnitPage from "./pages/Test";
+import UnitFormPage from "./pages/UnitForm";
+import PropertyFormPage from "./pages/PropertyForm";
 
 
 // Import Components
@@ -90,7 +91,8 @@ class App extends Component {
             <Route exact path="/Landlord" render={() => <Landlord user={this.state.user} />} />
             <Route exact path="/landing" component={Landing} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/test" component={UnitPage} />
+            <Route exact path="/unitform" component={UnitFormPage} />
+            <Route exact path="/propertyform" component={PropertyFormPage} />
             <Route exact path="/login" render={() =>
               <LoginForm
                 _login={this._login}
