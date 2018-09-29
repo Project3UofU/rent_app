@@ -6,8 +6,8 @@ import { Col, Row, Container } from "../../components/Grid";
 import Unit from "../../components/Unit"
 import ViewProperties from "../../components/ViewProperties"
 import LandlordControlPanel from "../../components/LandlordControlPanel"
-import CreateTenant from "../../components/CreateTenant"
-// CSS
+import CreateTenant from "../../components/TenantDemo"
+
 import "./Landlord.css";
 // API
 
