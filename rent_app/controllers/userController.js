@@ -8,30 +8,30 @@ module.exports = {
 
     // Used for making Landlords. Tenants are created via the 'addTenant' function in the 'unitController'
     createUser: function (req, res) {
-        const { username, firstName, lastName, password, email, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, homeAddress } = req.body
-        User.findOne({ 'local.username': username }, (err, userMatch) => {
+        const { email, password, firstName, lastName, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, preferredMethodOfContact } = req.body
+        User.findOne({ 'local.email': email }, (err, userMatch) => {
             if (userMatch) {
                 // Found existing user
-                return utils.error(res, 422, `Username '${username}' already taken`)
+                return utils.error(res, 422, `Email '${email}' already in use`)
             }
-
+            
             // Create new user
             const newUser = new User({
-                'local.username': username,
-                'local.password': password,
+                'local.email': email,
+                'local.password': password
+            })
+
+            let landlord = new Landlord({
                 firstName: firstName,
                 lastName: lastName,
-                email: email,
                 businessPhone: businessPhone,
                 cellPhone: cellPhone,
                 homePhone: homePhone,
                 fax: fax,
                 businessAddress: businessAddress,
                 mailingAddress: mailingAddress,
-                homeAddress: homeAddress
+                preferredMethodOfContact: preferredMethodOfContact
             })
-
-            let landlord = new Landlord({})
             landlord.save((err, savedLandlord) => {
                 if (err) return utils.error(res, 422, err.message)
                 newUser.landlord = savedLandlord._id

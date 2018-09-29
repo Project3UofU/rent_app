@@ -6,48 +6,36 @@ module.exports = {
 
     // TODO: Create a user for the tenant
     addTenant: function (req, res) {
-        const { name, phone, email, preferredMethodOfContact, password, unitID } = req.body;
 
-            // TODO: Update - Will the Tenant's user have all the same fields?
-            // const { username, firstName, lastName, password, email, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, homeAddress } = req.body
-            // Create new user
-            // const newUser = new User({
-            //     'local.username': utils.uuid(), // Generate a UUID for the tenant's username
-            //     'local.password': "password", // Default password till the tenant updates it
-            //     firstName: firstName,
-            //     lastName: lastName,
-            //     email: email,
-            //     businessPhone: businessPhone,
-            //     cellPhone: cellPhone,
-            //     homePhone: homePhone,
-            //     fax: fax,
-            //     businessAddress: businessAddress,
-            //     mailingAddress: mailingAddress,
-            //     homeAddress: homeAddress
-            // })
+        const { firstName, lastName, email, phone, numberOfTenants, numberOfDependents, ageOfDependents, comments, preferredMethodOfContact, unitID } = req.body
+        // TODO: check that the landlord owns this unit
+        // Create new user
+        const newUser = new User({
+            'local.email': "Not Set",
+            'local.password': "password", // Default password till the tenant updates it
+        })
 
-            // let tenant = new Tenant({})
-            // tenant.save((err, savedTenant) => {
-            //     if (err) return utils.error(res, 422, err.message)
-            //     newUser.tenant = savedTenant._id
-            //     newUser.save((err, savedUser) => {
-            //         if (err) return utils.error(res, 422, err.message)
-            //         return res.json({ user: savedUser })
-            //     })
-            // })
-
-
-        var newTenant = {
-            name: name,
-            phone: phone,
+        let newTenant = new Tenant({
+            firstName: firstName,
+            lastName: lastName,
             email: email,
-            token: "", // TODO: Generate token for the tenant so it can be send back down to the client
+            phone: phone,
+            numberOfTenants: numberOfTenants,
+            numberOfDependents: numberOfDependents,
+            ageOfDependents: ageOfDependents,
+            comments: comments,
             preferredMethodOfContact: preferredMethodOfContact,
             unit: mongoose.Types.ObjectId(unitID)
-        }
+        })
 
-        let returnedTenant = Object.assign({}, newTenant); 
-        newTenant.password = password; // TODO: Encrypt the password
+        tenant.save((err, savedTenant) => {
+            if (err) return utils.error(res, 422, err.message)
+            newUser.tenant = savedTenant._id
+            newUser.save((err, savedUser) => {
+                if (err) return utils.error(res, 422, err.message)
+                return res.json({ user: savedUser })
+            })
+        })
         
         db.Tenant.collection
             .insertOne(newTenant)
@@ -72,6 +60,25 @@ module.exports = {
             })
             .then(data => res.json({ landlord: data.property.landlord }))
             .catch(err => utils.error(res, 422, err.message));
-    }
+    },
+
+    // TODO: Needs testing
+    addWorkOrder: function (req, res) {
+        // TODO: Check that the landlord/tenant are allowed to add a work order to the given unit
+        const { service, unitID, tenantID, landlordID } = req.body;
+        var newWorkOrder = {
+            service: service,
+            unit: unitID,
+            tenant: tenantID || null,
+            landlord: landlordID || null
+        }
+        
+        db.WorkOrder.collection
+            .insertOne(newWorkOrder)
+            .then(data => res.json({ workOrder: data.ops[0] || null }))
+            .catch(err => {
+                utils.error(res, 422, err.message)
+            });
+    },
 
 };
