@@ -9,7 +9,6 @@ const axios = require("axios");
 class Register extends Component {
     state = {
         // TODO: additional demo info here
-        username: "",
         password: "",
         firstName: "",
         lastName: "",
@@ -19,8 +18,7 @@ class Register extends Component {
         homePhone: "",
         fax: "",
         businessAddress: "",
-        mailingAddress: "",
-        homeAddress: "",
+        mailingAddress: "",      
         redirect: false,
         redirectTo: null
     };
@@ -35,10 +33,11 @@ class Register extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.username  === "" || 
+        if ( 
             this.state.password === "" ||
             this.state.firstName === "" ||
-            this.state.lastName === ""
+            this.state.lastName === "" ||
+            this.state.email === ""
             ) {
                 alert("Please provide all required information");
                 return;
@@ -56,7 +55,6 @@ class Register extends Component {
                 return;
             } else {
                 axios.post('./api/auth/signup', {
-                    username: this.state.username,
                     password: this.state.password,
                     firstName: this.state.firstName,
                     lastName: this.state.lastName,
@@ -67,7 +65,6 @@ class Register extends Component {
                     fax: this.state.fax,
                     businessAddress: this.state.businessAddress,
                     mailingAddress: this.state.mailingAddress,
-                    homeAddress: this.state.homeAddress
                 }).then(res => {
                     console.log(res);
                     if(res.data.err) {
@@ -87,16 +84,16 @@ class Register extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo}} />
         }
         return (
-        <Container className="fluid">
+            <Container className="fluid">
             <Row>
                 <Col size="md-8">
                     <h1>Register as a landlord on Rent Keeper</h1>
                     <form>
-                        <Input 
-                            value={this.state.username}
+                        <Input
+                            value={this.state.email}
                             onChange={this.handleInputChange}
-                            name="username"
-                            placeholder="Create a username"
+                            name="email"
+                            placeholder="email"
                         />
                         <Input
                             value={this.state.password}
@@ -121,12 +118,6 @@ class Register extends Component {
                             onChange={this.handleInputChange}
                             name="lastName"
                             placeholder="Last Name"
-                        />
-                        <Input
-                            value={this.state.email}
-                            onChange={this.handleInputChange}
-                            name="email"
-                            placeholder="email"
                         />
                         <Input
                             value={this.state.businessPhone}
@@ -164,20 +155,13 @@ class Register extends Component {
                             name="mailingAddress"
                             placeholder="Mailing Address"
                         />
-                        <Input
-                            value={this.state.homeAddress}
-                            onChange={this.handleInputChange}
-                            name="homeAddress"
-                            placeholder="homeAddress"
-                        />
                         <FormBtn
                             disabled={
-                                !(this.state.username && 
-                                this.state.password &&
+                                !(this.state.password &&
                                 this.state.firstName &&
                                 this.state.lastName &&
-                                (this.state.email ||
-                                this.state.businessPhone ||    
+                                this.state.email &&
+                                (this.state.businessPhone ||    
                                 this.state.cellPhone || 
                                 this.state.homePhone))
                                 }
