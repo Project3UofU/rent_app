@@ -14,7 +14,9 @@ class TenantUnitInfo extends Component {
         pets: "",
         numOfVehicles: "",
         trailer: "",
-        moreComments: ""
+        moreComments: "",
+        redirect: false,
+        redirectTo: null
     };
 
     handleInputChange = event => {
@@ -51,7 +53,7 @@ class TenantUnitInfo extends Component {
                 //TODO: changeredirect
                 this.setState({
                     redirect: true,
-                    redirectTo: "./TenantUnitInfo"
+                    redirectTo: "./Landlord"
                 })
             })
         }

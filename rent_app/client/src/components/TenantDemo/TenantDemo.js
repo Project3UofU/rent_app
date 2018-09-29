@@ -43,8 +43,6 @@ class TenantDemo extends Component {
             return;
         } else {
             axios.post('./api/unit/addTenant', {
-            username: this.state.username,
-            password: this.state.password,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
@@ -79,18 +77,6 @@ class TenantDemo extends Component {
                 <Row>
                     <Col size="md-8">
                     <form>
-                        <Input
-                            value={this.state.username}
-                            onChange={this.handleInputChange}
-                            name="username"
-                            placeholder="Username"
-                        />
-                        <Input
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                            name="password"
-                            placeholder="Password"
-                        />
                         <Input
                             value={this.state.firstName}
                             onChange={this.handleInputChange}
