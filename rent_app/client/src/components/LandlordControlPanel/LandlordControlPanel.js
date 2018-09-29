@@ -8,6 +8,7 @@ class LandlordControlPanel extends Component {
       <Container>
         <Row>
           <Col size="md-12">
+            <img src="/images/RentKeeper-01.png" class="img-fluid" alt="RentKeeper" />
             <h1>Control Panel</h1>
             <h2>Place Newsfeed and form here</h2>
             <button

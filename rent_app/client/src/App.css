@@ -1,6 +1,15 @@
+.container{
+  text-align: center;
+}
 body {
+  /* Background */
   background-image: url("/images/chris-castro-521-unsplash.jpg");
   background-position-y: 80%;
   background-attachment: fixed;
   background-size: cover;
+
+  /* Text Formats */
+  text-align: center;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Alegreya Sans SC', sans-serif;
 }
