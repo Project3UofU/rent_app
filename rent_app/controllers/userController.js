@@ -8,30 +8,35 @@ module.exports = {
 
     // Used for making Landlords. Tenants are created via the 'addTenant' function in the 'unitController'
     createUser: function (req, res) {
-        const { username, firstName, lastName, password, email, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, homeAddress } = req.body
-        User.findOne({ 'local.username': username }, (err, userMatch) => {
+        const { email, password, firstName, lastName, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, preferredMethodOfContact } = req.body
+        if (password.length < 4) {
+            return utils.error(res, 422, "Password must be at least 4 characters.")
+        }
+        
+        // TODO: Handle exception
+        User.findOne({ 'local.email': email }, (err, userMatch) => {
             if (userMatch) {
                 // Found existing user
-                return utils.error(res, 422, `Username '${username}' already taken`)
+                return utils.error(res, 422, `Email '${email}' already in use`)
             }
-
+            
             // Create new user
             const newUser = new User({
-                'local.username': username,
-                'local.password': password,
+                'local.email': email,
+                'local.password': password
+            })
+
+            let landlord = new Landlord({
                 firstName: firstName,
                 lastName: lastName,
-                email: email,
                 businessPhone: businessPhone,
                 cellPhone: cellPhone,
                 homePhone: homePhone,
                 fax: fax,
                 businessAddress: businessAddress,
                 mailingAddress: mailingAddress,
-                homeAddress: homeAddress
+                preferredMethodOfContact: preferredMethodOfContact
             })
-
-            let landlord = new Landlord({})
             landlord.save((err, savedLandlord) => {
                 if (err) return utils.error(res, 422, err.message)
                 newUser.landlord = savedLandlord._id
@@ -94,7 +99,7 @@ module.exports = {
 
     tenant: function(req, res, id) {
         return db.User.findById(id)
-            .select("-local.password -__v") // TODO: Find a better way to prevent the password from going down
+            .select("-__v") // TODO: Find a better way to prevent the password from going down
             .populate({
                 path: 'tenant',
                 populate: {
@@ -108,6 +113,12 @@ module.exports = {
                 }
             })
             .then(user => {
+                if (user.local.password.length == 0) {
+                    // Tenant hasn't been set up yet, don't let them log in
+                    return utils.error(res, 422, "Tenant not set up yet, get setup link from your landlord.")
+                }
+
+                delete user.local.password; // Don't send the password down
                 return res.json({ user: user })
             })
             .catch(err => utils.error(res, 422, "Oops"));

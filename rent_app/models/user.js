@@ -4,16 +4,6 @@ const bcrypt = require('bcryptjs')
 mongoose.promise = Promise
 
 const userSchema = new Schema({
-	firstName: { type: String, unique: true },
-	lastName: { type: String, unique: true },
-	email: { type: String, required: false },
-	businessPhone: { type: String, required: false },
-	cellPhone: { type: String, required: false },
-	homePhone: { type: String, required: false },
-	fax: { type: String, required: false },
-	businessAddress: { type: String, required: false },
-	mailingAddress: { type: String, required: false },
-	homeAddress: { type: String, required: false },
 	tenant: {
 		type: Schema.Types.ObjectId,
 		ref: "Tenant",
@@ -25,7 +15,7 @@ const userSchema = new Schema({
 		required: false
 	},
 	local: {
-		username: { type: String, unique: true, required: true },
+		email: { type: String, unique: true, required: false },
 		password: { type: String, unique: false, required: false, default: "password" },
 	},
 	google: {
