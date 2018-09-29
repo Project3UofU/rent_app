@@ -1,5 +1,7 @@
 const utils = require('./utils');
 
+
+//TODO: Create middleware to check if a landlord/tenant have permission to perform a given API request. EX: A landlord can only add a tenant to a unit they own
 module.exports = {
 
     // Look to see if the request has valid parameters for the given call
