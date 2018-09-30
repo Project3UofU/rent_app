@@ -58,6 +58,7 @@ class Landlord extends Component {
             {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
             < this.state.WorkStation
               user={this.props.user}
+              key={this.props.user}
             />
           </Container>
         </Col>

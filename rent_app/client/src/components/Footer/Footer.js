@@ -6,13 +6,14 @@ const Footer = props => (
   <footer className="pagebottom">
     <div className="bottom-center">
       <div className="bottom-nav">
-        <a href="">
-          <i id="social-git" className="fab fa-github-square fa-3x social" />
+        {/* //TODO: Create Facebook, Twitter, and Email Accounts for RentKeeper. */}
+        <a href="www.facebook.com">
+          <i id="social-git" className="fab fa-facebook-square fa-3x social" />
         </a>
-        <a href="">
+        <a href="twitter.com">
           <i id="social-linked" className="fab fa-twitter fa-3x social" />
         </a>
-        <a href="">
+        <a href="google.com">
           <i id="social-linked" className="fas fa-envelope-square fa-3x social" />
         </a>
 
