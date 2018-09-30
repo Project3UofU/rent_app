@@ -10,6 +10,7 @@ const propertySchema = new Schema({
     comments: { type: String, required: true },
     nickname: { type: String, required: false },
     landlord: {
+        required: true
         type: Schema.Types.ObjectId,
         ref: "Landlord"
     }
