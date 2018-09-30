@@ -49,25 +49,25 @@ class Landlord extends Component {
 
   render() {
     return (
-      <div>
-        <Row>
-          <Col size="md-8">
-            <Container>
-              <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
-              {/* Check if the user exists before trying to display their username */}
-              {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
-              < this.state.WorkStation
-                user={this.props.user}
-              />
-            </Container>
-          </Col>
-          <Col size="md-4">
-            <LandlordControlPanel
-              changeView={this.changeView}
+
+      <Row>
+        <Col size="md-8">
+          <Container className="workStation">
+            <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
+            {/* Check if the user exists before trying to display their username */}
+            {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
+            < this.state.WorkStation
+              user={this.props.user}
             />
-          </Col>
-        </Row>
-      </div>
+          </Container>
+        </Col>
+        <Col size="md-4">
+          <LandlordControlPanel
+            changeView={this.changeView}
+          />
+        </Col>
+      </Row>
+
     )
   }
 }

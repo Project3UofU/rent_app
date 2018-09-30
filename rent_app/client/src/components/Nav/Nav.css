@@ -1,3 +1,11 @@
 .navbar {
-    background-color: sandybrown;
+    background-color:lightgray;
+    
+}
+img{
+    height:3em;
+}
+ul {
+    font-size:1em;
+    vertical-align: center;
 }
