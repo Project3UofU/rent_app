@@ -1,0 +1,13 @@
+#frontImg{
+    width: 100%;
+    height: auto;
+}
+.whiteText {
+    color: white
+}
+.container{
+    border-radius: 20px;
+}
+.align-left{
+    text-align: left
+}
