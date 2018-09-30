@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 // Import Pages
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
 import Landlord from "./pages/Landlord";
 import Landing from "./pages/Landing";
 import Register from "./pages/Register";
@@ -17,7 +17,6 @@ import Nav from "./components/Nav";
 import LoginForm from './components/Login/LoginForm';
 import SignupForm from './components/SignupForm';
 import Header from './components/Header';
-import Home from './pages/Home';
 import Footer from './components/Footer';
 
 // Global CSS (unedited form Create-React-App command!)
