@@ -6,7 +6,6 @@ import axios from 'axios'
 // Import Pages
 import Home from "./pages/Home";
 import Landlord from "./pages/Landlord";
-import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import UnitPage from "./pages/Test";
@@ -90,7 +89,6 @@ class App extends Component {
               user={this.state.user} />}
             />
             <Route exact path="/Landlord" render={() => <Landlord user={this.state.user} />} />
-            <Route exact path="/landing" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/test" component={UnitPage} />
             <Route exact path="/login" render={() =>
