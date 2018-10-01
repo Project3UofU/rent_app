@@ -11,7 +11,7 @@ router
 // /api/workOrder/update
 router
   .route("/update")
-  .post(middleware.paramsCheck([["service", "description", "urgent", "read", "completed"]])) // Requires at least one of the following parameters to be valid
-  .post(workOrderController.update);
+  .put(middleware.paramsCheck(["workOrderID", ["service", "description", "urgent", "read", "completed"]])) // Requires 'workOrderID' and at least one of the following parameters to be valid
+  .put(workOrderController.update);
 
 module.exports = router;

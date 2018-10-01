@@ -24,7 +24,7 @@ module.exports = {
         }
         
         db.User
-            .findOneAndUpdate({ tenant: mongoose.Types.ObjectId(tenantID) })
+            .findById(tenantID)
             .then(user => {
                 if (user.password.length > 0) {
                     return utils.error(res, 422, "Tenant already set up, try logging in.")
