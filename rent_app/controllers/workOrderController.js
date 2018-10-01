@@ -24,7 +24,7 @@ module.exports = {
     },
 
     update: function(req, res) {
-        const { service, description, urgent, read, completed } = req.body;
+        const { workOrderID, service, description, urgent, read, completed } = req.body;
         let updates = {}
         if (service) { updates.service = service; }
         if (description) { updates.description = description; }
@@ -32,7 +32,8 @@ module.exports = {
         if (read) { updates.read = read; }
         if (completed) { updates.completed = completed; }
         db.WorkOrder.collection
-            .findOneAndUpdate(newWorkOrder, updates)
+        .fin
+            .findByIdAndUpdate(newWorkOrder, updates, { new: true })
             .then(data => res.json({ workOrder: data.ops[0] || null }))
             .catch(err => {
                 utils.error(res, 422, err.message)
