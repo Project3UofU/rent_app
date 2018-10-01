@@ -17,7 +17,7 @@ router
 // /api/unit/addWorkOrder
 router
 .route("/addWorkOrder")
-.post(middleware.paramsCheck(["unitID"]))
+.post(middleware.paramsCheck(["service", "unitID", ["tenantID", "landlordID"]])) // Requires a 'tenantID' or 'landlordID'
 .post(unitController.addTenant);
 
 module.exports = router;
