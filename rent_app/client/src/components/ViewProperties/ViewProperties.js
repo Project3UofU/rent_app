@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
 import { PropertyContainer } from "../PropertyContainer"
 import testProperties from "../../landlordtest.json"
-
 class ViewProperties extends Component {
 
     constructor(props) {
@@ -12,7 +11,6 @@ class ViewProperties extends Component {
 
         this.state = {
             Properties: testProperties,
-
         }
     }
 
@@ -23,7 +21,7 @@ class ViewProperties extends Component {
                     <div>
                         {this.state.Properties.map(property =>
                             <PropertyContainer
-                                key={property.id}
+                                key={property._id}
                                 created={property.created}
                                 address={property.address}
                                 name={property.name}
@@ -31,8 +29,25 @@ class ViewProperties extends Component {
                                 units={property.units}
                                 test={property.units.length}
                             >
+                                {property.units.length ? (
+                                    <button
+                                        type="button"
+                                        onClick={() => this.props.changeView("Unit")}
+                                        className="btn btn-primary"
+                                    >Add Another Unit
+                                    </button>
+                                ) : (
+                                        <button
+                                            type="button"
+                                            onClick={() => this.props.changeView("Unit")}
+                                            className="btn btn-warning"
+                                        >Add A New Unit!
+                                        </button>
+                                    )}
+
                             </PropertyContainer>
                         )}
+
                     </div>
 
                 ) : (
@@ -42,7 +57,7 @@ class ViewProperties extends Component {
                         </div>
                     )
                 }
-                {/* <h4><font color="red">Name: {this.props.user.local.username}</font></h4> */}
+
             </Container >
         )
     }

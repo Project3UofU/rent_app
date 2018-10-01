@@ -15,7 +15,9 @@
                 "rooms": "15",
                 "furnished": true,
                 "additional": "",
-                "tenant": {}
+                "tenant": {
+                    "name": "Don"
+                }
             },
             {
                 "id": 2,
@@ -38,7 +40,7 @@
         "landlord": "TESTING FIELD",
         "units": [
             {
-                "id": 1,
+                "id": 11,
                 "created": "October 1st, 2018",
                 "rent": 500,
                 "securityDeposit": 500,

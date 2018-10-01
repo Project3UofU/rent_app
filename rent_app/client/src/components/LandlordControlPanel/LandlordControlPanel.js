@@ -11,13 +11,7 @@ class LandlordControlPanel extends Component {
             <img src="/images/RentKeeper-01.png" className="img-fluid" alt="RentKeeper" />
             <h1>Control Panel</h1>
             <h2>Place Newsfeed and form here</h2>
-            <button
-              type="button"
-              onClick={() => this.props.changeView("Unit")}
-              className="btn btn-primary"
-            >
-              New Unit
-            </button>
+
             <button
               type="button"
               onClick={() => this.props.changeView("ViewProperties")}

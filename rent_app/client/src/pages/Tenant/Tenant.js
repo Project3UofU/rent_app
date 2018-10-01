@@ -1,30 +1,36 @@
 import React, { Component } from "react";
 // layouts:
 import { Col, Row, Container } from "../../components/Grid";
+
 // Components for ViewPorts
+// TODO: Tenant Forms
 
-// CSS
 import "./Tenant.css";
-
-// import API from "../../utils/API";
+// API
+// const axios = require("axios");
 
 // page build
 class Tenant extends Component {
-    state = {
 
-    };
-    // Tenant Navigation Functions
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
 
     render() {
         return (
-            <div>
+            <div className="workStation">
                 <Row>
-                    <Col size="md-12">
+                    <Col size="md-6">
                         <Container>
-                            <h1>TenantView</h1>
+
                         </Container>
                     </Col>
-
+                    <Col size="md-6">
+                        <h1>Column 2</h1>
+                    </Col>
                 </Row>
             </div>
         )

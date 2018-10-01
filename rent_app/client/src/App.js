@@ -6,6 +6,7 @@ import axios from 'axios'
 // Import Pages
 import Home from "./pages/Home";
 import Landlord from "./pages/Landlord";
+import Tenant from "./pages/Tenant";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import UnitPage from "./pages/Test";
@@ -14,7 +15,6 @@ import UnitPage from "./pages/Test";
 // Import Components
 import Nav from "./components/Nav";
 import LoginForm from './components/Login/LoginForm';
-import SignupForm from './components/SignupForm';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -88,7 +88,9 @@ class App extends Component {
             <Route exact path="/" render={() => <Home
               user={this.state.user} />}
             />
+            {/* TODO: Should we change Landlord from Exact path to /Landlord/:id ? */}
             <Route exact path="/Landlord" render={() => <Landlord user={this.state.user} />} />
+            <Route exact path="/Tenant" render={() => <Tenant user={this.state.user} />} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/test" component={UnitPage} />
             <Route exact path="/login" render={() =>
