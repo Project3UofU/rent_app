@@ -4,9 +4,8 @@ import axios from 'axios'
 
 
 // Import Pages
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
 import Landlord from "./pages/Landlord";
-import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import UnitPage from "./pages/Test";
@@ -17,7 +16,6 @@ import Nav from "./components/Nav";
 import LoginForm from './components/Login/LoginForm';
 import SignupForm from './components/SignupForm';
 import Header from './components/Header';
-import Home from './pages/Home';
 import Footer from './components/Footer';
 
 // Global CSS (unedited form Create-React-App command!)
@@ -91,7 +89,6 @@ class App extends Component {
               user={this.state.user} />}
             />
             <Route exact path="/Landlord" render={() => <Landlord user={this.state.user} />} />
-            <Route exact path="/landing" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/test" component={UnitPage} />
             <Route exact path="/login" render={() =>
