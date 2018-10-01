@@ -65,12 +65,14 @@ module.exports = {
     // TODO: Needs testing
     addWorkOrder: function (req, res) {
         // TODO: Check that the landlord/tenant are allowed to add a work order to the given unit
-        const { service, unitID, tenantID, landlordID } = req.body;
+        const { service, description, urgent, unitID, tenantID, landlordID } = req.body;
         var newWorkOrder = {
             service: service,
-            unit: unitID,
-            tenant: tenantID || null,
-            landlord: landlordID || null
+            description: description,
+            urgent: urgent,
+            unit: mongoose.Types.ObjectId(unitID),
+            tenant: tenantID ? mongoose.Types.ObjectId(tenantID) : null, // Optional
+            landlord: landlordID ? mongoose.Types.ObjectId(landlordID) : null, // Optional
         }
         
         db.WorkOrder.collection

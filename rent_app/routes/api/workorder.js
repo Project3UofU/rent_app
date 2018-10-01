@@ -2,11 +2,16 @@ const router = require("express").Router();
 const workOrderController = require("../../controllers/workOrderController");
 let middleware = require("../../middleware");
 
-// /api/work_order/addComment
+// /api/work-order/add-comment
 router
   .route("/addComment")
-  .post(middleware.paramsCheck(["service", "unit", ["tenant", "landlord"]])) // Requires a 'tenant' or 'landlord'
+  .post(middleware.paramsCheck(["text", "workOrderID", ["tenantID", "landlordID"]])) // Requires a 'tenantID' or 'landlordID'
   .post(workOrderController.addComment);
 
+// /api/work-order/add-comment
+router
+  .route("/update")
+  .post(middleware.paramsCheck([["service", "description", "urgent", "read", "completed"]])) // Requires at least one of the following parameters to be valid
+  .post(workOrderController.update);
 
 module.exports = router;
