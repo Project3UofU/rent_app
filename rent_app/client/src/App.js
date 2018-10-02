@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios'
 
-
+// hi
 // Import Pages
-import Home from "./pages/Home";
-import Landlord from "./pages/Landlord";
+import Home from "./pages/Home/Home";
+import Landlord from "./pages/Landlord/Landlord";
 import Tenant from "./pages/Tenant";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
