@@ -1,3 +1,7 @@
 body {
     /* background-image: url("./images/jose-alonso-382321-unsplash.jpg") */
 }
+#no-match-image {
+    max-width: 100%;
+    height: auto;
+}

@@ -8,6 +8,7 @@ const unitSchema = new Schema({
     securityDeposit: { type: Number },
     name: { type: String, required: true },
     property: {
+        required: true,
         type: Schema.Types.ObjectId,
         ref: "Property"
     }

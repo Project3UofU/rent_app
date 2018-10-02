@@ -4,9 +4,8 @@ import axios from 'axios'
 
 // hi
 // Import Pages
-// import Home from "./pages/Home";
-import Landlord from "./pages/Landlord/Landlord";
-import Landing from "./pages/Landing";
+import Home from "./pages/Home";
+import Landlord from "./pages/Landlord";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import UnitPage from "./pages/Test";
@@ -17,7 +16,7 @@ import Nav from "./components/Nav";
 import LoginForm from './components/Login/LoginForm';
 import SignupForm from './components/SignupForm';
 import Header from './components/Header';
-import Home from './components/Home';
+import Footer from './components/Footer';
 
 // Global CSS (unedited form Create-React-App command!)
 import './App.css';
@@ -86,9 +85,10 @@ class App extends Component {
           <Nav _logout={this._logout} loggedIn={this.state.loggedIn} />
           <Header user={this.state.user} />
           <Switch>
-            <Route exact path="/" render={() => <Home user={this.state.user} />} />
+            <Route exact path="/" render={() => <Home
+              user={this.state.user} />}
+            />
             <Route exact path="/Landlord" render={() => <Landlord user={this.state.user} />} />
-            <Route exact path="/landing" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/test" component={UnitPage} />
             <Route exact path="/login" render={() =>
@@ -100,6 +100,7 @@ class App extends Component {
             />
             <Route component={NoMatch} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

@@ -6,7 +6,7 @@ let middleware = require("../../middleware");
 router
   .route("/addTenant")
   .post(middleware.isLandlord) // Only landlords can add tenants
-  .post(middleware.paramsCheck(["name", "phone", "email", "preferredMethodOfContact", "password", "unitID"]))
+  .post(middleware.paramsCheck(["firstName", "lastName", "unitID", "preferredMethodOfContact", "unitID"]))
   .post(unitController.addTenant);
 
 // /api/unit/landlord/:id (id = unitID)
@@ -17,7 +17,7 @@ router
 // /api/unit/addWorkOrder
 router
 .route("/addWorkOrder")
-.post(middleware.paramsCheck(["name", "phone", "email", "preferredMethodOfContact", "password", "unitID"]))
+.post(middleware.paramsCheck(["service", "unitID", ["tenantID", "landlordID"]])) // Requires a 'tenantID' or 'landlordID'
 .post(unitController.addTenant);
 
 module.exports = router;

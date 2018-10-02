@@ -18,7 +18,6 @@ router
 	.get(middleware.isAuthenticated)
 	.get(userController.user)
 
-
 router
 	.route('/login')
 	.post(passport.authenticate('local'), userController.user)
@@ -30,7 +29,7 @@ router
 
 router
 	.route('/signup')
-	.post(middleware.paramsCheck(["username", "password", "firstName", "lastName", ["businessPhone", "cellPhone", "homePhone", "email"]]))
+	.post(middleware.paramsCheck(["email", "password", "firstName", "lastName", ["businessPhone", "cellPhone", "homePhone"]]))
 	.post(userController.createUser)
 
 module.exports = router

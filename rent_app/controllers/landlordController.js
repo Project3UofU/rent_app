@@ -42,12 +42,15 @@ module.exports = {
             .then(data => res.json({ property: data.ops[0] || [] }))
             .catch(err => utils.error(res, 422, err.message));
     },
-
+    
     addProperty: function (req, res) {
-        const { address, name, landlordID } = req.body;
+        const { city, state, zip, comments, nickname, landlordID } = req.body;
         var newProperty = {
-            address: address,
-            name: name,
+            city: city,
+            state: state,
+            zip: zip,
+            comments: comments,
+            nickname: nickname,
             landlord: mongoose.Types.ObjectId(landlordID)
         }
 

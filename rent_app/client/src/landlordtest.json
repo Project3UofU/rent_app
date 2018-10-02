@@ -1,0 +1,61 @@
+[
+    {
+        "created": "September 29th, 2018",
+        "address": "1600 Pennsylvania Avenue, Washington DC",
+        "name": "White-House",
+        "landlord": "TESTING FIELD",
+        "units": [
+            {
+                "id": 1,
+                "created": "September 29th, 2018",
+                "rent": 25000,
+                "securityDeposit": 10000,
+                "name": "A - West Wing",
+                "number": "A - West Wing",
+                "rooms": "15",
+                "furnished": true,
+                "additional": "",
+                "tenant": {}
+            },
+            {
+                "id": 2,
+                "created": "September 29th, 2018",
+                "rent": 28000,
+                "securityDeposit": 18000,
+                "name": "B - East Wing",
+                "number": "B - East Wing",
+                "rooms": "5",
+                "furnished": false,
+                "additional": "",
+                "tenant": {}
+            }
+        ]
+    },
+    {
+        "created": "September 29th, 2018",
+        "address": "284 Hubbard Ave",
+        "name": "Beatup Bungalow",
+        "landlord": "TESTING FIELD",
+        "units": [
+            {
+                "id": 1,
+                "created": "October 1st, 2018",
+                "rent": 500,
+                "securityDeposit": 500,
+                "name": "Underground bunker",
+                "number": "",
+                "rooms": "1",
+                "furnished": false,
+                "additional": "",
+                "tenant": {}
+            }
+        ]
+    },
+    {
+        "created": "July 9th, 2018",
+        "address": "1234 Bob Hope Drive",
+        "name": "Beatup Bungalow",
+        "landlord": "TESTING FIELD",
+        "units": []
+    }
+]
