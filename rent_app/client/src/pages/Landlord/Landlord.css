@@ -1,12 +1,13 @@
 .container {
     padding: 20px;
     margin-top: 10px;
-    /* background-image: url("/images/chris-castro-521-unsplash.jpg"); 
-    background-size: cover; */
     background-color: rgba(170, 168, 168, 0.8);
-   
-    margin-bottom: 3em;
 }
 .workStation {
+    margin-bottom: 5em;
+}
+.card{
+    text-align: left;
+    
     
 }
