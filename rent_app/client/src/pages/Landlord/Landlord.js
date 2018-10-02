@@ -7,6 +7,8 @@ import Unit from "../../components/Unit"
 import ViewProperties from "../../components/ViewProperties"
 import LandlordControlPanel from "../../components/LandlordControlPanel"
 import CreateTenant from "../../components/TenantDemo"
+import WorkOrderLayout from "../../components/WorkOrderLayout"
+
 
 import "./Landlord.css";
 // API
@@ -67,6 +69,9 @@ class Landlord extends Component {
             <LandlordControlPanel
               changeView={this.changeView}
             />
+            <WorkOrderLayout>
+
+            </WorkOrderLayout>
           </Col>
         </Row>
       </div>
