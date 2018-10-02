@@ -1,12 +1,6 @@
 .property-box{
-    width: 100%;
-
-}
-.unit-card{
-    
-    
-}
-.property-box{
-    margin:5px;
-    text-align: left;
+    margin:.5em;
+    background-color: rgb(75, 71, 71, .2);
+    border-radius: 20px;
+    padding:1em;
 }
