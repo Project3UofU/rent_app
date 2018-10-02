@@ -10,18 +10,29 @@ class WorkOrderLayouts extends Component {
         super(props);
         console.log("WO PROPS: " + props);
         this.state = {
-
+            workOrders: []
         }
     }
 
     render() {
         return (
             <Container className="fluid">
-                <h1>WorkOrderLayouts</h1>
+                <h4>WorkOrderLayouts</h4>
+                <hr />
+                {this.state.workOrders.length ? (
+                    <div>
+                        {this.state.workOrders.map(property =>
+                            <WorkOrder
 
-                <WorkOrder>
+                            >
 
-                </WorkOrder>
+                            </WorkOrder>
+                        )}
+                    </div>
+                ) : (
+                        <h1> No Work Orders to Show.</h1>
+                    )}
+
             </Container >
         )
     }
