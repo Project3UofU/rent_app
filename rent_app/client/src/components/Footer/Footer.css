@@ -4,7 +4,7 @@
   bottom: 0;
   width: 100%;
   background: #666666;
-  height: 3.8em;
+  height: 2.8em;
   color: white;
   text-align: center;
   border: #4aaaa5;
@@ -26,7 +26,6 @@
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
-  /* float: right; */
   margin-right: 10px;
   /* margin-top: 10px; */
 }

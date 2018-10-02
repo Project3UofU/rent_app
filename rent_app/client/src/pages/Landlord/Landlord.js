@@ -7,12 +7,12 @@ import Unit from "../../components/Unit"
 import ViewProperties from "../../components/ViewProperties"
 import LandlordControlPanel from "../../components/LandlordControlPanel"
 import CreateTenant from "../../components/TenantDemo"
+import WorkOrderLayout from "../../components/WorkOrderLayout"
+
 
 import "./Landlord.css";
 // API
-
-const axios = require("axios");
-
+// const axios = require("axios");
 
 // page build
 class Landlord extends Component {
@@ -49,26 +49,32 @@ class Landlord extends Component {
 
   render() {
     return (
+      <div className="workStation">
+        <Row>
+          <Col size="md-8">
+            <Container>
+              {/* <h2>Your Properties:</h2> */}
+              {/* <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2> */}
+              {/* Check if the user exists before trying to display their username */}
+              {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
+              < this.state.WorkStation
+                changeView={this.changeView}
+                user={this.props.user}
+                key={this.props._id}
 
-      <Row>
-        <Col size="md-8">
-          <Container className="workStation">
-            <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
-            {/* Check if the user exists before trying to display their username */}
-            {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
-            < this.state.WorkStation
-              user={this.props.user}
-              key={this.props.user}
+              />
+            </Container>
+          </Col>
+          <Col size="md-4">
+            <LandlordControlPanel
+              changeView={this.changeView}
             />
-          </Container>
-        </Col>
-        <Col size="md-4">
-          <LandlordControlPanel
-            changeView={this.changeView}
-          />
-        </Col>
-      </Row>
+            <WorkOrderLayout>
 
+            </WorkOrderLayout>
+          </Col>
+        </Row>
+      </div>
     )
   }
 }
