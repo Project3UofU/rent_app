@@ -11,7 +11,7 @@ module.exports = {
         // TODO: check that the landlord owns this unit
         // Create new user
         const newUser = new User({
-            'local.email': "Not Set",
+            'local.username': "Not Set",
             'local.password': "", // Default password till the tenant updates it
         })
 

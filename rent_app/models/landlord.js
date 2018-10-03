@@ -6,7 +6,6 @@ const landlordSchema = new Schema({
   created: { type: Date, default: Date.now, select: false },
   firstName: { type: String, unique: true },
 	lastName: { type: String, unique: true },
-	email: { type: String, required: false },
 	businessPhone: { type: String, required: false },
 	cellPhone: { type: String, required: false },
 	homePhone: { type: String, required: false },
