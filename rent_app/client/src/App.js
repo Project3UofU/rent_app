@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios'
 
-
+// hi
 // Import Pages
-// import Home from "./pages/Home";
-import Landlord from "./pages/Landlord";
-import Landing from "./pages/Landing";
+import Home from "./pages/Home/Home";
+import Landlord from "./pages/Landlord/Landlord";
+import Tenant from "./pages/Tenant";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import UnitFormPage from "./pages/UnitForm";
@@ -16,9 +16,8 @@ import PropertyFormPage from "./pages/PropertyForm";
 // Import Components
 import Nav from "./components/Nav";
 import LoginForm from './components/Login/LoginForm';
-import SignupForm from './components/SignupForm';
 import Header from './components/Header';
-import Home from './components/Home';
+import Footer from './components/Footer';
 
 // Global CSS (unedited form Create-React-App command!)
 import './App.css';
@@ -87,9 +86,12 @@ class App extends Component {
           <Nav _logout={this._logout} loggedIn={this.state.loggedIn} />
           <Header user={this.state.user} />
           <Switch>
-            <Route exact path="/" render={() => <Home user={this.state.user} />} />
+            <Route exact path="/" render={() => <Home
+              user={this.state.user} />}
+            />
+            {/* TODO: Should we change Landlord from Exact path to /Landlord/:id ? */}
             <Route exact path="/Landlord" render={() => <Landlord user={this.state.user} />} />
-            <Route exact path="/landing" component={Landing} />
+            <Route exact path="/Tenant" render={() => <Tenant user={this.state.user} />} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/unitform" component={UnitFormPage} />
             <Route exact path="/propertyform" component={PropertyFormPage} />
@@ -102,6 +104,7 @@ class App extends Component {
             />
             <Route component={NoMatch} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

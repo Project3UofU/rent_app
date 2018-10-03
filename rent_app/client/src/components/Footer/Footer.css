@@ -1,0 +1,48 @@
+.pagebottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #666666;
+  height: 2.8em;
+  color: white;
+  text-align: center;
+  border: #4aaaa5;
+  border-width: 15px;
+  padding:.5em;
+}
+.social:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  color: white;
+}
+.social {
+  -webkit-transform: scale(.9);
+  /* Browser Variations: */
+  color: #000;
+  -moz-transform: scale(.9);
+  -o-transform: scale(.9);
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  margin-right: 10px;
+  /* margin-top: 10px; */
+}
+.bottom-center {
+  color: white;
+  font-family: "Georgia", Times, Times New Roman, serif;
+  width: 100%;
+  border-top-color: #cccccc;
+  border-top-width: 2px;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bottom-name {
+  float: left;
+  background: #22524f;
+  color: white;
+  font-size: 26px;
+  padding: 10px;
+}

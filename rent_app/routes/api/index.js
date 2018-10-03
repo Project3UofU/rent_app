@@ -11,7 +11,7 @@ router.use("/landlord", middleware.isAuthenticated, landlordRoutes);
 router.use("/property", middleware.isAuthenticated, propertyRoutes);
 router.use("/tenant", middleware.isAuthenticated, tenantRoutes);
 router.use("/unit", middleware.isAuthenticated, unitRoutes);
-router.use("/work_order", middleware.isAuthenticated, workOrderRoutes);
+router.use("/workOrder", middleware.isAuthenticated, workOrderRoutes);
 router.use("/auth", authRoutes);
 
 module.exports = router;

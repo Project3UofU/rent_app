@@ -7,12 +7,12 @@ import Unit from "../../components/UnitForm"
 import ViewProperties from "../../components/ViewProperties"
 import LandlordControlPanel from "../../components/LandlordControlPanel"
 import CreateTenant from "../../components/TenantDemo"
+import WorkOrderLayout from "../../components/WorkOrderLayout"
+
 
 import "./Landlord.css";
 // API
-
-const axios = require("axios");
-
+// const axios = require("axios");
 
 // page build
 class Landlord extends Component {
@@ -49,15 +49,19 @@ class Landlord extends Component {
 
   render() {
     return (
-      <div>
+      <div className="workStation">
         <Row>
           <Col size="md-8">
             <Container>
-              <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
+              {/* <h2>Your Properties:</h2> */}
+              {/* <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2> */}
               {/* Check if the user exists before trying to display their username */}
               {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
               < this.state.WorkStation
+                changeView={this.changeView}
                 user={this.props.user}
+                key={this.props._id}
+
               />
             </Container>
           </Col>
@@ -65,6 +69,9 @@ class Landlord extends Component {
             <LandlordControlPanel
               changeView={this.changeView}
             />
+            <WorkOrderLayout>
+
+            </WorkOrderLayout>
           </Col>
         </Row>
       </div>

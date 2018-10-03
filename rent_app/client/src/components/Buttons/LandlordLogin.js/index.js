@@ -1,1 +1,1 @@
-export { default } from "./LandlordLogin";
+export * from "./CreatePropertyBtn";

@@ -1,7 +1,24 @@
 import React from "react";
 
-const Footer = () => (
- <div>Footer</div>
-);
+import "./Footer.css";
 
+const Footer = props => (
+  <footer className="pagebottom">
+    <div className="bottom-center">
+      <div className="bottom-nav">
+        {/* //TODO: Create Facebook, Twitter, and Email Accounts for RentKeeper. */}
+        <a href="www.facebook.com">
+          <i id="social-git" className="fab fa-facebook-square fa-2x social" />
+        </a>
+        <a href="twitter.com">
+          <i id="social-linked" className="fab fa-twitter fa-2x social" />
+        </a>
+        <a href="google.com">
+          <i id="social-linked" className="fas fa-envelope-square fa-2x social" />
+        </a>
+
+      </div>
+    </div>
+  </footer>
+);
 export default Footer;
