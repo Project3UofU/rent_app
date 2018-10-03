@@ -16,7 +16,7 @@ class ViewProperties extends Component {
 
     render() {
         return (
-            <Container className="fluid">
+            <div>
                 {this.state.Properties.length ? (
                     <div>
                         {this.state.Properties.map(property =>
@@ -58,7 +58,7 @@ class ViewProperties extends Component {
                     )
                 }
 
-            </Container >
+            </div >
         )
     }
 }

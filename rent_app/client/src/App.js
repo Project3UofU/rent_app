@@ -66,6 +66,7 @@ class App extends Component {
       .post('/api/auth/login', {
         username: username,
         password: password
+
       })
       .then(response => {
         console.log(response)
