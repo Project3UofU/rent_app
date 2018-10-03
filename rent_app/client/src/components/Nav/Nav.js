@@ -10,7 +10,7 @@ const Nav = (props) => {
         <ul className="nav">
           <li className="nav-item">
             <Link to="/" className="nav-link">
-              <img src="/images/RentKeeper-01.png" class="img-fluid" alt="RentKeeper" />
+              <img src="/images/RentKeeper-01.png" className="img-fluid" alt="RentKeeper" />
             </Link>
           </li>
           <li>
