@@ -64,8 +64,9 @@ class App extends Component {
   _login = (email, password) => {
     axios
       .post('/api/auth/login', {
-        email,
-        password
+        username: username,
+        password: password
+
       })
       .then(response => {
         console.log(response)

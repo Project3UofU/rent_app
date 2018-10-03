@@ -29,7 +29,7 @@ router
 
 router
 	.route('/signup')
-	.post(middleware.paramsCheck(["email", "password", "firstName", "lastName", ["businessPhone", "cellPhone", "homePhone"]]))
-	.post(userController.createUser)
+	.post(middleware.paramsCheck(["username", "password", "firstName", "lastName", ["businessPhone", "cellPhone", "homePhone"]]))
+	.post(userController.createUser, passport.authenticate('local'), userController.user) // TODO: Figure out how to pass back an authenticated user from createUser
 
 module.exports = router
