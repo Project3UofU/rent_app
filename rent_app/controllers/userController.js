@@ -14,7 +14,7 @@ module.exports = {
         }
         
         // TODO: Handle exception
-        User.findOne({ 'local.email': email }, (err, userMatch) => {
+        User.findOne({ 'local.username': email }, (err, userMatch) => {
             if (userMatch) {
                 // Found existing user
                 return utils.error(res, 422, `Email '${email}' already in use`)
@@ -22,7 +22,7 @@ module.exports = {
             
             // Create new user
             const newUser = new User({
-                'local.email': email,
+                'local.username': email,
                 'local.password': password
             })
 
