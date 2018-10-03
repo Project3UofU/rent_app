@@ -73,7 +73,7 @@ class Register extends Component {
                 }
                 this.setState({
                     redirect: true,
-                    redirectTo: "./login"
+                    redirectTo: "./Landlord"
                 });
             });
         }
