@@ -78,7 +78,6 @@ class Register extends Component {
                     });
 
                 });
-            });
         }
     }
 
