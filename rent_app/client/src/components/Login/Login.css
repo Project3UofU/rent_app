@@ -1,3 +1,8 @@
 .LoginForm{
     text-align: center;   
+    
+}
+input{
+    margin-right:2em;
+    margin-left:.5em;
 }

@@ -1,3 +1,6 @@
-.fluid {
-    background-size: cover;   
+.container{
+    margin-bottom: 4em;
+}
+label{
+    letter-spacing: 1.5px
 }
