@@ -8,6 +8,11 @@ export const WorkOrder = props => {
 
     }
 
+
+    // setParentClass = (key) => {
+    //     onclick="this.parentElement.ClassName = 'warning'"
+    // }
+
     // TODO: functions for buttons!
 
     return (

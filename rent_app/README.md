@@ -3,7 +3,7 @@ An app designed to assist Property Mananagers by keeping track of Tenant Data, P
 
 ![Logo](/client/public/images/RentKeeper-01.png)
 
-##[Published on Heroku](https://www.RentKeeper.net)
+## [Published on Heroku](https://www.RentKeeper.net)
 
 
 

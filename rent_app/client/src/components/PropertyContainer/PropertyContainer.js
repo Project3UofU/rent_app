@@ -12,6 +12,10 @@ export const PropertyContainer = props => {
     }
 
     // TODO: functions for buttons!
+    // unoccupiedUnit = () => {
+    //     let el = this.parentElement;
+    //     el.classList.remove('primary');
+    //     el.classList.add('warning')
 
     return (
 
@@ -25,6 +29,7 @@ export const PropertyContainer = props => {
 
                     {props.units.map(unit =>
                         <div className="card text-white bg-primary mb-3 unitCard">
+
                             <div className="card-header">{unit.name}</div>
                             <div className="card-body">
                                 <h5 className="card-title">{unit.number}</h5>
@@ -44,15 +49,17 @@ export const PropertyContainer = props => {
                                 }
                                 {unit.tenant.name ?
                                     (
-                                        <p>{unit.tenant.name}</p>
+                                        < p > {unit.tenant.name}</p>
                                     ) : (
-                                        <button
-                                            type="button"
-                                            onClick={() => this.props.changeView("CreateTenant")}
-                                            className="btn btn-secondary"
-                                        >
-                                            Add a new Tenant
-                                      </button>)
+                                        <div>
+                                            {/* {this.unoccupiedUnit.call(this)} */}
+                                            < button type="button"
+                                                onClick={() => this.props.changeView("CreateTenant")}
+                                                className="btn btn-secondary"
+                                            >
+                                                Add a new Tenant
+                                            </button>
+                                        </div>)
                                 }
                             </div>
 
