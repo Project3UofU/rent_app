@@ -7,7 +7,7 @@ const middleware = require("../../middleware");
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 router.get(
 	'/google/callback',
-	passport.authenticate('google', {
+	passport.authenticate('googleAuth', {
 		successRedirect: '/',
 		failureRedirect: '/login'
 	})

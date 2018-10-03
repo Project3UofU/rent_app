@@ -15,7 +15,7 @@ const userSchema = new Schema({
 		required: false
 	},
 	local: {
-		email: { type: String, unique: true, required: false },
+		username: { type: String, unique: true, required: false },
 		password: { type: String, unique: false, required: false, default: "password" },
 	},
 	google: {
