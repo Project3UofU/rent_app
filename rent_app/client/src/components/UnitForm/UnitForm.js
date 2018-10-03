@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
 import { Input, TextArea, FormBtn } from "../Form";
+import { Redirect } from "react-router-dom";
 const axios = require("axios");
+// import Landlord from "../../pages/Landlord";
 
 class UnitForm extends Component {
   state = {
-    streetAddress: "",
-    city: "",
-    state: "",
-    zip: "",
-    numberOfRooms: "",
-    rooms: "",
-    furnished: "",
-    additional: ""
+    rent: "",
+    securityDeposit: "",
+    name: "",
+    // additional: "",
+    redirect: false,
+    redirectTo: null
   };
 
   handleInputChange = event => {
@@ -24,88 +24,86 @@ class UnitForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.streetAddress === "" ||
-        this.state.city === "" ||
-        this.state.state === "" ||
-        this.state.zip === "" 
-        ) {
-            alert("Please provide all the required information");
-            return;
-        } else {
-            axios.post('./api/landlord/property', {
-                streetAddress: this.state.streetAddress,
-                city: this.state.city,
-                state: this.state.state,
-                zip: this.state.zip,
-                nickname: this.state.nickname,
+      axios.post('./api/addUnit', {
+                rent: this.state.rent,
+                securityDeposit: this.state.securityDeposit,
+                name: this.state.name,
                 comments: this.state.additional
                 // landlordID: this.state.landlordID?
             }).then(res => {
-                console.log(res);
-                if (res.data.err) {
-                    alert(res.data.err);
-                    return;
-                }
-                this.setState({
+              console.log(res);
+                // if (res.data.err) {
+                //     alert(res.data.err);
+                //     return;
+                // } else {
+                  this.setState({
                     redirect: true,
-                    redirectTo: "./unitform"
-                });
-            });
-        }
-    }
-
-
-    render() {
-    return (
+                    redirectTo: "./Landlord"
+                  });
+                  alert("test");
+                  if (this.state.redirect) {
+                    return <Redirect to={this.state.redirectTo} />;
+                  // };  
+                }
+              });
+          }
+                
+            
+            
+            
+            render() {
+              return (
       <Container className="fluid">
         <Col size="md-8">
           <h1>Add information for this unit</h1>
           <form>
-            <Input
-              value={this.state.city}
+            {/* TODO: do we want to enter number of rooms? */}
+            {/* <Input
+              value={this.state.numberOfRooms}
               onChange={this.handleInputChange}
-              name="city"
-              placeholder="Enter the city"
-            />
-            <Input
-              value={this.state.state}
-              onChange={this.handleInputChange}
-              name="state"
-              placeholder="Enter the state"
-            />
-            <Input
-              value={this.state.zip}
-              onChange={this.handleInputChange}
-              name="zip"
-              placeholder="Enter the zip"
-            />
-            <Input
-              value={this.state.numberOfUnits}
-              onChange={this.handleInputChange}
-              name="numberOfUnits"
-              placeholder="Enter the number of units"
-            />
+              name="numberOfRooms"
+              placeholder="Enter the number of rooms in this unit"
+            /> */}
             
             {/* TODO: this needs to be a boolean with an additional form for any furnishings */}
+            {/* future development
             <Input
               value={this.state.furnished}
               onChange={this.handleInputChange}
               name="furnished"
               placeholder="Is the unit furnished"
+            /> */}
+            <Input
+              value={this.state.rent}
+              onChange={this.handleInputChange}
+              name="rent"
+              placeholder="What is the rent for this unit?"
             />
-            <TextArea
+            <Input
+              value={this.state.securityDeposit}
+              onChange={this.handleInputChange}
+              name="securityDeposit"
+              placeholder="What is the security deposit for this unit?"
+            />
+            <Input
+              value={this.state.name}
+              onChange={this.handleInputChange}
+              name="name"
+              placeholder="What is the name of this unit?"
+            />
+            {/* <TextArea
               value={this.state.additional}
               onChange={this.handleInputChange}
               name="additional"
               placeholder="Any additional info (500 characters max)"
-            />
+            /> */}
             <FormBtn
-              disabled={
-                !this.state.streetAddress &&
-                this.state.city &&
-                this.state.state &&
-                this.state.zip
-              }
+              // disabled={
+              //   !this.state.streetAddress &&
+              //   this.state.city &&
+              //   this.state.state &&
+              //   this.state.zip
+              // }
               onClick={this.handleFormSubmit}
             >
               Submit

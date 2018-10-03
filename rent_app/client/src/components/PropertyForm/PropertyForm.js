@@ -46,9 +46,10 @@ class PropertyForm extends Component {
                         alert(res.data.err);
                         return;
                     }
+                    alert("test");
                     this.setState({
                         redirect: true,
-                        redirectTo: "./unitform"
+                        redirectTo: "./Landlord"
                     });
                 });
             }
@@ -106,7 +107,7 @@ class PropertyForm extends Component {
                         }
                         onClick={this.handleFormSubmit}
                         >
-                        Submit and add a unit
+                        Submit
                     </FormBtn>
                 </form>
             </Col>
