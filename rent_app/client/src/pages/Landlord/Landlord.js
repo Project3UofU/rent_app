@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 
 // Components for ViewPorts
-import Unit from "../../components/Unit"
+import Unit from "../../components/UnitForm"
 import ViewProperties from "../../components/ViewProperties"
 import LandlordControlPanel from "../../components/LandlordControlPanel"
 import CreateTenant from "../../components/TenantDemo"
