@@ -1,28 +1,27 @@
 const db = require("../models");
 const utils = require('../utils');
-const Tenant = require('../models/tenant')
 const User = require('../models/user')
 const Landlord = require('../models/landlord')
 
 module.exports = {
 
     // Used for making Landlords. Tenants are created via the 'addTenant' function in the 'unitController'
-    createUser: function (req, res) {
-        const { email, password, firstName, lastName, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, preferredMethodOfContact } = req.body
+    createUser: function (req, res, next) {
+        const { username, password, firstName, lastName, businessPhone, cellPhone, homePhone, fax, businessAddress, mailingAddress, preferredMethodOfContact } = req.body
         if (password.length < 4) {
             return utils.error(res, 422, "Password must be at least 4 characters.")
         }
         
         // TODO: Handle exception
-        User.findOne({ 'local.username': email }, (err, userMatch) => {
+        User.findOne({ 'local.username': username }, (err, userMatch) => {
             if (userMatch) {
                 // Found existing user
-                return utils.error(res, 422, `Email '${email}' already in use`)
+                return utils.error(res, 422, `Email '${username}' already in use`)
             }
             
             // Create new user
             const newUser = new User({
-                'local.username': email,
+                'local.username': username,
                 'local.password': password
             })
 
@@ -42,7 +41,7 @@ module.exports = {
                 newUser.landlord = savedLandlord._id
                 newUser.save((err, savedUser) => {
                     if (err) return utils.error(res, 422, err.message)
-                    return res.json({ user: savedUser })
+                    return next() // res.json({ user: savedUser })
                 })
             })
 

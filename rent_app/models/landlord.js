@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 // When `select` is false it means the property won't show up in queries
 const landlordSchema = new Schema({
   created: { type: Date, default: Date.now, select: false },
-  firstName: { type: String, unique: true },
-	lastName: { type: String, unique: true },
+  firstName: { type: String, unique: false },
+	lastName: { type: String, unique: false },
 	businessPhone: { type: String, required: false },
 	cellPhone: { type: String, required: false },
 	homePhone: { type: String, required: false },
