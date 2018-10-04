@@ -39,45 +39,45 @@ class Register extends Component {
             this.state.lastName === "" ||
             this.state.email === ""
 
-            ) {
-                alert("Please provide all required information");
-                return;
-            } else if (
-                this.state.businessPhone === "" &&
-                this.state.cellPhone === "" && 
-                this.state.homePhone === ""
-            ) { 
-                alert("Please provide a phone number");
-                return;
-            } else if (
-                this.state.password !== this.state.confirmPassword
-            ) {
-                alert("Your passwords must match");
-                return;
-            } else {
-                axios.post('./api/auth/signup', {
-                    password: this.state.password,
-                    firstName: this.state.firstName,
-                    lastName: this.state.lastName,
-                    username: this.state.email,
-                    businessPhone: this.state.businessPhone,
-                    cellPhone: this.state.cellPhone,
-                    homePhone: this.state.homePhone,
-                    fax: this.state.fax,
-                    businessAddress: this.state.businessAddress,
-                    mailingAddress: this.state.mailingAddress,
-                }).then(res => {
-                    console.log(res);
-                    if(res.data.err) {
-                        alert(res.data.err);
-                        return;
-                    } 
-                    this.setState({
-                        redirect: true,
-                        redirectTo: "./login"
-                    });
-
+        ) {
+            alert("Please provide all required information");
+            return;
+        } else if (
+            this.state.businessPhone === "" &&
+            this.state.cellPhone === "" &&
+            this.state.homePhone === ""
+        ) {
+            alert("Please provide a phone number");
+            return;
+        } else if (
+            this.state.password !== this.state.confirmPassword
+        ) {
+            alert("Your passwords must match");
+            return;
+        } else {
+            axios.post('./api/auth/signup', {
+                password: this.state.password,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                username: this.state.email,
+                businessPhone: this.state.businessPhone,
+                cellPhone: this.state.cellPhone,
+                homePhone: this.state.homePhone,
+                fax: this.state.fax,
+                businessAddress: this.state.businessAddress,
+                mailingAddress: this.state.mailingAddress,
+            }).then(res => {
+                console.log(res);
+                if (res.data.err) {
+                    alert(res.data.err);
+                    return;
+                }
+                this.setState({
+                    redirect: true,
+                    redirectTo: "./landlord"
                 });
+
+            });
         }
     }
 
@@ -86,7 +86,7 @@ class Register extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         }
         return (
-            <Container className="fluid">
+            <Container className="fluid bottom-buffer">
                 <Row>
                     <Col size="md-12">
                         <h1>Register as a landlord on Rent Keeper</h1>

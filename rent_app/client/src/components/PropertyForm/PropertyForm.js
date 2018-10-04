@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../Grid";
+import { Col, Container } from "../Grid";
 import { Input, TextArea, FormBtn } from "../Form";
 
 const axios = require("axios");
@@ -13,13 +13,13 @@ class PropertyForm extends Component {
         comments: "",
         redirect: false,
         redirectTo: null
-};
+    };
 
     handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-        [name]: value
-    });
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
     };
 
     handleFormSubmit = event => {
@@ -27,33 +27,33 @@ class PropertyForm extends Component {
         if (this.state.streetAddress === "" ||
             this.state.city === "" ||
             this.state.state === "" ||
-            this.state.zip === "" 
-            ) {
-                alert("Please provide all the required information");
-                return;
-            } else {
-                axios.post('./api/landlord/addProperty', {
-                    streetAddress: this.state.streetAddress,
-                    city: this.state.city,
-                    state: this.state.state,
-                    zip: this.state.zip,
-                    nickname: this.state.nickname,
-                    comments: this.state.additional
-                    // landlordID: this.state.landlordID?
-                }).then(res => {
-                    console.log(res);
-                    if (res.data.err) {
-                        alert(res.data.err);
-                        return;
-                    }
-                    alert("test");
-                    this.setState({
-                        redirect: true,
-                        redirectTo: "./Landlord"
-                    });
+            this.state.zip === ""
+        ) {
+            alert("Please provide all the required information");
+            return;
+        } else {
+            axios.post('./api/landlord/addProperty', {
+                streetAddress: this.state.streetAddress,
+                city: this.state.city,
+                state: this.state.state,
+                zip: this.state.zip,
+                nickname: this.state.nickname,
+                comments: this.state.additional
+                // landlordID: this.state.landlordID?
+            }).then(res => {
+                console.log(res);
+                if (res.data.err) {
+                    alert(res.data.err);
+                    return;
+                }
+                alert("test");
+                this.setState({
+                    redirect: true,
+                    redirectTo: "./Landlord"
                 });
-            }
+            });
         }
+    }
 
 
     render() {
@@ -99,20 +99,20 @@ class PropertyForm extends Component {
                             placeholder="Any additional info (500 characters max)"
                         />
                         <FormBtn
-                        disabled={
-                            !(this.state.streetAddress &&
-                            this.state.city &&
-                            this.state.state &&
-                            this.state.zip)
-                        }
-                        onClick={this.handleFormSubmit}
+                            disabled={
+                                !(this.state.streetAddress &&
+                                    this.state.city &&
+                                    this.state.state &&
+                                    this.state.zip)
+                            }
+                            onClick={this.handleFormSubmit}
                         >
-                        Submit
+                            Submit
                     </FormBtn>
-                </form>
-            </Col>
-        </Container>
-    );
+                    </form>
+                </Col>
+            </Container>
+        );
     }
 }
 

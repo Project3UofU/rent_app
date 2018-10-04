@@ -1,21 +1,15 @@
 import React from "react";
-import { Col, Row, Container } from "../Grid";
-
 
 import "./Property.css"
 
 export const PropertyContainer = props => {
-    console.log("UNITS!!" + props.units);
-    console.log("ChangeView " + props.changeView)
-    this.state = {
-
-    }
 
     // TODO: functions for buttons!
-    // unoccupiedUnit = () => {
+    // unoccupiedUnit = el => {
     //     let el = this.parentElement;
     //     el.classList.remove('primary');
     //     el.classList.add('warning')
+    // }
 
     return (
 
@@ -30,7 +24,10 @@ export const PropertyContainer = props => {
                     {props.units.map(unit =>
                         <div className="card text-white bg-primary mb-3 unitCard">
 
-                            <div className="card-header">{unit.name}</div>
+                            <div className="card-header">
+                                {unit.name}
+
+                            </div>
                             <div className="card-body">
                                 <h5 className="card-title">{unit.number}</h5>
                                 {/* BELOW is an example of collapsable content */}
@@ -52,7 +49,6 @@ export const PropertyContainer = props => {
                                         < p > {unit.tenant.name}</p>
                                     ) : (
                                         <div>
-                                            {/* {this.unoccupiedUnit.call(this)} */}
                                             < button type="button"
                                                 onClick={() => this.props.changeView("CreateTenant")}
                                                 className="btn btn-secondary"

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../Grid";
-import { Input, TextArea, FormBtn } from "../Form";
+import { Col, Container } from "../Grid";
+import { Input, FormBtn } from "../Form";
 import { Redirect } from "react-router-dom";
 const axios = require("axios");
 // import Landlord from "../../pages/Landlord";
@@ -24,35 +24,35 @@ class UnitForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-      axios.post('./api/addUnit', {
-                rent: this.state.rent,
-                securityDeposit: this.state.securityDeposit,
-                name: this.state.name,
-                comments: this.state.additional
-                // landlordID: this.state.landlordID?
-            }).then(res => {
-              console.log(res);
-                // if (res.data.err) {
-                //     alert(res.data.err);
-                //     return;
-                // } else {
-                  this.setState({
-                    redirect: true,
-                    redirectTo: "./Landlord"
-                  });
-                  alert("test");
-                  if (this.state.redirect) {
-                    return <Redirect to={this.state.redirectTo} />;
-                  // };  
-                }
-              });
-          }
-                
-            
-            
-            
-            render() {
-              return (
+    axios.post('./api/addUnit', {
+      rent: this.state.rent,
+      securityDeposit: this.state.securityDeposit,
+      name: this.state.name,
+      comments: this.state.additional
+      // landlordID: this.state.landlordID?
+    }).then(res => {
+      console.log(res);
+      // if (res.data.err) {
+      //     alert(res.data.err);
+      //     return;
+      // } else {
+      this.setState({
+        redirect: true,
+        redirectTo: "./Landlord"
+      });
+      alert("test");
+      if (this.state.redirect) {
+        return <Redirect to={this.state.redirectTo} />;
+        // };  
+      }
+    });
+  }
+
+
+
+
+  render() {
+    return (
       <Container className="fluid">
         <Col size="md-8">
           <h1>Add information for this unit</h1>
@@ -64,7 +64,7 @@ class UnitForm extends Component {
               name="numberOfRooms"
               placeholder="Enter the number of rooms in this unit"
             /> */}
-            
+
             {/* TODO: this needs to be a boolean with an additional form for any furnishings */}
             {/* future development
             <Input
