@@ -3,8 +3,8 @@ const User = require('../models/user')
 
 const strategy = new GoogleStrategy(
 	{
-		clientID: '219707160907-4r611gihi5j1h9d1537k4jru8nu1ppee.apps.googleusercontent.com',
-		clientSecret: '1eLwfUx3sbBCmf5V5mIO0bPa',
+		clientID: process.env.GOOGLE_CLIENT_ID,
+		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 		callbackURL: '/auth/google/callback'
 	},
 	function(token, tokenSecret, profile, done) {
@@ -13,7 +13,7 @@ const strategy = new GoogleStrategy(
 		console.log(profile)
 		console.log('======== END ===========')
 		// code
-		const { id, name, photos } = profile
+		const { id, name, email } = profile
 		User.findOne({ 'google.googleId': id }, (err, userMatch) => {
 			// handle errors here:
 			if (err) {
@@ -34,7 +34,7 @@ const strategy = new GoogleStrategy(
 					'google.googleId': id,
 					firstName: name.givenName,
 					lastName: name.familyName,
-					photos: photos
+					'local.username': email //TODO: Handle the Email in a better way.
 				})
 				// save this user
 				newGoogleUser.save((err, savedUser) => {

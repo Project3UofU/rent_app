@@ -4,7 +4,7 @@ const userController = require("../../controllers/userController");
 const middleware = require("../../middleware");
 
 // TODO: Handle google login
-router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 router.get(
 	'/google/callback',
 	passport.authenticate('googleAuth', {
