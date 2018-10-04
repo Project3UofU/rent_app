@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../Grid";
 import { PropertyContainer } from "../PropertyContainer"
 import testProperties from "../../landlordtest.json"
 class ViewProperties extends Component {
 
     constructor(props) {
         super(props);
-        console.log("PROPS: " + props.user);
-        console.log("View Properties! " + testProperties[0].created)
-
         this.state = {
             Properties: testProperties,
         }
@@ -53,7 +49,12 @@ class ViewProperties extends Component {
                 ) : (
                         <div>
                             <h3>No Results to Display</h3>
-                            <button>Add New Property</button>
+                            <button
+                                type="button"
+                                onClick={() => this.props.changeView("PropertyContainer")}
+                                className="btn btn-warning"
+                            >Add A new Property
+                            </button>
                         </div>
                     )
                 }

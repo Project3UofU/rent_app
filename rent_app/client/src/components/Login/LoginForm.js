@@ -31,7 +31,7 @@ class LoginForm extends Component {
 		console.log('handleSubmit')
 		this.props._login(this.state.username, this.state.password)
 		this.setState({
-			redirectTo: '/Landlord' 
+			redirectTo: '/Landlord'
 		})
 	}
 
@@ -40,7 +40,6 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-
 				<Container>
 					<div className="LoginForm">
 						<h1>Login form</h1>
@@ -67,8 +66,6 @@ class LoginForm extends Component {
 						</a>
 					</div>
 				</Container>
-
-
 			)
 		}
 	}

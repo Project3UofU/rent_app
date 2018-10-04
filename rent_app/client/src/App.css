@@ -20,4 +20,9 @@ input {
 button{
   margin:2px;
 }
-
+.bottom-buffer{
+  margin-bottom: 4em
+}
+.align-left{
+  text-align: left
+}
