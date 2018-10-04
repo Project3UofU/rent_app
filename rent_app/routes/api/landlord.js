@@ -16,9 +16,7 @@ router
 // /api/landlord/addProperty
 router
   .route("/addProperty")
-  .post(middleware.paramsCheck(["city", "state", "zip"
-  // ,"landlordID"
-]))
+  .post(middleware.paramsCheck(["city", "state", "zip", "landlordID"]))
   .post(landlordController.addProperty);
 
 module.exports = router;
