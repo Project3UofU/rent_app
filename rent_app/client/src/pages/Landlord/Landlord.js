@@ -61,7 +61,7 @@ class Landlord extends Component {
     return (
       <div className="workStation">
 
-        {this.props.user.local.username ? (
+        {this.props.user ? (
           <Row>
             <Col size="md-8">
               <Container>
