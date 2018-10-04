@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Container } from "../Grid";
+import { Col, Container, Row } from "../Grid";
 import { Input, TextArea, FormBtn } from "../Form";
 
 const axios = require("axios");
@@ -59,58 +59,74 @@ class PropertyForm extends Component {
     render() {
         return (
             <Container className="fluid">
-                <Col size="md-8">
-                    <h1>Add information for this property</h1>
-                    <form>
-                        <Input
-                            value={this.state.streetAddress}
-                            onChange={this.handleInputChange}
-                            name="streetAddress"
-                            placeholder="Enter the street address"
-                        />
-                        <Input
-                            value={this.state.city}
-                            onChange={this.handleInputChange}
-                            name="city"
-                            placeholder="Enter the city"
-                        />
-                        <Input
-                            value={this.state.state}
-                            onChange={this.handleInputChange}
-                            name="state"
-                            placeholder="Enter the state"
-                        />
-                        <Input
-                            value={this.state.zip}
-                            onChange={this.handleInputChange}
-                            name="zip"
-                            placeholder="Enter the zip"
-                        />
-                        <Input
-                            value={this.state.nickname}
-                            onChange={this.handleInputChange}
-                            name="nickname"
-                            placeholder="Enter a nickname for the property (if applicable)"
-                        />
-                        <TextArea
-                            value={this.state.additional}
-                            onChange={this.handleInputChange}
-                            name="additional"
-                            placeholder="Any additional info (500 characters max)"
-                        />
-                        <FormBtn
-                            disabled={
-                                !(this.state.streetAddress &&
-                                    this.state.city &&
-                                    this.state.state &&
-                                    this.state.zip)
-                            }
-                            onClick={this.handleFormSubmit}
-                        >
-                            Submit
-                    </FormBtn>
-                    </form>
-                </Col>
+                <Row>
+                    <Col size="md-12">
+                        <h1>Add information for this property</h1>
+                        <form align="left">
+                            <Row>
+                                <Col size="md-6">
+                                    <Input
+                                        value={this.state.streetAddress}
+                                        onChange={this.handleInputChange}
+                                        name="streetAddress"
+                                        placeholder="1600 Pennsylvania Avenue"
+                                        label="Enter the street address"
+                                    />
+                                    <Input
+                                        value={this.state.city}
+                                        onChange={this.handleInputChange}
+                                        name="city"
+                                        placeholder="Kansas City"
+                                        label="Enter the city"
+                                    />
+                                    <Input
+                                        value={this.state.state}
+                                        onChange={this.handleInputChange}
+                                        name="state"
+                                        placeholder="Kansas"
+                                        label="Enter the state"
+                                    />
+                                </Col>
+                                <Col size="md-6">
+                                    <Input
+                                        value={this.state.zip}
+                                        onChange={this.handleInputChange}
+                                        name="zip"
+                                        placeholder="123456"
+                                        label="Enter the zip"
+                                    />
+                                    <Input
+                                        value={this.state.nickname}
+                                        onChange={this.handleInputChange}
+                                        name="nickname"
+                                        placeholder="MidTown Duplex (This is Not Required)"
+                                        label="Enter a nickname for the property"
+                                    />
+                                </Col></Row>
+                            <Row>
+                                <Col size="md-12">
+                                    <TextArea
+                                        value={this.state.additional}
+                                        onChange={this.handleInputChange}
+                                        name="additional"
+                                        placeholder="Enter Additional Info Here"
+                                        label="Any additional info (500 characters max)"
+                                    />
+                                    <FormBtn
+                                        disabled={
+                                            !(this.state.streetAddress &&
+                                                this.state.city &&
+                                                this.state.state &&
+                                                this.state.zip)
+                                        }
+                                        onClick={this.handleFormSubmit}
+                                    >Submit
+                                    </FormBtn>
+                                </Col>
+                            </Row>
+                        </form>
+                    </Col>
+                </Row>
             </Container>
         );
     }

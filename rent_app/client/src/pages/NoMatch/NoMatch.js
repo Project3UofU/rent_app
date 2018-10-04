@@ -7,6 +7,7 @@ const NoMatch = () => (
     <Row>
       <Col size="md-12">
         <div className="container">
+          <iframe src="https://giphy.com/embed/5ftsmLIqktHQA" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/no-jurassic-park-dennis-nedry-5ftsmLIqktHQA">via GIPHY</a></p>
           <div className="card xl-dark text-white">
             <img className="card-img" src="./images/jose-alonso-382321-unsplash.jpg" id="no-match-image" alt="404" />
             <div className="card-img-overlay">
@@ -16,6 +17,7 @@ const NoMatch = () => (
                 </p>
 
             </div>
+
           </div>
 
 

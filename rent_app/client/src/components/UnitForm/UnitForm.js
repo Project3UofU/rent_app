@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Container } from "../Grid";
+import { Col, Row, Container } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import { Redirect } from "react-router-dom";
 const axios = require("axios");
@@ -56,62 +56,75 @@ class UnitForm extends Component {
     }
     return (
       <Container className="fluid">
-        <Col size="md-8">
-          <h1>Add information for this unit</h1>
-          <form>
-            {/* TODO: do we want to enter number of rooms? */}
-            {/* <Input
+        <Row>
+          <Col size="md-12">
+            <h1>Add information for this unit</h1>
+            <form>
+              <Row>
+                <Col size="md-12">
+
+                  {/* TODO: do we want to enter number of rooms? */}
+                  {/* <Input
               value={this.state.numberOfRooms}
               onChange={this.handleInputChange}
               name="numberOfRooms"
-              placeholder="Enter the number of rooms in this unit"
+              placeholder=""
+              label="Enter the number of rooms in this unit"
             /> */}
 
-            {/* TODO: this needs to be a boolean with an additional form for any furnishings */}
-            {/* future development
+                  {/* TODO: this needs to be a boolean with an additional form for any furnishings */}
+                  {/* future development
             <Input
               value={this.state.furnished}
               onChange={this.handleInputChange}
               name="furnished"
-              placeholder="Is the unit furnished"
+              placeholder=""
+              label="Is the unit furnished"
             /> */}
-            <Input
-              value={this.state.rent}
-              onChange={this.handleInputChange}
-              name="rent"
-              placeholder="What is the rent for this unit?"
-            />
-            <Input
-              value={this.state.securityDeposit}
-              onChange={this.handleInputChange}
-              name="securityDeposit"
-              placeholder="What is the security deposit for this unit?"
-            />
-            <Input
-              value={this.state.name}
-              onChange={this.handleInputChange}
-              name="name"
-              placeholder="What is the name of this unit?"
-            />
-            {/* <TextArea
+                  <Input
+                    value={this.state.rent}
+                    onChange={this.handleInputChange}
+                    name="rent"
+                    placeholder="1000"
+                    label="What is the monthly rent for this unit?"
+                  />
+                  <Input
+                    value={this.state.securityDeposit}
+                    onChange={this.handleInputChange}
+                    name="securityDeposit"
+                    placeholder="1000"
+                    label="What is the security deposit for this unit?"
+                  />
+                  <Input
+                    value={this.state.name}
+                    onChange={this.handleInputChange}
+                    name="name"
+                    placeholder="Apartment A"
+                    label="What is the name of this unit?"
+                  />
+                  {/* <TextArea
               value={this.state.additional}
               onChange={this.handleInputChange}
               name="additional"
-              placeholder="Any additional info (500 characters max)"
+              placeholder=""
+              label="Any additional info (500 characters max)"
             /> */}
-            <FormBtn
-              // disabled={
-              //   !this.state.streetAddress &&
-              //   this.state.city &&
-              //   this.state.state &&
-              //   this.state.zip
-              // }
-              onClick={this.handleFormSubmit}
-            >
-              Submit
+                  <FormBtn
+                    // disabled={
+                    //   !this.state.streetAddress &&
+                    //   this.state.city &&
+                    //   this.state.state &&
+                    //   this.state.zip
+                    // }
+                    onClick={this.handleFormSubmit}
+                  >
+                    Submit
             </FormBtn>
-          </form>
-        </Col>
+                </Col>
+              </Row>
+            </form>
+          </Col>
+        </Row>
       </Container>
     );
   }

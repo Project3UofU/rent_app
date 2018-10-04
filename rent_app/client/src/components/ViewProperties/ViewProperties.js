@@ -49,7 +49,12 @@ class ViewProperties extends Component {
                 ) : (
                         <div>
                             <h3>No Results to Display</h3>
-                            <button>Add New Property</button>
+                            <button
+                                type="button"
+                                onClick={() => this.props.changeView("PropertyContainer")}
+                                className="btn btn-warning"
+                            >Add A new Property
+                            </button>
                         </div>
                     )
                 }

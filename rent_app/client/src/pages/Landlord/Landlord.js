@@ -8,6 +8,7 @@ import ViewProperties from "../../components/ViewProperties"
 import LandlordControlPanel from "../../components/LandlordControlPanel"
 import CreateTenant from "../../components/TenantDemo"
 import WorkOrderLayout from "../../components/WorkOrderLayout"
+import PropertyForm from "../../components/PropertyForm"
 
 
 import "./Landlord.css";
@@ -42,6 +43,9 @@ class Landlord extends Component {
         break;
       case "CreateTenant":
         currentView = CreateTenant;
+        break;
+      case "PropertyForm":
+        currentView = PropertyForm;
         break;
       default:
         currentView = ViewProperties;
