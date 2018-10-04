@@ -25,7 +25,11 @@ mongoose.connect(
 //     "id": "5ba856cea2ff4f5d1df237a7"
 // }
 
-db.Property.deleteMany({})
+db.User.deleteMany({})
+    .then(data => {
+        console.log(`Removed ${data.n} User records`);
+        return db.Property.deleteMany({})
+    })
     .then(data => {
         console.log(`Removed ${data.n} Property records`);
         return db.Unit.deleteMany({})
@@ -41,22 +45,24 @@ db.Property.deleteMany({})
     .then(data => {
         console.log(`Removed ${data.n} Landlord records`);
     })
-    .then(() => addNewLandlordAndPopulate())
+    .then(() => addNewUserAndPopulate())
 
-function addNewLandlordAndPopulate() {
-    console.log(`Seed Landlord`)
-    let landlord = {
-        name: `Landlord Name ${Math.ceil(Math.random() * 9999)}`,
-        username: `username${Math.ceil(Math.random() * 9999)}`,
+function addNewUserAndPopulate() {
+    console.log(`Seed User`)
+    let user = {
+        username: `email${Math.ceil(Math.random() * 9999)}@example.com`,
         password: `password${Math.ceil(Math.random() * 9999)}`,
+        firstName: "FirstName",
+        lastName: "LastName",
+        cellPhone: "8018888888"
     }
 
-    axios.post(baseURL + 'api/landlord/', landlord)
+    axios.post(baseURL + 'api/auth/signup', user)
         .then(function (response) {
-            let landord = response.data.landlord;
-            console.log("Landlord: " + JSON.stringify(landord, 0, 2));
-            if (landord) {
-                seedPropertyToLandlord(landord);
+            let user = response.data.user;
+            console.log("User: " + JSON.stringify(user, 0, 2));
+            if (user.landlord) {
+                seedPropertyToLandlord(user.landlord);
             }
         })
         .catch(function (error) {
@@ -75,11 +81,13 @@ function seedPropertyToLandlord(landlord) {
     console.log(`Seeding Property to Landlord(${_id})`)
     let number = Math.ceil(Math.random() * 9999);
     let property = {
-        address: `${number} Alphabet Dr`,
-        name: `Alpha${number}`,
+        city: `CityName`,
+        state: `StateName`,
+        zip: "84121",
         landlordID: _id
     }
 
+    // Sessions aren't working since this isn't run in a browser :(
     axios.post(baseURL + 'api/landlord/addProperty', property)
         .then(function (response) {
             const property = response.data.property;
