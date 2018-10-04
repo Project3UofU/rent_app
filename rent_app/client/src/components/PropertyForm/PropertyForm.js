@@ -46,10 +46,13 @@ class PropertyForm extends Component {
                     alert(res.data.err);
                     return;
                 }
-                alert("test");
+                alert("Property Submitted");
+                { () => this.props.changeView("ViewProperties") }
                 this.setState({
                     redirect: true,
                     redirectTo: "./Landlord"
+
+
                 });
             });
         }
