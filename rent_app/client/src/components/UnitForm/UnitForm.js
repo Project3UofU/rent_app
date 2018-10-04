@@ -24,7 +24,7 @@ class UnitForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-      axios.post('./api/addUnit', {
+      axios.post('./api/property/addUnit', {
                 rent: this.state.rent,
                 securityDeposit: this.state.securityDeposit,
                 name: this.state.name,
@@ -32,26 +32,28 @@ class UnitForm extends Component {
                 // landlordID: this.state.landlordID?
             }).then(res => {
               console.log(res);
-                // if (res.data.err) {
-                //     alert(res.data.err);
-                //     return;
-                // } else {
+                if (res.data.err) {
+                    alert(res.data.err);
+                    return;
+                } else {
                   this.setState({
                     redirect: true,
                     redirectTo: "./Landlord"
                   });
-                  alert("test");
-                  if (this.state.redirect) {
-                    return <Redirect to={this.state.redirectTo} />;
-                  // };  
                 }
               });
-          }
-                
+            }
             
-            
-            
-            render() {
+          
+          
+          
+          
+          
+          render() {
+            if (this.state.redirect) {
+              alert("test");
+              return <Redirect to={this.state.redirectTo} />;
+            }  
               return (
       <Container className="fluid">
         <Col size="md-8">
