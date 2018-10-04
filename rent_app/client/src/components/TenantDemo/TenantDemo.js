@@ -15,8 +15,8 @@ class TenantDemo extends Component {
         phone: "",
         // preffered method dropdown or select
         numberOfTenants: "",
-        numberOfDependents: "",
-        ageOfDependents: "",
+        // numberOfDependents: "",
+        // ageOfDependents: "",
         comments: "",
         redirect: false,
         redirectTo: null
@@ -107,7 +107,7 @@ class TenantDemo extends Component {
                             name="numberOfTenants"
                             placeholder="Number of tenants"
                         />
-                        <Input
+                        {/* <Input
                             value={this.state.numberOfDependents}
                             onChange={this.handleInputChange}
                             name="numberOfDependants"
@@ -118,7 +118,7 @@ class TenantDemo extends Component {
                             onChange={this.handleInputChange}
                             name="ageOfDependants"
                             placeholder="Age of dependents"
-                        />
+                        /> */}
                         <TextArea
                             value={this.state.comments}
                             onChange={this.handleInputChange}
