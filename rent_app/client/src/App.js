@@ -31,7 +31,7 @@ class App extends Component {
 
   componentDidMount() {
     axios.get('/api/auth/user').then(response => {
-      console.log(response.data)
+      console.log("test" + response.data)
       if (response.data.user) {
         console.log('THERE IS A USER: ' + response.data.user.local.username)
         this.setState({
@@ -44,7 +44,7 @@ class App extends Component {
           user: { local: { username: "mikeytdan2" } }
         })
       }
-    })
+    });
   }
 
   _logout = (event) => {

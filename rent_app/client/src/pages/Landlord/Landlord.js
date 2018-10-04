@@ -19,6 +19,7 @@ class Landlord extends Component {
 
   constructor(props) {
     super(props);
+    // console.log(JSON.stringify(props,0,2));
     this.state = {
       WorkStation: ViewProperties,
     }
