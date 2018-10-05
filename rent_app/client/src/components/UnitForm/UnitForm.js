@@ -10,7 +10,6 @@ class UnitForm extends Component {
     rent: "",
     securityDeposit: "",
     name: "",
-    // additional: "",
     redirect: false,
     redirectTo: null
   };
@@ -28,8 +27,8 @@ class UnitForm extends Component {
       rent: this.state.rent,
       securityDeposit: this.state.securityDeposit,
       name: this.state.name,
-      comments: this.state.additional
-      // landlordID: this.state.landlordID?
+      // property: this.props.user.landlord.properties._id
+      // property: this.state.property
     }).then(res => {
       console.log(res);
       if (res.data.err) {
@@ -52,6 +51,7 @@ class UnitForm extends Component {
     return (
       <Container className="fluid">
         <Row>
+      {console.log("%%%%%%%%%%%%%%%%%%%%%" + JSON.stringify(this.props))}
           <Col size="md-12">
             <h1>Add information for this unit</h1>
             <form>

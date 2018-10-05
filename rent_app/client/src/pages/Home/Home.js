@@ -37,7 +37,10 @@ class Home extends Component {
                   <h1>Welcome to Rent Keeper!</h1>
                   <h4>Your One Stop Property Management Solution</h4>
                   <hr />
+
+
                   {/* <p>RentKeeper.net allows property managers and investors to manage their Properties and Tenants all in one convenient application</p> */}
+
                 </Col>
               </Row>
             </Container>
