@@ -7,6 +7,7 @@ class ViewProperties extends Component {
         super(props);
         this.state = {
             Properties: [],
+            landlord: this.props.landlord
         }
     }
 
@@ -39,7 +40,7 @@ class ViewProperties extends Component {
                                 created={property.created}
                                 address={property.address}
                                 name={property.name}
-                                landlord={property.landlord}
+                                landlord={this.state.landlord}
                                 units={property.units}
                                 test={property.units.length}
                             >
