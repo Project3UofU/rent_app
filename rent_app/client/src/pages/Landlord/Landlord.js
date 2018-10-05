@@ -61,32 +61,34 @@ class Landlord extends Component {
   render() {
     return (
       <div className="workStation">
-        <Row>
-          <Col size="md-8">
-            <Container>
-              {/* <h2>Your Properties:</h2> */}
-              <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
-              {/* Check if the user exists before trying to display their username */}
-              {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
-
-              < this.state.WorkStation
+        {this.props.user ? (
+          <Row>
+            <Col size="md-8">
+              <Container>
+                {/* <h2>Your Properties:</h2> */}
+                {/* <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2> */}
+                {/* Check if the user exists before trying to display their username */}
+                {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
+                {/* <p><font color="green">State/UserData: {this.state.UserData.firstName}</font></p> */}
+                < this.state.WorkStation
+                  changeView={this.changeView}
+                  user={this.props.user}
+                  key={this.props._id}
+                />
+              </Container>
+            </Col>
+            <Col size="md-4">
+              <LandlordControlPanel
                 changeView={this.changeView}
-                key={this.props._id}
-                landlord={this.state.landlord}
-
               />
-            </Container>
-          </Col>
-          <Col size="md-4">
-            <LandlordControlPanel
-              changeView={this.changeView}
-            />
-            <WorkOrderLayout>
+              <WorkOrderLayout>
 
-            </WorkOrderLayout>
-          </Col>
-        </Row>
-        }
+              </WorkOrderLayout>
+            </Col>
+          </Row>
+        ) : (
+            <h1> Please Log in</h1>
+          )}}
 
       </div>
     )
