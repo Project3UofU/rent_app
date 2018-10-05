@@ -1,26 +1,33 @@
 import React, { Component } from "react";
 import { PropertyContainer } from "../PropertyContainer"
 import testProperties from "../../landlordtest.json"
+
+
 class ViewProperties extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             Properties: [],
-            landlord: this.props.landlord
         }
     }
 
     toggleFunction = () => {
         this.state.Properties === testProperties ? (
-            this.setState({ Properties: this.props.landlord.landlord.properties })) : (
-                this.setState({ Properties: testProperties })
+
+            this.setState({ Properties: this.props.landlord.properties })
+        ) : (
+                console.log(this.props)
             )
 
     }
     componentDidMount() {
         this.setState(
-            { Properties: this.props.landlord.landlord.properties })
+            {
+                landlord: this.props.landlord,
+                Properties: this.props.landlord.properties
+            }
+        )
     }
 
     render() {
@@ -30,7 +37,7 @@ class ViewProperties extends Component {
                     type="button"
                     onClick={() => this.toggleFunction()}
                     className="btn btn-primary"
-                >change data source
+                >Mark's Special Test Button
                 </button>
                 {this.state.Properties.length ? (
                     <div>
@@ -38,11 +45,13 @@ class ViewProperties extends Component {
                             <PropertyContainer
                                 key={property._id}
                                 created={property.created}
+                                city={property.city}
+                                state={property.state}
+                                comments={property.comments}
                                 address={property.address}
-                                name={property.name}
+                                name={property.nickname}
                                 landlord={this.state.landlord}
                                 units={property.units}
-                                test={property.units.length}
                             >
                                 {property.units.length ? (
                                     <button
