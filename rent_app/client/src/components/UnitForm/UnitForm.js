@@ -43,11 +43,6 @@ class UnitForm extends Component {
     });
   }
 
-
-
-
-
-
   render() {
     if (this.state.redirect) {
       alert("test");

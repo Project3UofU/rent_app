@@ -27,9 +27,9 @@ class Landlord extends Component {
     }
   }
   componentDidMount() {
-    let UserData = this.props.user.local;
-    console.log(UserData)
-    this.setState({ UserData })
+    // let UserData = this.props.user;
+    // console.log(UserData)
+    // this.setState({ UserData })
   }
   // Landlord Navigation Functions
   changeView = newView => {
@@ -65,12 +65,13 @@ class Landlord extends Component {
           <Row>
             <Col size="md-8">
               <Container>
-          {console.log(this.props)}
                 {/* <h2>Your Properties:</h2> */}
                 {/* <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2> */}
                 {/* Check if the user exists before trying to display their username */}
                 {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
+
                 {/* <p><font color="green">State/UserData: {this.state.UserData.firstName}</font></p> */}
+
 
                 < this.state.WorkStation
                   changeView={this.changeView}

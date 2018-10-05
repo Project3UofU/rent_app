@@ -28,31 +28,33 @@ class Home extends Component {
           <Col size="sm-12">
             <Container className="intro">
               <Row>
-                <Col size="md-6">
+                <Col size="md-3">
                   <div className="test">
                     <img src="images/RentKeeper-01.png" id="frontImg" className="img-fluid" alt="RentKeeper" />
                   </div>
                 </Col>
-                <Col size="md-6">
+                <Col size="md-9">
                   <h1>Welcome to Rent Keeper!</h1>
-                  <h3>Your new property management web-app</h3>
+                  <h4>Your One Stop Property Management Solution</h4>
                   <hr />
-                  <p>RentKeeper.net allows you to manage your Properties, Tenants, and work orders all in one convenient app .</p>
+
+
+                  {/* <p>RentKeeper.net allows property managers and investors to manage their Properties and Tenants all in one convenient application</p> */}
+
                 </Col>
               </Row>
             </Container>
             <Row>
               <Container className="noBackground">
-                <h3>Benefits of Rent Keeper:</h3>
+                <h1>Benefits of Rent Keeper</h1>
                 <Row>
 
                   <Col size="md-4">
 
                     <Container>
-
-                      <ul className=" lowerCase">
-                        <li> Using Rent Keeper, Landlords have complete and reliable access to information about current tenants as well as up to the minute information about the availability of vacant units, unpaid rent, work orders etc. Totally free of charge.</li>
-                      </ul>
+                      <div className=" lowerCase">
+                        <p> Using Rent Keeper, Landlords have complete and reliable access to information about current tenants as well as up to the minute information about the availability of vacant units, unpaid rent, work orders etc. Totally free of charge.</p>
+                      </div>
                     </Container>
                   </Col>
                   <Col size="md-4">
@@ -62,9 +64,9 @@ class Home extends Component {
                   </Col>
                   <Col size="md-4">
                     <Container>
-                      <ul className="lowerCase">
-                        <li>Access detailed and clear reporting which allows you as a landlord to always have accurate and up to date information about the state of affairs at each of your properties. Thus assisting with making informed, timely and effective management decisions.</li>
-                      </ul>
+                      <div className="lowerCase">
+                        <p>Access detailed and clear reporting which allows you as a landlord to always have accurate and up to date information about each of your properties. Assisting with making informed, timely and effective management decisions.</p>
+                      </div>
                     </Container>
                   </Col>
                 </Row>
@@ -79,7 +81,7 @@ class Home extends Component {
               <Row>
                 <Col size="md-6">
                   <Container>
-                    <p>Main functions of RentKeeper:</p>
+                    <h3>Main functions of RentKeeper</h3>
                     <ul className="align-left lowerCase">
                       <li>Database of all properties</li>
                       <li>Rent payments and calculations (future)</li>
@@ -91,24 +93,27 @@ class Home extends Component {
                 </Col>
                 <Col size="md-6">
                   <Container>
-                    <p>Reporting and Notifications:</p>
+                    <h3>Reporting and Notifications</h3>
                     <ul className="align-left lowerCase">
-                      <li>Up to date information on vacant properties.</li>
-                      <li>Up to date information on rent payments.</li>
-                      <li>Automatic notifications of terminating contracts, unpaid rent, the need for billing and other events. (future)</li>
-                      <li>E-mail and SMS sending to the tenant database (future</li>
+                      <li>Access or create work orders.</li>
+                      <li>Access up to date information about vacant properties.</li>
+                      <li>Access up to date information on rent payments.</li>
+                      <li>Automatic notifications of terminating contracts, unpaid rent, the need for billing and other events. (future development)</li>
+                      <li>E-mail and SMS to send notifications to tenants (future development)</li>
                     </ul>
                   </Container>
                 </Col>
               </Row>
               <Row>
                 <Container>
-                  <div className="lowerCase align-left">
-                    <p>Why use Rent Keeper: (testimonials)</p>
-                    <p>Using Rent Keeper for property management your accounting and efficiency will significantly improve. Save time, money and energy which can be used to solve additional problems while at the same time improving the speed and quality of communications with your tenants.</p>
-
-                    <p>Detailed reports for managers will provide up-to-date and reliable information about the state of affairs at each property, which will allow making timely and correct management decisions.</p>
-                    <p>Thus, working with Rent Kepeer will help to increase the efficiency and quality of customer service, reduce costs and increase the profit of your organization.</p>
+                  <div className="align-center">
+                    <h3>Why use Rent Keeper?</h3>
+                    <ul className="align-left lowerCase">
+                    <li>Using Rent Keeper for property management your accounting and efficiency will significantly improve. </li>
+                    <li>Save time, money and energy which can be used to solve additional problems while improving the speed and quality of communications with your tenants.</li>
+                    <li>Access detailed reports for property managers with up-to-date and reliable information about each unit or property.</li>
+                    <li>Using Rent Keeper as your property management solution will help increase the efficiency and quality of customer service, reduce costs and increase the profit of your organization.</li>
+                    </ul>
                   </div>
                 </Container>
 

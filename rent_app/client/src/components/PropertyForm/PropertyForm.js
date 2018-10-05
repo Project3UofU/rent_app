@@ -46,10 +46,15 @@ class PropertyForm extends Component {
                     alert(res.data.err);
                     return;
                 }
+
                 this.props.user.landlord.properties.push(res.data.property);
+
+                
                 this.setState({
                     redirect: true,
                     redirectTo: "./Landlord"
+
+
                 });
             });
         }
