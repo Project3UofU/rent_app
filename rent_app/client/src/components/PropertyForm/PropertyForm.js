@@ -38,16 +38,18 @@ class PropertyForm extends Component {
                 state: this.state.state,
                 zip: this.state.zip,
                 nickname: this.state.nickname,
-                comments: this.state.additional
-                // landlordID: this.state.landlordID?
+                comments: this.state.additional,
+                landlordID: this.props.user.landlord.id
             }).then(res => {
                 console.log(res);
                 if (res.data.err) {
                     alert(res.data.err);
                     return;
                 }
-                alert("Property Submitted");
-                { () => this.props.changeView("ViewProperties") }
+
+                this.props.user.landlord.properties.push(res.data.property);
+
+                
                 this.setState({
                     redirect: true,
                     redirectTo: "./Landlord"
