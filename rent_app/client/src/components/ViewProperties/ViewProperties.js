@@ -1,31 +1,60 @@
 import React, { Component } from "react";
 import { PropertyContainer } from "../PropertyContainer"
 import testProperties from "../../landlordtest.json"
+
+
 class ViewProperties extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            Properties: testProperties,
+            Properties: [],
         }
+    }
+
+    toggleFunction = () => {
+        this.state.Properties === testProperties ? (
+
+            this.setState({ Properties: this.props.landlord.properties })
+        ) : (
+                console.log(this.props)
+            )
+
+    }
+    componentDidMount() {
+        this.setState(
+            {
+                landlord: this.props.landlord,
+                Properties: this.props.landlord.properties
+            }
+        )
     }
 
     render() {
         return (
             <div>
+                <button
+                    type="button"
+                    onClick={() => this.toggleFunction()}
+                    className="btn btn-primary"
+                >Mark's Special Test Button
+                </button>
                 {this.state.Properties.length ? (
                     <div>
                         {this.state.Properties.map(property =>
                             <PropertyContainer
                                 key={property._id}
                                 created={property.created}
+                                city={property.city}
+                                state={property.state}
+                                comments={property.comments}
                                 address={property.address}
-                                name={property.name}
-                                landlord={property.landlord}
+                                name={property.nickname}
+                                landlord={this.state.landlord}
                                 units={property.units}
-                                test={property.units.length}
                             >
-                                {property.units.length ? (
+                                {
+                                    property.units.length ? (
                                     <button
                                         type="button"
                                         onClick={() => this.props.changeView("Unit")}

@@ -15,7 +15,7 @@ passport.deserializeUser((id, done) => {
 	User
 		.findById(id)
 		.then(user => done(null, user))
-		.catch(err => done(err, null, { error: 'User does not exist' })); 
+		.catch(err => done(err, null, { error: 'User does not exist' }));
 })
 
 // ==== Register Strategies ====
