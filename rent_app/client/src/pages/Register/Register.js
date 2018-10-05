@@ -104,6 +104,7 @@ class Register extends Component {
                                         value={this.state.password}
                                         onChange={this.handleInputChange}
                                         name="password"
+                                        type="password"
                                         label="Create a password"
                                         placeholder="password"
                                     />
@@ -111,6 +112,7 @@ class Register extends Component {
                                         value={this.state.confirmPassword}
                                         onChange={this.handleInputChange}
                                         name="confirmPassword"
+                                        type="password"
                                         label="Re-Enter your password "
                                         placeholder="password"
                                     />
@@ -137,6 +139,9 @@ class Register extends Component {
                                         value={this.state.businessPhone}
                                         onChange={this.handleInputChange}
                                         name="businessPhone"
+                                        type="tel"
+                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                        required
                                         label="Business Phone"
                                         placeholder="(555)867-5309"
                                     />
@@ -144,6 +149,8 @@ class Register extends Component {
                                         value={this.state.cellPhone}
                                         onChange={this.handleInputChange}
                                         name="cellPhone"
+                                        type="tel"
+                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                         label="Cell Phone"
                                         placeholder="(555)867-5309"
                                     />
@@ -151,6 +158,8 @@ class Register extends Component {
                                         value={this.state.homePhone}
                                         onChange={this.handleInputChange}
                                         name="homePhone"
+                                        type="tel"
+                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                         label="Home Phone"
                                         placeholder="(555)867-5309"
                                     />
@@ -158,6 +167,8 @@ class Register extends Component {
                                         value={this.state.fax}
                                         onChange={this.handleInputChange}
                                         name="fax"
+                                        type="tel"
+                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                         label="Fax Number"
                                         placeholder="(555)867-5309"
                                     />
