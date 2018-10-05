@@ -3,7 +3,7 @@ A web application designed to assist Property Mananagers by keeping track of Ten
 
 ![Logo](./client/public/images/RentKeeper-01.png)
 
-## [Published on Heroku](www.rentkeeper.net)
+## [Published on Heroku](http://www.rentkeeper.net)
 
 ## About Rent Keeper
 <strong>www.rentkeeper.net</strong> was designed with smaller Landlords and Property Managers in mind.  The Rent Keeper platform offers a method for landlords to keep track of multiple properties and their coresponding tenants all in one convenient platform. It also offers the ability to submit and track work orders for maintenance needs.
