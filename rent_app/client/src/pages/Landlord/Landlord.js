@@ -65,7 +65,6 @@ class Landlord extends Component {
           <Row>
             <Col size="md-8">
               <Container>
-          {console.log(this.props)}
                 {/* <h2>Your Properties:</h2> */}
                 {/* <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2> */}
                 {/* Check if the user exists before trying to display their username */}
