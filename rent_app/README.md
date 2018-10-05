@@ -1,7 +1,7 @@
 # Rent Keeper
 A web application designed to assist Property Mananagers by keeping track of Tenant Data, Property Data, Work Orders, and additional communications.
 
-![Logo]('./client/public/images/RentKeeper-01.png')
+![Logo](./client/public/images/RentKeeper-01.png)
 
 ## [Published on Heroku](www.rentkeeper.net)
 
