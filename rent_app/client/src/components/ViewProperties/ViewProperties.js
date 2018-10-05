@@ -53,7 +53,8 @@ class ViewProperties extends Component {
                                 landlord={this.state.landlord}
                                 units={property.units}
                             >
-                                {property.units.length ? (
+                                {
+                                    property.units.length ? (
                                     <button
                                         type="button"
                                         onClick={() => this.props.changeView("Unit")}

@@ -27,6 +27,16 @@ class Landlord extends Component {
     }
   }
 
+  updateLandlordAndRedirect = (landlord) => {
+    console.log(landlord, "this is landlord");
+    console.log("yo");
+
+    this.setState({
+      landlord,
+      WorkStation: ViewProperties
+    });
+
+  }
 
   componentDidMount() {
     console.log(this.state.landlord)
@@ -64,10 +74,11 @@ class Landlord extends Component {
             <Col size="md-8">
               <Container>
                 {/* <p><font color="green">State/UserData: {this.state.UserData.firstName}</font></p> */}
-                < this.state.WorkStation
+                <this.state.WorkStation
                   changeView={this.changeView}
                   user={this.props.user}
                   landlord={this.state.landlord}
+                  updateLandlordAndRedirect={this.updateLandlordAndRedirect}
                 />
               </Container>
             </Col>

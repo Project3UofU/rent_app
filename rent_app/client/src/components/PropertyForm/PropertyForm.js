@@ -43,21 +43,20 @@ class PropertyForm extends Component {
                 zip: this.state.zip,
                 nickname: this.state.nickname,
                 comments: this.state.additional,
-                landlordID: this.state.landlord.id
+                landlordID: this.state.landlord.id,
+                units: []
             }).then(res => {
                 console.log(res);
                 if (res.data.err) {
                     alert(res.data.err);
                     return;
                 }
-                this.state.landlord.properties.push(res.data.property);
+                var tempLandlord = this.state.landlord
+                tempLandlord.properties.push(res.data.property);
+                tempLandlord.properties[tempLandlord.properties.length - 1].units = []
 
-                // this.setState({
-                //     redirect: true,
-                //     redirectTo: "./Landlord"
-                // });
-                this.props.changeView("viewProperties")
-
+                //################
+                this.props.updateLandlordAndRedirect(tempLandlord)
 
             });
         }
