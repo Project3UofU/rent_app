@@ -27,7 +27,7 @@ A web application designed to assist Property Mananagers by keeping track of Ten
 
 ## Challenges
 
-* New Technologies - Passport.js & bcrypt
+* New Technologies: Passport.js & bcrypt
 * Google Login function 
 * Time 
 
