@@ -23,9 +23,11 @@ class Landlord extends Component {
     // console.log(JSON.stringify(props,0,2));
     this.state = {
       WorkStation: ViewProperties,
-      UserData: {}
+      landlord: this.props.landlord
     }
   }
+
+
   componentDidMount() {
     // let UserData = this.props.user;
     // console.log(UserData)
@@ -53,44 +55,38 @@ class Landlord extends Component {
     }
     this.setState({
       WorkStation: currentView,
-      user: {},
     })
   }
 
   render() {
     return (
       <div className="workStation">
+        <Row>
+          <Col size="md-8">
+            <Container>
+              {/* <h2>Your Properties:</h2> */}
+              <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2>
+              {/* Check if the user exists before trying to display their username */}
+              {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
 
-        {this.props.user ? (
-          <Row>
-            <Col size="md-8">
-              <Container>
-                {/* <h2>Your Properties:</h2> */}
-                {/* <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2> */}
-                {/* Check if the user exists before trying to display their username */}
-                {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
-                <p><font color="green">State/UserData: </font></p>
-
-                < this.state.WorkStation
-                  changeView={this.changeView}
-                  user={this.props.user}
-                  key={this.props._id}
-
-                />
-              </Container>
-            </Col>
-            <Col size="md-4">
-              <LandlordControlPanel
+              < this.state.WorkStation
                 changeView={this.changeView}
-              />
-              <WorkOrderLayout>
+                key={this.props._id}
+                landlord={this.state.landlord}
 
-              </WorkOrderLayout>
-            </Col>
-          </Row>
-        ) : (
-            <h1> Please Log in</h1>
-          )}
+              />
+            </Container>
+          </Col>
+          <Col size="md-4">
+            <LandlordControlPanel
+              changeView={this.changeView}
+            />
+            <WorkOrderLayout>
+
+            </WorkOrderLayout>
+          </Col>
+        </Row>
+        }
 
       </div>
     )

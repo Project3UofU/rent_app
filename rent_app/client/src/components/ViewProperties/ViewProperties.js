@@ -6,13 +6,31 @@ class ViewProperties extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Properties: testProperties,
+            Properties: [],
         }
+    }
+
+    toggleFunction = () => {
+        this.state.Properties === testProperties ? (
+            this.setState({ Properties: this.props.landlord.landlord.properties })) : (
+                this.setState({ Properties: testProperties })
+            )
+
+    }
+    componentDidMount() {
+        this.setState(
+            { Properties: this.props.landlord.landlord.properties })
     }
 
     render() {
         return (
             <div>
+                <button
+                    type="button"
+                    onClick={() => this.toggleFunction()}
+                    className="btn btn-primary"
+                >change data source
+                </button>
                 {this.state.Properties.length ? (
                     <div>
                         {this.state.Properties.map(property =>

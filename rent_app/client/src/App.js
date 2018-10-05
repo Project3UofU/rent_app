@@ -91,8 +91,9 @@ class App extends Component {
               user={this.state.user} />}
             />
             {/* TODO: Should we change Landlord from Exact path to /Landlord/:id ? */}
-            <Route exact path="/Landlord" render={() => <Landlord user={this.state.user} />} />
-            <Route exact path="/Tenant" render={() => <Tenant user={this.state.user} />} />
+            {this.state && this.state.loggedIn &&
+              <Route exact path="/Landlord" render={() => <Landlord landlord={this.state.user} />} />}
+            <Route exact path="/Tenant" render={() => <Tenant tenant={this.state.tenant} />} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/unitform" component={UnitFormPage} />
             <Route exact path="/propertyform" component={PropertyFormPage} />
