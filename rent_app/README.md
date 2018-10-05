@@ -1,9 +1,9 @@
 # Rent Keeper
 A web application designed to assist Property Mananagers by keeping track of Tenant Data, Property Data, Work Orders, and additional communications.
 
-![Logo]('./client/public/images/RentKeeper-01.png')
+![Logo](./client/public/images/RentKeeper-01.png)
 
-## [Published on Heroku](www.rentkeeper.net)
+## [Published on Heroku](http://www.rentkeeper.net)
 
 ## About Rent Keeper
 <strong>www.rentkeeper.net</strong> was designed with smaller Landlords and Property Managers in mind.  The Rent Keeper platform offers a method for landlords to keep track of multiple properties and their coresponding tenants all in one convenient platform. It also offers the ability to submit and track work orders for maintenance needs.
@@ -11,7 +11,7 @@ A web application designed to assist Property Mananagers by keeping track of Ten
 ### Landlord Experience:
 * * Once a Landlord logs-in, they can create and edit properties and information about tenants.  The Landlord can also communicate about possible work orders or complaints that the tenant has sent through the app. The Landlord can provide a link where tenants can log in, and access their information.
 
-###Tenant Experience:
+### Tenant Experience:
 * * With a link provided by their landlord, Tenants have the ability to log in and access their rental information, such as lease information and documents, they will also have the ability to make rent payment and view their rent payment history. The tenant is also given the ability to submit and track work orders and complaints. 
 
 ## Technologies Used
