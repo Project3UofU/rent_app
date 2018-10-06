@@ -8,4 +8,10 @@ router
   .post(middleware.paramsCheck(["rent", "securityDeposit", "name", "propertyID"]))
   .post(propertyController.addUnit);
 
+// /api/property/remove
+router
+.route("/remove")
+.delete(middleware.paramsCheck(["id"]))
+.delete(propertyController.remove);
+
 module.exports = router;
