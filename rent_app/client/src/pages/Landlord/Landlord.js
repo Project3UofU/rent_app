@@ -20,16 +20,26 @@ class Landlord extends Component {
 
   constructor(props) {
     super(props);
-    // console.log(JSON.stringify(props,0,2));
+
     this.state = {
       WorkStation: ViewProperties,
-      UserData: {}
+      landlord: this.props.landlord.landlord
     }
   }
+
+  updateLandlordAndRedirect = (landlord) => {
+    console.log(landlord, "this is landlord");
+    console.log("yo");
+
+    this.setState({
+      landlord,
+      WorkStation: ViewProperties
+    });
+
+  }
+
   componentDidMount() {
-    // let UserData = this.props.user;
-    // console.log(UserData)
-    // this.setState({ UserData })
+    console.log(this.state.landlord)
   }
   // Landlord Navigation Functions
   changeView = newView => {
@@ -53,31 +63,22 @@ class Landlord extends Component {
     }
     this.setState({
       WorkStation: currentView,
-      user: {},
     })
   }
 
   render() {
     return (
       <div className="workStation">
-
-        {this.props.user ? (
+        {this.state.landlord ? (
           <Row>
             <Col size="md-8">
               <Container>
-                {/* <h2>Your Properties:</h2> */}
-                {/* <h2><font color="green">Name: {JSON.stringify(this.props)}</font></h2> */}
-                {/* Check if the user exists before trying to display their username */}
-                {/* <h4><font color="green">Name: {this.props.user.local.username}</font></h4> */}
-
                 {/* <p><font color="green">State/UserData: {this.state.UserData.firstName}</font></p> */}
-
-
-                < this.state.WorkStation
+                <this.state.WorkStation
                   changeView={this.changeView}
                   user={this.props.user}
-                  key={this.props._id}
-
+                  landlord={this.state.landlord}
+                  updateLandlordAndRedirect={this.updateLandlordAndRedirect}
                 />
               </Container>
             </Col>
@@ -92,7 +93,7 @@ class Landlord extends Component {
           </Row>
         ) : (
             <h1> Please Log in</h1>
-          )}
+          )}}
 
       </div>
     )

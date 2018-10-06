@@ -5,6 +5,7 @@ import { Input, TextArea, FormBtn } from "../Form";
 const axios = require("axios");
 
 class PropertyForm extends Component {
+
     state = {
         streetAddress: "",
         city: "",
@@ -12,9 +13,12 @@ class PropertyForm extends Component {
         zip: "",
         comments: "",
         redirect: false,
-        redirectTo: null
-    };
-
+        redirectTo: null,
+        landlord: this.props.landlord
+    }
+    componentDidMount() {
+        console.log(this.props)
+    }
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -39,23 +43,21 @@ class PropertyForm extends Component {
                 zip: this.state.zip,
                 nickname: this.state.nickname,
                 comments: this.state.additional,
-                landlordID: this.props.user.landlord.id
+                landlordID: this.state.landlord.id,
+                units: []
             }).then(res => {
                 console.log(res);
                 if (res.data.err) {
                     alert(res.data.err);
                     return;
                 }
+                var tempLandlord = this.state.landlord
+                tempLandlord.properties.push(res.data.property);
+                tempLandlord.properties[tempLandlord.properties.length - 1].units = []
 
-                this.props.user.landlord.properties.push(res.data.property);
+                //################
+                this.props.updateLandlordAndRedirect(tempLandlord)
 
-                
-                this.setState({
-                    redirect: true,
-                    redirectTo: "./Landlord"
-
-
-                });
             });
         }
     }
@@ -136,5 +138,6 @@ class PropertyForm extends Component {
         );
     }
 }
+
 
 export default PropertyForm;

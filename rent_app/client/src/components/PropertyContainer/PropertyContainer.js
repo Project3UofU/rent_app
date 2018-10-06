@@ -14,9 +14,10 @@ export const PropertyContainer = props => {
     return (
 
         < div className="property-box" >
-            <h4>Property Name: {props.name}</h4>
+            <h4>{props.name}</h4>
             <p>{props.address}</p>
-            <p>created:{props.created}</p>
+            <p>{props.city}  {props.state}</p>
+            <p>{props.comments}</p>
 
             {props.units.length ? (
                 <div className="unit-deck card-deck">

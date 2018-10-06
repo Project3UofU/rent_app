@@ -3,12 +3,9 @@ import "./WorkOrder.css"
 
 
 export const WorkOrder = props => {
-    console.log("UNITS!!" + props);
     this.state = {
 
     }
-
-
     // setParentClass = (key) => {
     //     onclick="this.parentElement.ClassName = 'warning'"
     // }
