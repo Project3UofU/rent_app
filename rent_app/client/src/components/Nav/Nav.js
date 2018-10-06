@@ -14,7 +14,7 @@ const Nav = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="#" className="nav-link" onClick={props._logout}>
+            <Link to="/" className="nav-link" onClick={props._logout}>
               Logout
               </Link>
           </li>
@@ -32,7 +32,7 @@ const Nav = (props) => {
           </li>
           <li className="nav-item">
             <Link to="/login" className="nav-link">
-              login
+              Log-In
               </Link>
           </li>
           <li className="nav-item">

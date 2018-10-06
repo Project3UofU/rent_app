@@ -20,4 +20,10 @@ router
 .post(middleware.paramsCheck(["service", "unitID", ["tenantID", "landlordID"]])) // Requires a 'tenantID' or 'landlordID'
 .post(unitController.addTenant);
 
+// /api/unit/remove
+router
+  .route("/remove")
+  .delete(middleware.paramsCheck(["id"]))
+  .delete(unitController.remove);
+
 module.exports = router;

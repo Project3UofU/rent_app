@@ -33,7 +33,6 @@ class ViewProperties extends Component {
     render() {
         return (
             <div>
-
                 {this.state.Properties.length ? (
                     <div>
                         {this.state.Properties.map(property =>
@@ -85,7 +84,7 @@ class ViewProperties extends Component {
                             <h3>No Results to Display</h3>
                             <button
                                 type="button"
-                                onClick={() => this.props.changeView("PropertyContainer")}
+                                onClick={() => this.props.changeView("PropertyForm")}
                                 className="btn btn-warning"
                             >Add A new Property
                             </button>

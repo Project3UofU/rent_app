@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import { FormBtn, Input } from "../../components/Form";
 import { Row, Container, Col } from "../../components/Grid";
 import { Link } from "react-router-dom";
+
+
 import "./register.css";
 const axios = require("axios");
 
