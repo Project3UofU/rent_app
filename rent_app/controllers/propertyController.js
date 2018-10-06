@@ -13,7 +13,7 @@ module.exports = {
             securityDeposit: securityDeposit,
             property: mongoose.Types.ObjectId(propertyID)
         }
-
+        console.log("TRY THIS" + JSON.stringify(newUnit, 0, 2))
         db.Unit.collection
             .insertOne(newUnit)
             .then(data => res.json({ unit: data.ops[0] || null }))

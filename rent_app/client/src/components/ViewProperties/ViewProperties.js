@@ -17,7 +17,7 @@ class ViewProperties extends Component {
 
             this.setState({ Properties: this.props.landlord.properties })
         ) : (
-                console.log(this.props)
+                console.log(this.id)
             )
 
     }
@@ -33,17 +33,13 @@ class ViewProperties extends Component {
     render() {
         return (
             <div>
-                {/* <button
-                    type="button"
-                    onClick={() => this.toggleFunction()}
-                    className="btn btn-primary"
-                >Mark's Special Test Button
-                </button> */}
                 {this.state.Properties.length ? (
                     <div>
                         {this.state.Properties.map(property =>
+
                             <PropertyContainer
                                 key={property._id}
+                                id={property.id}
                                 created={property.created}
                                 city={property.city}
                                 state={property.state}
@@ -52,15 +48,23 @@ class ViewProperties extends Component {
                                 name={property.nickname}
                                 landlord={this.state.landlord}
                                 units={property.units}
+                                changeView={this.props.changeView}
                             >
-                                {
-                                    property.units.length ? (
-                                    <button
-                                        type="button"
-                                        onClick={() => this.props.changeView("Unit")}
-                                        className="btn btn-primary"
-                                    >Add Another Unit
-                                    </button>
+                                {property.units.length ? (
+                                    <p></p>
+                                    //     <button
+                                    //         type="button"
+                                    //         onClick={() => this.toggleFunction({})}
+                                    //         className="btn btn-primary"
+                                    //     >Mark's Special Test Button
+                                    // </button>
+                                    // <button
+                                    //     type="button"
+                                    //     onClick={() => this.props.changeView("Unit", this.key)
+                                    //     }
+                                    //     className="btn btn-primary"
+                                    // >Add Another Unit
+                                    // </button>
                                 ) : (
                                         <button
                                             type="button"

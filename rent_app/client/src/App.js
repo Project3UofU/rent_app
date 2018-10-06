@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import axios from 'axios'
 
 // hi
@@ -9,7 +9,6 @@ import Landlord from "./pages/Landlord/Landlord";
 import Tenant from "./pages/Tenant";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
-import UnitFormPage from "./pages/UnitForm";
 import PropertyFormPage from "./pages/PropertyForm";
 
 
@@ -25,26 +24,30 @@ import './App.css';
 class App extends Component {
 
   state = {
+    authChecked: false,
     loggedIn: false,
     user: { local: { username: "" } }
   }
 
   componentDidMount() {
-    axios.get('/api/auth/user').then(response => {
-      // console.log("test" + response.data)
-      if (response.data.user) {
-        console.log('THERE IS A USER: ' + response.data.user.local.username)
-        this.setState({
-          loggedIn: true,
-          user: response.data.user
-        })
-      } else {
-        this.setState({
-          loggedIn: false,
-          user: { local: { username: "mikeytdan2" } }
-        })
-      }
-    });
+    axios.get('/api/auth/user')
+      .then(response => {
+        console.log("test" + response.data)
+        if (response.data.user) {
+          console.log('THERE IS A USER: ' + response.data.user.local.username)
+          this.setState({
+            loggedIn: true,
+            user: response.data.user
+          })
+        } else {
+          this.setState({
+            loggedIn: false,
+            user: { local: { username: "mikeytdan2" } }
+          })
+        }
+      }).finally(() => {
+        this.setState({ authChecked: true })
+      });
   }
 
   _logout = (event) => {
@@ -79,33 +82,38 @@ class App extends Component {
         }
       })
   }
+
   render() {
+    const { authChecked } = this.state
     return (
       <Router>
         <div className="App">
 
           <Nav _logout={this._logout} loggedIn={this.state.loggedIn} />
           <Header user={this.state.user} />
-          <Switch>
-            <Route exact path="/" render={() => <Home
-              user={this.state.user} />}
-            />
-            {/* TODO: Should we change Landlord from Exact path to /Landlord/:id ? */}
-            {this.state && this.state.loggedIn &&
-              <Route exact path="/Landlord" render={() => <Landlord landlord={this.state.user} />} />}
-            <Route exact path="/Tenant" render={() => <Tenant tenant={this.state.tenant} />} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/unitform" component={UnitFormPage} />
-            <Route exact path="/propertyform" component={PropertyFormPage} />
-            <Route exact path="/login" render={() =>
-              <LoginForm
-                _login={this._login}
-                _googleSignin={this._googleSignin}
+          {authChecked ?
+            <Switch>
+              <Route exact path="/" render={() => <Home
+                user={this.state.user} />}
               />
-            }
-            />
-            <Route component={NoMatch} />
-          </Switch>
+              {/* TODO: Should we change Landlord from Exact path to /Landlord/:id ? */}
+
+              <Route exact path="/Landlord" render={() => <Landlord landlord={this.state.user} />} />
+              <Route exact path="/Tenant" render={() => <Tenant tenant={this.state.tenant} />} />
+              <Route exact path="/register" component={Register} />
+
+              <Route exact path="/propertyform" component={PropertyFormPage} />
+              <Route exact path="/login" render={() =>
+                <LoginForm
+                  _login={this._login}
+                  _googleSignin={this._googleSignin}
+                />
+              }
+              />
+              {this.state.loggedIn && <Redirect to="/Landlord" />}
+              {!this.state.loggedIn && <Redirect to="/login" />}
+            </Switch>
+            : "Loading"}
           <Footer />
         </div>
       </Router>
