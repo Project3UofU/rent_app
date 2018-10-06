@@ -18,6 +18,11 @@ const Nav = (props) => {
               Logout
               </Link>
           </li>
+          <li>
+            <Link to="/landlord" className="nav-link" >
+              Your Properties
+              </Link>
+          </li>
         </ul>
       </nav>
     )

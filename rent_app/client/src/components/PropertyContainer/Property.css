@@ -3,4 +3,10 @@
     background-color: rgba(44, 80, 146, 0.74);
     border-radius: 20px;
     padding:1em;
+    position: relative;
+}
+.property-box .del-btn {
+position: absolute;
+bottom: 1em;
+right:1em;
 }
