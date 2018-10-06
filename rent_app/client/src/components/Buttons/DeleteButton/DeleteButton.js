@@ -2,12 +2,12 @@ import React from "react";
 import "./DeleteButton.css";
 
 const DeleteButton = (props) => (
-    <div className="btn del-btn" {...props}>
-    {props.children}
+    <div className="btn del-btn btn-sm" {...props}>
+        {props.children}
         {/* <span className="tooltip">
             This will permantly delete this item! It cannot be undone! 
         </span> */}
-    </div>  
+    </div>
 );
 
 export default DeleteButton;

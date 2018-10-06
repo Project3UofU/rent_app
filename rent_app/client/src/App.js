@@ -113,7 +113,7 @@ class App extends Component {
               {this.state.loggedIn && <Redirect to="/Landlord" />}
               {!this.state.loggedIn && <Redirect to="/login" />}
             </Switch>
-            : "Loading"}
+            : <h1>Loading</h1>}
           <Footer />
         </div>
       </Router>

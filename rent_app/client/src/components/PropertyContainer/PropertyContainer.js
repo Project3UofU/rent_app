@@ -30,8 +30,7 @@ export const PropertyContainer = props => {
             <p>{props.address}</p>
             <p>{props.city}  {props.state}</p>
             <p>{props.comments}</p>
-            {/* This is not yet actually functional, backend is working. */}
-            <DeleteButton>Delete this property</DeleteButton>
+
             {props.units.length ?
 
                 (
@@ -47,10 +46,10 @@ export const PropertyContainer = props => {
                                 <div className="card-body">
                                     <h5 className="card-title">{unit.number}</h5>
                                     {/* BELOW is an example of collapsable content */}
-                                    <button data-toggle="collapse" data-target=".unit-rental">Rental Info</button>
-                                    <div id="" className="collapse unit-rental">
+                                    <button data-toggle="collapse" data-target={`#comment${unit.id}`}>Rental Info</button>
+                                    <div id={`comment${unit.id}`} className="collapse unit-rental">
                                         <p>rent: {unit.rent}</p>
-                                        <p>deposit: {unit.deposit}</p>
+                                        <p>deposit: {unit.securityDeposit}</p>
                                     </div>
 
                                     <p>rooms: {unit.rooms}</p>
@@ -60,14 +59,24 @@ export const PropertyContainer = props => {
                                     ) : (
                                             <p>Not Furnished</p>)
                                     }
+                                    {unit.addtional ? (
+                                        <div>
+                                            <button data-toggle="collapse" data-target={`#${unit.id}`}>Comments</button>
+                                            <div id={unit.id} className="collapse unit-rental">
+                                                <p>{unit.additional}</p>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                            <p>No Comments</p>)
+                                    }
 
                                     <div>
-                                        < button type="button"
+                                        {/* <button type="button"
                                             onClick={() => this.props.changeView("CreateTenant")}
                                             className="btn btn-secondary"
                                         >
                                             Add a New Tenant
-                                            </button>
+                                            </button> */}
                                     </div>
                                 </div>
 
@@ -80,10 +89,13 @@ export const PropertyContainer = props => {
 
 
                 ) : (
-                    <h1>You Currently have no Units Created In this Property</h1>
+                    <div>
+                        <h1>You have created an empty property!</h1>
+                        <h2>There are no Units</h2>
+                        <h2>Click below To add a new unit</h2>
+                    </div>
                 )}
-            <p>{props.id}</p>
-            <p>{props.changeView}</p>
+
             <button
                 type="button"
                 onClick={() => props.changeView("Unit", props.id)
@@ -91,8 +103,10 @@ export const PropertyContainer = props => {
                 className="btn btn-primary"
             >Add Another Unit
                                      </button>
-            {/* {props.children} */}
 
+            {/* {props.children} */}
+            {/* This is not yet actually functional, backend is working. */}
+            <DeleteButton>Delete this property</DeleteButton>
         </div >
     )
 }
