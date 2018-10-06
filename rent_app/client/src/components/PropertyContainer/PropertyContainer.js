@@ -45,32 +45,37 @@ export const PropertyContainer = props => {
                                 ) : (
                                         <p>Not Furnished</p>)
                                 }
-                                {unit.tenant.name ?
-                                    (
-                                        < p > {unit.tenant.name}</p>
-                                    ) : (
-                                        <div>
-                                            < button type="button"
-                                                onClick={() => this.props.changeView("CreateTenant")}
-                                                className="btn btn-secondary"
-                                            >
-                                                Add a new Tenant
+
+                                <div>
+                                    < button type="button"
+                                        onClick={() => this.props.changeView("CreateTenant")}
+                                        className="btn btn-secondary"
+                                    >
+                                        Add a New Tenant
                                             </button>
-                                        </div>)
-                                }
+                                </div>
                             </div>
 
                         </div>
                     )
                     }
 
+
                 </div>
 
             ) : (
                     <h1>You Currently have no Units Created In this Property</h1>
                 )}
-
-            {props.children}
+            <p>{props.id}</p>
+            <p>{props.changeView}</p>
+            <button
+                type="button"
+                onClick={() => props.changeView("Unit", props.id)
+                }
+                className="btn btn-primary"
+            >Add Another Unit
+                                     </button>
+            {/* {props.children} */}
 
         </div >
     )

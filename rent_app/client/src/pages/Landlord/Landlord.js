@@ -23,7 +23,9 @@ class Landlord extends Component {
 
     this.state = {
       WorkStation: ViewProperties,
-      landlord: this.props.landlord.landlord
+      landlord: this.props.landlord.landlord,
+      currentPropertyId: "",
+      currentUnitId: ""
     }
   }
 
@@ -42,7 +44,7 @@ class Landlord extends Component {
     console.log(this.state.landlord)
   }
   // Landlord Navigation Functions
-  changeView = newView => {
+  changeView = (newView, id) => {
     let currentView = this.state.WorkStation;
     switch (newView) {
       case "ViewProperties":
@@ -50,6 +52,8 @@ class Landlord extends Component {
         break;
       case "Unit":
         currentView = Unit;
+        console.log("UNIT CHANGING")
+        console.log(id)
         break;
       case "CreateTenant":
         currentView = CreateTenant;
@@ -63,37 +67,37 @@ class Landlord extends Component {
     }
     this.setState({
       WorkStation: currentView,
+      currentProperty: id
     })
   }
 
   render() {
     return (
       <div className="workStation">
-        {this.state.landlord ? (
-          <Row>
-            <Col size="md-8">
-              <Container>
-                {/* <p><font color="green">State/UserData: {this.state.UserData.firstName}</font></p> */}
-                <this.state.WorkStation
-                  changeView={this.changeView}
-                  user={this.props.user}
-                  landlord={this.state.landlord}
-                  updateLandlordAndRedirect={this.updateLandlordAndRedirect}
-                />
-              </Container>
-            </Col>
-            <Col size="md-4">
-              <LandlordControlPanel
-                changeView={this.changeView}
-              />
-              <WorkOrderLayout>
 
-              </WorkOrderLayout>
-            </Col>
-          </Row>
-        ) : (
-            <h1> Please Log in</h1>
-          )}}
+        <Row>
+          <Col size="md-8">
+            <Container>
+              {/* <p><font color="green">State/UserData: {this.state.UserData.firstName}</font></p> */}
+              <this.state.WorkStation
+                changeView={this.changeView}
+                user={this.props.user}
+                landlord={this.state.landlord}
+                updateLandlordAndRedirect={this.updateLandlordAndRedirect}
+                currentPropertyId={this.state.currentProperty}
+              />
+            </Container>
+          </Col>
+          <Col size="md-4">
+            <LandlordControlPanel
+              changeView={this.changeView}
+            />
+            <WorkOrderLayout>
+
+            </WorkOrderLayout>
+          </Col>
+        </Row>
+
 
       </div>
     )

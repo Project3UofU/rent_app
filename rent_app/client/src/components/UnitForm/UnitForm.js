@@ -2,17 +2,23 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
 import { Input, FormBtn } from "../Form";
 import { Redirect } from "react-router-dom";
+import { parse } from "url";
 const axios = require("axios");
 // import Landlord from "../../pages/Landlord";
 
 class UnitForm extends Component {
-  state = {
-    rent: "",
-    securityDeposit: "",
-    name: "",
-    redirect: false,
-    redirectTo: null
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rent: 0,
+      securityDeposit: 0,
+      name: "",
+      redirect: false,
+      redirectTo: null,
+      currentProperty: props.currentPropertyId
+    };
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -20,26 +26,29 @@ class UnitForm extends Component {
       [name]: value
     });
   };
+  handleNumberInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
 
+      [name]: parseInt(value)
+    });
+  };
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log(this.props)
     axios.post('./api/property/addUnit', {
       rent: this.state.rent,
       securityDeposit: this.state.securityDeposit,
       name: this.state.name,
-      // property: this.props.user.landlord.properties._id
-      // property: this.state.property
+      propertyID: this.props.currentPropertyId
+
     }).then(res => {
       console.log(res);
       if (res.data.err) {
         alert(res.data.err);
         return;
-      } else {
-        this.setState({
-          redirect: true,
-          redirectTo: "./Landlord"
-        });
       }
+      window.location.reload()
     });
   }
 
@@ -51,7 +60,7 @@ class UnitForm extends Component {
     return (
       <Container className="fluid">
         <Row>
-      {console.log("%%%%%%%%%%%%%%%%%%%%%" + JSON.stringify(this.props))}
+          {console.log("%%%%%%%%%%%%%%%%%%%%%" + JSON.stringify(this.props))}
           <Col size="md-12">
             <h1>Add information for this unit</h1>
             <form>
@@ -78,14 +87,14 @@ class UnitForm extends Component {
             /> */}
                   <Input
                     value={this.state.rent}
-                    onChange={this.handleInputChange}
+                    onChange={this.handleNumberInputChange}
                     name="rent"
                     placeholder="1000"
                     label="What is the monthly rent for this unit?"
                   />
                   <Input
                     value={this.state.securityDeposit}
-                    onChange={this.handleInputChange}
+                    onChange={this.handleNumberInputChange}
                     name="securityDeposit"
                     placeholder="1000"
                     label="What is the security deposit for this unit?"
