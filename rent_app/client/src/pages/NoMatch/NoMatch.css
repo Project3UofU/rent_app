@@ -5,3 +5,9 @@ body {
     max-width: 100%;
     height: auto;
 }
+.card-text {
+    color: black;
+}
+.giphy-embed {
+    width: 100%;
+}   

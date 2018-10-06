@@ -32,7 +32,7 @@ const Nav = (props) => {
           </li>
           <li className="nav-item">
             <Link to="/login" className="nav-link">
-              login
+              Log-In
               </Link>
           </li>
           <li className="nav-item">
