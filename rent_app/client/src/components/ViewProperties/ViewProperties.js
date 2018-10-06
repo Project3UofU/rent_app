@@ -27,6 +27,7 @@ class ViewProperties extends Component {
     componentDidMount() {
         this.setState(
             {
+                console.log(this.props)
                 landlord: this.props.landlord,
                 Properties: this.props.landlord.properties
             }
