@@ -5,9 +5,9 @@ module.exports = {
 
     remove: function (req, res) {
         const { id } = req.body;
-        db.WorkOrder
+        db.WorkOrderComment
             .deleteOne({ _id: id })
-            .then(data => res.json({ workOrder: data }))
+            .then(data => res.json({ workOrderComment: data }))
             .catch(err => utils.error(res, 422, err.message));
     }
 
