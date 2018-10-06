@@ -51,7 +51,7 @@ class UnitForm extends Component {
     return (
       <Container className="fluid">
         <Row>
-      {console.log("%%%%%%%%%%%%%%%%%%%%%" + JSON.stringify(this.props))}
+      
           <Col size="md-12">
             <h1>Add information for this unit</h1>
             <form>
