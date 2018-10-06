@@ -15,6 +15,14 @@ module.exports = {
             .catch(err => utils.error(res, 422, err.message));
     },
 
+    remove: function (req, res) {
+        const { id } = req.body;
+        db.Tenant
+            .deleteOne({ _id: id })
+            .then(data => res.json({ tenant: data }))
+            .catch(err => utils.error(res, 422, err.message));
+    },
+
     // /api/tenant/setup
     // Used for first time tenant setup after the landlord adds them
     setup: function (req, res) {

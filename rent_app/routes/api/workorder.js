@@ -14,4 +14,10 @@ router
   .put(middleware.paramsCheck(["workOrderID", ["service", "description", "urgent", "read", "completed"]])) // Requires 'workOrderID' and at least one of the following parameters to be valid
   .put(workOrderController.update);
 
+// /api/workOrder/remove
+router
+  .route("/remove")
+  .delete(middleware.paramsCheck(["id"]))
+  .delete(workOrderController.remove);
+
 module.exports = router;

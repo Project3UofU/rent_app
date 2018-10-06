@@ -45,6 +45,14 @@ module.exports = {
             });
     },
 
+    remove: function (req, res) {
+        const { id } = req.body;
+        db.Unit
+            .deleteOne({ _id: id })
+            .then(data => res.json({ unit: data }))
+            .catch(err => utils.error(res, 422, err.message));
+    },
+
     // Not currently needed
     landlord: function (req, res) {
         const { id } = req.params;

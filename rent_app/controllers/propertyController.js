@@ -20,4 +20,12 @@ module.exports = {
             .catch(err => utils.error(res, 422, err.message));
     },
 
+    remove: function (req, res) {
+        const { id } = req.body;
+        db.Property
+            .deleteOne({ _id: id })
+            .then(data => res.json({ property: data }))
+            .catch(err => utils.error(res, 422, err.message));
+    }
+
 };
