@@ -1,0 +1,26 @@
+.del-btn {
+    background-color: #e7412b;
+    border: white 2px solid;
+    color: white;
+}
+
+.del-btn:hover {
+    background-color: #a70000;
+    border: white 2px solid;
+    color: white;
+}
+
+/* .del-btn .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+
+.del-btn:hover .tooltip {
+    visibility: visible;
+} */

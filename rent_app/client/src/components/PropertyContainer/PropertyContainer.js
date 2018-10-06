@@ -1,6 +1,8 @@
 import React from "react";
+import DeleteButton from "../../components/Buttons/DeleteButton";
 
 import "./Property.css"
+const axios = require("axios");
 
 export const PropertyContainer = props => {
 
@@ -11,15 +13,28 @@ export const PropertyContainer = props => {
     //     el.classList.add('warning')
     // }
 
-    return (
+    // handleDelete = event => {
+    //     event.preventDefault();
+    //     if (confirm("This will permanently delete this property! Are you sure you want to delete?")) {
+    //         axios.delete('./api/property/remove/', {
+    //             // Not actual Path, but this is what needs to be passed
+    //             // property: this.state.property.id
+    //         });
+    //     })
+    // }
 
+    return (
+        
         < div className="property-box" >
             <h4>{props.name}</h4>
             <p>{props.address}</p>
             <p>{props.city}  {props.state}</p>
             <p>{props.comments}</p>
-
-            {props.units.length ? (
+            {/* This is not yet actually functional, backend is working. */}
+            <DeleteButton>Delete this property</DeleteButton>
+            {props.units.length ? 
+            
+            (
                 <div className="unit-deck card-deck">
 
                     {props.units.map(unit =>
@@ -62,9 +77,9 @@ export const PropertyContainer = props => {
 
                         </div>
                     )
-                    }
-
+                }
                 </div>
+                
 
             ) : (
                     <h1>You Currently have no Units Created In this Property</h1>
