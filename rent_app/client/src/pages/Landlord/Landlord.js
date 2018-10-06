@@ -91,10 +91,11 @@ class Landlord extends Component {
           <Col size="md-4">
             <LandlordControlPanel
               changeView={this.changeView}
-            />
-            <WorkOrderLayout>
+            >
+              <WorkOrderLayout>
 
-            </WorkOrderLayout>
+              </WorkOrderLayout>
+            </LandlordControlPanel>
           </Col>
         </Row>
 

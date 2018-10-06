@@ -2,11 +2,13 @@
     {
         "created": "September 29th, 2018",
         "address": "1600 Pennsylvania Avenue, Washington DC",
-        "name": "White-House",
+        "nickname": "White-House",
+        "city": "Washington",
+        "state": "DC",
         "landlord": "TESTING FIELD",
         "units": [
             {
-                "id": 1,
+                "id": "asdf65asd5f498",
                 "created": "September 29th, 2018",
                 "rent": 25000,
                 "securityDeposit": 10000,
@@ -14,13 +16,13 @@
                 "number": "A - West Wing",
                 "rooms": "15",
                 "furnished": true,
-                "additional": "",
+                "additional": "Doesn't pay bills on time.",
                 "tenant": {
                     "name": "Don"
                 }
             },
             {
-                "id": 2,
+                "id": "asd56f4as6d5f4rrrr",
                 "created": "September 29th, 2018",
                 "rent": 28000,
                 "securityDeposit": 18000,
@@ -35,19 +37,19 @@
     },
     {
         "created": "September 29th, 2018",
-        "address": "284 Hubbard Ave",
-        "name": "Beatup Bungalow",
-        "landlord": "TESTING FIELD",
+        "address": "678 Poplar Grove",
+        "nickname": "Wayne Manor",
+        "landlord": "Bruce Wayne",
         "units": [
             {
-                "id": 11,
+                "id": "we65g485sd3xfgh",
                 "created": "October 1st, 2018",
                 "rent": 500,
                 "securityDeposit": 500,
-                "name": "Underground bunker",
+                "name": "BatCave",
                 "number": "",
-                "rooms": "1",
-                "furnished": false,
+                "rooms": "2",
+                "furnished": true,
                 "additional": "",
                 "tenant": {}
             }
@@ -56,7 +58,7 @@
     {
         "created": "July 9th, 2018",
         "address": "1234 Bob Hope Drive",
-        "name": "Beatup Bungalow",
+        "nickname": "Beatup Bungalow",
         "landlord": "TESTING FIELD",
         "units": []
     }

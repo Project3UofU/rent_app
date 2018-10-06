@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { PropertyContainer } from "../PropertyContainer"
 import testProperties from "../../landlordtest.json"
+import "./ViewProperties.css"
 
 
 class ViewProperties extends Component {
@@ -14,10 +15,12 @@ class ViewProperties extends Component {
 
     toggleFunction = () => {
         this.state.Properties === testProperties ? (
-
-            this.setState({ Properties: this.props.landlord.properties })
+            // this.setState({ Properties: this.props.landlord.properties })
+            console.log(this.state.Properties)
         ) : (
-                console.log(this.id)
+                // console.log(testProperties)
+                this.setState({ Properties: testProperties })
+
             )
 
     }
@@ -33,6 +36,10 @@ class ViewProperties extends Component {
     render() {
         return (
             <div>
+                <a className="demo-data"
+                    onClick={() => this.toggleFunction({})}
+                >Demo</a>
+
                 {this.state.Properties.length ? (
                     <div>
                         {this.state.Properties.map(property =>

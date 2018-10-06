@@ -22,14 +22,14 @@ export const PropertyContainer = props => {
     //         });
     //     })
     // }
-
+    console.log(props.address)
     return (
 
         < div className="property-box" >
-            <h4>{props.name}</h4>
-            <p>{props.address}</p>
-            <p>{props.city}  {props.state}</p>
-            <p>{props.comments}</p>
+            <h3>{props.nickname}</h3>
+            <h4>{props.address}</h4>
+            <h4>{props.city}  {props.state}</h4>
+            <h4>{props.comments}</h4>
 
             {props.units.length ?
 
@@ -71,12 +71,12 @@ export const PropertyContainer = props => {
                                     }
 
                                     <div>
-                                        {/* <button type="button"
+                                        <button type="button"
                                             onClick={() => this.props.changeView("CreateTenant")}
-                                            className="btn btn-secondary"
+                                            className="btn btn-sm btn-secondary"
                                         >
                                             Add a New Tenant
-                                            </button> */}
+                                            </button>
                                     </div>
                                 </div>
 
