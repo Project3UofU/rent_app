@@ -4,17 +4,17 @@ const Schema = mongoose.Schema;
 // When `select` is false it means the property won't show up in queries
 const unitSchema = new Schema({
     created: { type: Date, default: Date.now, select: false },
-    bedrooms: { type: Number },
-    bathroom: { type: Number },
+    bedrooms: { type: Number, required: true },
+    bathroom: { type: Number, required: true },
     comments: { type: String, required: false },
-    furnished: { type: Boolean, default: false },
+    furnished: { type: Boolean, default: false, required: false },
     name: { type: String, required: true },
-    pets: { type: Boolean, default: false },
-    parking: { type: Boolean, default: false },
-    wdHookup: { type: Boolean, default: false }, // Washer/Dryer hook ups
-    rent: { type: Number },
-    securityDeposit: { type: Number },
-    smoking: { type: Boolean, default: false },
+    pets: { type: Boolean, default: false, required: false },
+    parking: { type: Boolean, default: false, required: false },
+    wdHookup: { type: Boolean, default: false, required: false }, // Washer/Dryer hook ups
+    rent: { type: Number, required: true },
+    securityDeposit: { type: Number, required: true },
+    smoking: { type: Boolean, default: false, required: false },
     property: {
         required: true,
         type: Schema.Types.ObjectId,
