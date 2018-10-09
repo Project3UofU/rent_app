@@ -5,7 +5,7 @@ let middleware = require("../../middleware");
 // /api/property/addUnit
 router
   .route("/addUnit")
-  .post(middleware.paramsCheck(["rent", "securityDeposit", "name", "propertyID"]))
+  .post(middleware.paramsCheck(["bedrooms", "bathroom", "rent", "securityDeposit", "name", "propertyID"]))
   .post(propertyController.addUnit);
 
 // /api/property/remove
