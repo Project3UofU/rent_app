@@ -36,7 +36,7 @@ module.exports = {
     // Not currently needed
     remove: function (req, res) {
         // TODO: Worry about this later if needed
-        const { id } = req.params;
+        const { id } = req.body;
         db.Landlord
             .deleteOne({ _id: id })
             .then(data => res.json({ property: data.ops[0] || [] }))

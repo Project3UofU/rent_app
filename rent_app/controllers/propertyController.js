@@ -5,15 +5,23 @@ const utils = require('../utils');
 module.exports = {
 
     addUnit: function (req, res) {
-        const { rent, securityDeposit, name, propertyID } = req.body;
+        const { bedrooms, bathroom, comments, furnished, name, pets, parking } = req.body;
 
         let newUnit = {
+            bedrooms: bedrooms,
+            bathroom: bathroom,
+            comments: comments,
+            furnished: furnished,
             name: name,
+            pets: pets,
+            parking: parking,
+            wdHookup: wdHookup,
             rent: rent,
             securityDeposit: securityDeposit,
+            smoking: smoking,
             property: mongoose.Types.ObjectId(propertyID)
         }
-        console.log("TRY THIS" + JSON.stringify(newUnit, 0, 2))
+        
         db.Unit.collection
             .insertOne(newUnit)
             .then(data => res.json({ unit: data.ops[0] || null }))
