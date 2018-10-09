@@ -14,20 +14,15 @@ class ViewProperties extends Component {
     }
 
     toggleFunction = () => {
-        this.state.Properties === testProperties ? (
-            // this.setState({ Properties: this.props.landlord.properties })
-            console.log(this.state.Properties)
-        ) : (
-                // console.log(testProperties)
-                this.setState({ Properties: testProperties })
 
-            )
+        // console.log(testProperties)
+        // this.setState({ Properties: testProperties })
+        console.log(this.state.Properties)
 
     }
     componentDidMount() {
         this.setState(
             {
-                console.log(this.props)
                 landlord: this.props.landlord,
                 Properties: this.props.landlord.properties
             }

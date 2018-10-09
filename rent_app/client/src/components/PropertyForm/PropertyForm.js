@@ -8,6 +8,7 @@ class PropertyForm extends Component {
 
     state = {
         streetAddress: "",
+        nickname: "",
         city: "",
         state: "",
         zip: "",

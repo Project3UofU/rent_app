@@ -59,7 +59,7 @@ export const PropertyContainer = props => {
                                     ) : (
                                             <p>Not Furnished</p>)
                                     }
-                                    {unit.addtional ? (
+                                    {unit.additional ? (
                                         <div>
                                             <button data-toggle="collapse" data-target={`#${unit.id}`}>Comments</button>
                                             <div id={unit.id} className="collapse unit-rental">

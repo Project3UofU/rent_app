@@ -82,7 +82,12 @@ class App extends Component {
         }
       })
   }
-
+  // setUser() {
+  //   this.setState({
+  //     loggedIn: true,
+  //     user: response.data.user
+  //   })
+  // }
   render() {
     const { authChecked } = this.state
     return (
@@ -113,7 +118,7 @@ class App extends Component {
               {this.state.loggedIn && <Redirect to="/Landlord" />}
               {!this.state.loggedIn && <Redirect to="/login" />}
             </Switch>
-            : <h1>Loading</h1>}
+            : <h1 className="display-1">Loading</h1>}
           <Footer />
         </div>
       </Router>
