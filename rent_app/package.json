@@ -22,7 +22,7 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "connect-mongo": "^2.0.1",
